@@ -27,7 +27,7 @@ import { useRouter } from 'next/router'
 
 
 
-// import $ from 'jquery'
+import $ from 'jquery'
 
 
 
@@ -57,7 +57,7 @@ export default function Home() {
 
 <div id='whole_content'>
       {' '}
-      {/* {setData.length > 0 && <Header navData={data} />} */}
+      {setData.length > 0 && <Header navData={data} />}
       <div className='container height_unset' id='banner'>
         <div className='hero-content'>
           <div className='left-side'>
@@ -622,7 +622,7 @@ export default function Home() {
         id='contact'
       >
         <button _ngcontent-c5='' className='wt-btn small-padding' onClick={()=>{
-        setShowModal(!showModal);console.log($('#whole_content')) ; }} tabindex='0'>
+        setShowModal(!showModal) ; }} tabindex='0'>
           {/* {' '} */}
           Leave a Message{' '}
         </button>

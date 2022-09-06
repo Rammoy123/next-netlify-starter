@@ -105,8 +105,9 @@ const Header = ({navData}) => {
 
 useEffect(()=>{
     $(window).scroll(function() {
-        console.log($(this),"koljara")
-        if ($(this).scrollTop() > 50){  
+        
+        if ($(this).scrollTop() > 50){ 
+       
             $('.main').addClass("fixed");
         }
         else {
@@ -117,24 +118,24 @@ useEffect(()=>{
 
 },[])
 
-    $(window).scroll(function() {
-        console.log($(this),"koljara")
-        if ($(this).scrollTop() > 50){  
-            $('.main').addClass("fixed");
-        }
-        else {
-            $('.main').removeClass("fixed");
-        }
-        });
+    // $(window).scroll(function() {
+    //     console.log($(this),"koljara")
+    //     if ($(this).scrollTop() > 50){  
+    //         $('.main').addClass("fixed");
+    //     }
+    //     else {
+    //         $('.main').removeClass("fixed");
+    //     }
+    //     });
 
   return (
     <>
-      <header className={style.main} id='maini'>
+      <header className="main" id='maini'>
         <div className='container'>
           <div className='row'>
             <div className='col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 image-container'>
               <a>
-                <img src={logo} alt='logo' />
+                <img src={logo.src} alt='logo' />
               </a>
             </div>
 
@@ -152,13 +153,13 @@ useEffect(()=>{
                     <a id='make_home'>Home</a>
                   </Link>
                   </li>
-                  <li className='li-item'>
+                  <li className={style.liItem}>
                     <a id='make_services'  onClick={goToSection}>Service</a>
                   </li>
-                  <li className='li-item'>
+                  <li className={style.liItem}>
                     <a id='make_stories' onClick={goToSection}>Stories</a>
                   </li>
-                  <li className='li-item'>
+                  <li className={style.liItem}>
                   <Link
           href={{
             pathname: '/Portfolio'
@@ -169,7 +170,7 @@ useEffect(()=>{
                     </Link>
                   </li>
                   
-                    <li className='li-item'>
+                    <li className={style.liItem}>
                     <Link
           href={{
             pathname: '/Team'
@@ -180,7 +181,7 @@ useEffect(()=>{
                     </Link>
                   </li>
                   
-                  <li className='li-item'>
+                  <li className={style.liItem}>
                   <Link
           href={{
             pathname: '/Carrier'
@@ -190,8 +191,8 @@ useEffect(()=>{
                     <a id='make_carrier' >Carrears</a>
                     </Link>
                   </li>
-                  <li className='li-item'>
-                    <button className='first-button'>Get In Touch</button>
+                  <li className={style.liItem}>
+                    <button className={style.firstButton}>Get In Touch</button>
                   </li>
                 </ul>
               </nav>

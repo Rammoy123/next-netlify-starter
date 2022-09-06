@@ -7,7 +7,7 @@ z-index: 100;
 box-shadow: none;
 border-bottom: 1px solid transparent;
 }
-.image-container a img{
+.imageContainer a img{
     height:70px;
     object-fit: cover;
 }
@@ -46,7 +46,7 @@ color: #099 !important
     color: #099  !important
 
 }
-.first-button{
+.firstButton{
     height: 40px;
     min-width: 120px;
     max-width: 120px;
@@ -63,10 +63,10 @@ color: #099 !important
     outline: 0!important;
     font-family: "Source Sans Pro",sans-serif;
 }
-.fixed{
+/* .fixed{
     position:fixed;
     background-color:white;
     z-index: 10000;
-}
+} */
 
 

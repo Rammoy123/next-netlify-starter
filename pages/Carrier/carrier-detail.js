@@ -10,6 +10,9 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
 import { useRouter } from 'next/router'
+import InputAdornment from "@mui/material/InputAdornment";
+import Axios from 'axios'
+// https://codesandbox.io/s/selectedvalue-with-icon-cicoo3?file=/demo.js
 
 const detail = () => {
     const router=useRouter()
@@ -17,7 +20,14 @@ const detail = () => {
     useEffect(()=>{console.log(router.query.slug,"queryyy")},[router.query])
 
 
-   
+    const [formerror, setFormError] = useState({})
+
+    const [isSubmit, setIsSubmit] = useState(false)
+    // const [input,setInput]=useState([])
+    const [checker, setChecker] = useState(false)
+
+
+
     const [inputValue, setInputValue] = useState({
       name: '',
       email: '',
@@ -481,19 +491,124 @@ const detail = () => {
       setInputValue({ ...inputValue, [name]: e.target.files[0] })
       // console.log(editPhoto,"edit photo")
     }
+
+    useEffect(()=>{
+      // $('#imageParent').css('display', 'block')
   
+      Axios.get("https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428").then((response)=>{
+      console.log(response);
+
+
+      const array=countries.filter((arr)=>arr.code.toUpperCase()==response.data.country.iso_code.toUpperCase())
+ array.map((obj)=>setInputValue({...inputValue,ph_code:obj}))
+      console.log(array,"array123444")
+     
+      
+
+
+    
+    
+    
+    
+    }).catch(error => console.log('error', error));
+    },[])
+
+    useEffect(() => {
+      console.log(formerror, 'errorllll')
+      console.log(Object, 'object')
+      
   
-    // const goToDetail=(e)=>{
-    //   console.log(e,"event")
-    //   e.preventDefault()
-    //   router.push({
-    //     pathname: '/Carrier/carrier-detail',
-    //     //  query:{ slug: router.query.slug,
-    //     //   }
-         
-    //      }
-    // )
-    //     }
+      if (Object.keys(formerror).length === 0 && isSubmit) {
+        console.log(inputValue, 'passed object')
+
+  
+   
+
+    
+  
+
+      }
+    }, [formerror])
+
+
+    const handleClick = e => {
+      console.log('form this')
+      e.preventDefault()
+
+  
+     
+        setFormError(validate(inputValue))
+        console.log(formerror,"formError")
+     
+  
+      setIsSubmit(true)
+    }
+
+
+    const validate = values => {
+    const error = {}
+    //     Email with gmail.com
+    //    const regx= /^[a-z0-9](\.?[a-z0-9]){2,}@g(oogle)?mail\.com$/gm;
+    const regxEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    const regxPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+    const regxName = /^[A-Za-z\s]+$/
+
+    const pass_regx = /[0-9]/gm
+    //    console.log(arr,"arrrrr")
+    if (!values.name) {
+      error.Name = 'Please Enter A Name !'
+    } else if (!regxName.test(values.name)) {
+      error.Name = 'Name must have only characters !'
+    }
+
+    if (!values.email) {
+      error.Email = 'Please Enter An Email !'
+    } else if (!regxEmail.test(values.email)) {
+      error.Email = 'Please enter a valid email (i.e user@gmail.com) !'
+    }
+
+    //    else if(!pass_regx.test(values.password))
+    //    {
+    //     error.Password="Please Enter only numeric number !"
+    //    }
+
+    if (!values.phone) {
+      error.Phone = 'Please Enter A Phone No !'
+    } else if (!regxPhone.test(values.phone)) {
+      error.Phone = 'Phone no must be of 10 digits !'
+    }
+ 
+
+   
+
+    if (!values.current_location) {
+      error.Current_location = 'Please enter your location !'
+    }
+    if (!values.cv) {
+      error.Cv = 'Please upload your cv !'
+    }
+  
+   
+   
+
+    //    if(!values.photo){
+    //     error.File="Please select a file !"
+    //    }
+
+    // $('.flexbox .flexBox-inner .wrong').css("display","block")
+
+    // else if( (values.password!=arr[0].password)) {
+    //     console.log(arr[0].password,"emailll")
+    //  error.Password=" Username And Password din't match !"
+
+    // $('.flexbox .flexBox-inner .wrong').css("display","block")
+
+    return error
+  }
+  
+
+
+
   return (
     <>
     <Header navData='Carrier' />
@@ -538,13 +653,13 @@ const detail = () => {
         <div className='text-center'>
           <h2>Join Our Team</h2>
         </div>
-        <form
+        <form onSubmit={handleClick}
           autocomplete='off'
           className='contact-form ng-pristine ng-invalid ng-touched'
-          novalidate
+       
         >
           <div className='row text-center'>
-            <div className='col-lg-6 col-md-6'>
+            <div className='col-lg-6 col-md-6 relativeError'>
               <input
                 type='text'
                 className='form-controller'
@@ -552,28 +667,40 @@ const detail = () => {
                 name='name'
                 value={inputValue.name}
                 placeholder='Name*'
-                title='Please provide only gmail.com email'
+             
                 onChange={changeBt}
+                onKeyDown={() => {
+                    setFormError({...formerror, Name:'' })
+                  }}
+               
               />
+              {console.log(formerror,"formerror")}
+               <div className='formerror'>{<p>{formerror.Name} </p>}</div>
             </div>
 
-            <div className='col-lg-6  col-md-6'>
+            <div className='col-lg-6  col-md-6 relativeError'>
               <input
                 className='form-controller'
-                type='email'
+                id='email'
+                type='text'
                 placeholder='Email*'
                 name='email'
                 value={inputValue.email}
                 onChange={changeBt}
+                onKeyDown={() => {
+                    setFormError({...formerror, Email:'' })
+                  }}
+               
               />
+              <div className='formerror'>{<p>{formerror.Email} </p>}</div>
             </div>
           </div>
           <div className='phone-sec'>
             <div className=' row'>
-              <div className='phone-left col-md-2 text-center d'>
+              <div className='phone-left col-md-4 text-center d'>
                 <Autocomplete
                   id='controllable-states-demo'
-                  sx={{ width: 200 }}
+                  sx={{ width: 400 }}
                   value={inputValue.ph_code}
                   onChange={(event, newValue) => {
           console.log(newValue,"value of thisss")
@@ -586,7 +713,7 @@ const detail = () => {
             console.log(newInputValue,"inputttvaluethjpolp")
           setInputValue({...inputValue,textChange1:newInputValue});
         }}
-        getOptionLabel={(option) => option.code}
+        getOptionLabel={(option) => `  +${option.phone}`}
                   // value={inputValue.}
                   // onChange={(event, newValue) => {
                   //     console.log(newValue,"value of thisss")
@@ -645,10 +772,23 @@ const detail = () => {
                       className='textfield'
                       {...params}
                       label='Choose a country'
-                    //   inputProps={{
-                    //     ...params.inputProps,
-                    //     autoComplete: 'new-password'
-                    //   }}
+                  
+
+
+                      InputProps={{
+              ...params.InputProps,
+              startAdornment: inputValue.ph_code ? (
+                <InputAdornment >
+                  <img
+                    loading="lazy"
+                    width="20"
+                    src={`https://flagcdn.com/w20/${inputValue.ph_code.code.toLowerCase()}.png`}
+                    srcSet={`https://flagcdn.com/w40/${inputValue.ph_code.code.toLowerCase()}.png 2x`}
+                    alt=""
+                  />
+                </InputAdornment>
+              ) : null
+            }}
                       //   renderInput={(params) => (
                       //   <div ref={params.InputProps.ref}>
                       //     <input type="text" {...params.inputProps} />
@@ -658,7 +798,7 @@ const detail = () => {
                   )}
                 />
               </div>
-              <div className='right-side col-md-10'>
+              <div className='right-side col-md-8 relativeError'>
                 <input
                   type='text'
                   id='phone'
@@ -666,34 +806,45 @@ const detail = () => {
                   name='phone'
                   value={inputValue.phone}
                   placeholder='Phone No*'
-                  title='Please provide only gmail.com email'
+                  // title='Please provide only gmail.com email'
                   onChange={changeBt}
+                  onKeyDown={() => {
+                    setFormError({...formerror, Phone:'' })
+                  }}
+                  
+                 
                 />
+                <div className='formerror'>{<p>{formerror.Phone} </p>}</div>
               </div>
             </div>
           </div>
 
           <div className='row text-center'>
-            <div className='col-lg-6 col-md-6'>
+            <div className='col-lg-6 col-md-6 relativeError'>
               <input
                 type='text'
                 className='form-controller'
-                id='name'
-                name='name'
-                value={inputValue.name}
-                placeholder='Name*'
-                title='Please provide only gmail.com email'
+                id='cuurent_location'
+                name='current_location'
+                value={inputValue.current_location}
+                placeholder='Current Location*'
+                // title='Please provide only gmail.com email'
                 onChange={changeBt}
+                onKeyDown={() => {
+                    setFormError({...formerror, Current_location:'' })
+                  }}
+               
               />
+              <div className='formerror'>{<p>{formerror.Current_location} </p>}</div>
             </div>
 
             <div className='col-lg-6  col-md-6'>
               <input
                 className='form-controller'
-                type='email'
-                placeholder='Email*'
-                name='email'
-                value={inputValue.email}
+                type='text'
+                placeholder='Qualification(Optional)'
+                name='qualification'
+                value={inputValue.qualification}
                 onChange={changeBt}
               />
             </div>
@@ -704,11 +855,11 @@ const detail = () => {
               <input
                 type='text'
                 className='form-controller'
-                id='name'
-                name='name'
-                value={inputValue.name}
-                placeholder='Name*'
-                title='Please provide only gmail.com email'
+                id='experience'
+                name='experience'
+                value={inputValue.experience}
+                placeholder='Years of experience(Optional)'
+                // title='Please provide only gmail.com email'
                 onChange={changeBt}
               />
             </div>
@@ -716,16 +867,16 @@ const detail = () => {
             <div className='col-lg-6  col-md-6'>
               <input
                 className='form-controller'
-                type='email'
-                placeholder='Email*'
-                name='email'
-                value={inputValue.email}
+                type='text'
+                placeholder='noticePeriod(Optional)'
+                name='noticePeriod'
+                value={inputValue.noticePeriod}
                 onChange={changeBt}
               />
             </div>
           </div>
           <div className='row'>
-            <div className='col-lg-12  col-md-12'>
+            <div className='col-lg-12  col-md-12 relativeError'>
               <input
                 // className='name2'
                 className='form-controller'
@@ -733,9 +884,15 @@ const detail = () => {
                 // onKeyDown={() => {
                 //   setFormError({ File: '' })
                 // }}
-                name='photo'
+                name='cv'
                 onChange={changeBt1}
+                onClick={() => {
+                    setFormError({...formerror, Cv: '' })
+                  }}
+                
+                
               />
+                            <div className='formerror'>{<p>{formerror.Cv} </p>}</div>
             </div>
           </div>
           <div className='text-center ng-star-inserted'>

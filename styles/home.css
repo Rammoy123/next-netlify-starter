@@ -644,6 +644,38 @@ background: #23b428!important;
 } */
 
 
+/* carrierdetails-skill */
+
+
+.outer{
+    margin-top: 80px;
+}
+.inner{
+    padding: 20px;
+}
+.inner-para{
+    line-height: 1.8;
+    color: #2a2a2a;
+    font-size: 1rem;
+}
+.heading-sec{
+    margin-bottom: 60px;
+}
+/* .un-list{
+    list-style-type: circle;
+} */
+.un-list li{
+    font-size: 13px!important;
+    list-style: circle!important;
+    margin-bottom: 10px!important;
+    color: #2a2a2a!important;
+}
+
+.inner .row{
+    margin-bottom: 30px;
+
+}
+
 /* ..........Form validation ..... */
 
 .relativeError{
@@ -661,3 +693,67 @@ background: #23b428!important;
     /* padding: 0px 10px; */
     font-weight: bold;
 }
+/* 
+...modal section...... */
+
+.map-image{
+    width: 100%;
+    margin-bottom: 30px;
+    padding-right: 16px;
+    /* height: 80% !important; */
+
+}
+@media (min-width: 576px){
+.modal-dialog{
+    width:1000px !important;
+    max-width:1000px !important;
+}
+}
+
+.map-bottom h3 {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: "Source Sans Pro",sans-serif!important;
+    padding-top: 64px;
+}
+.client-area {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    margin-top: -12px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.full-height{
+    height: 100%;
+}
+.form-wrapper{
+    background-color: #fff;
+    box-shadow: 1px -2px 20px 0 rgb(0 0 0 / 10%), 0 12px 24px 0 rgb(0 0 0 / 12%);
+    padding: 33px;
+}
+.position-r{
+    position: relative;
+    border-bottom: 1px solid black;
+}
+.p-item{
+    position: absolute;
+    bottom: -10px;
+   
+}
+/* .row-modal-p{
+    border-bottom: 1px solid black;
+} */
+.send-btn{
+    background: #23b428 !important;
+    border: none;
+    width: 100%;
+    height: 54px;
+    margin-top: 11px;
+    font-size: 22px;
+    font-family: "Source Sans Pro",sans-serif;
+}
+.overlay{
+    background-color: rgba(0,0,0,.5)
+}
+

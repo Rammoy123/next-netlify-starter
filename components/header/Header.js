@@ -81,7 +81,7 @@ const Header = ({navData}) => {
             $('html, body').animate({
               scrollTop: $('#' + position).offset().top - (50),
             }, 2);
-          }, 10);
+          }, 100);
           console.log(e.target.id,"id")
           // if(e.target.id=="make_home"){
           //   $('#make_services').removeClass("active")

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../../components/header/Header'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
@@ -8,27 +8,26 @@ import carrierBanner from '../../public/assets/career-banner.png'
 
 import Autocomplete from '@mui/material/Autocomplete'
 import { useRouter } from 'next/router'
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite'
 import { db } from '@components/Firebase-config'
-import InputAdornment from "@mui/material/InputAdornment";
+import InputAdornment from '@mui/material/InputAdornment'
 import Axios from 'axios'
 
 const Carrier = () => {
-
-  const router=useRouter()
+  const router = useRouter()
   const [inputValue, setInputValue] = useState({
     name: '',
     email: '',
     phone: '',
-    ph_code:'',
+    ph_code: '',
     current_location: '',
     qualification: '',
     experience: '',
     noticePeriod: '',
     cv: null,
-    textChange1:''
+    textChange1: ''
   })
-  const [onlyData,setOnlyData]=useState([])
+  const [onlyData, setOnlyData] = useState([])
   const [formerror, setFormError] = useState({})
 
   const [isSubmit, setIsSubmit] = useState(false)
@@ -459,20 +458,16 @@ const Carrier = () => {
     { code: 'ZM', label: 'Zambia', phone: '260' },
     { code: 'ZW', label: 'Zimbabwe', phone: '263' }
   ]
-  
 
   const changeBt = e => {
     console.log(e)
     const { name, value } = e.target
 
-    // console.log(e.target.files[0],"kkkkkkk")
+  
     console.log(name, value, 'kolllllllll')
     setInputValue({
       ...inputValue,
-      //for random id in local storage
-      //  id:shuffle(numbers),
-      //for id in local storage.....................
-      // id:add1(),
+  
 
       [name]: value
     })
@@ -487,163 +482,101 @@ const Carrier = () => {
   }
 
 
-  const goToDetail=(e)=>{
-    console.log(e.target.key,"event")
+  // useEffect(() => {
+    
+
+  //   Axios.get(
+  //     'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
+  //   )
+  //     .then(response => {
+  //       console.log(response)
+
+  //       const array = countries.filter(
+  //         arr =>
+  //           arr.code.toUpperCase() ==
+  //           response.data.country.iso_code.toUpperCase()
+  //       )
+  //       array.map(obj => setInputValue({ ...inputValue, ph_code: obj }))
+  //       console.log(array, 'array123444')
+  //     })
+  //     .catch(error => console.log('error', error))
+  // }, [])
+  useEffect(() => {
+    async function getData (db) {
+      const citiesCol = collection(db, '1234')
+      const data = await getDocs(citiesCol)
+
+      console.log(data, 'firebaseData')
+      const dataOrg = data.docs.map(doc => doc.data())
+      // return cityList;
+      console.log(dataOrg, 'kolkatatattat')
+      setOnlyData(dataOrg)
+    }
+    getData(db)
+  }, [])
+
+
+  useEffect(() => {
+  
+
+    if (Object.keys(formerror).length === 0 && isSubmit) {
+      console.log(inputValue, 'passed object')
+    }
+  }, [formerror])
+  const handleClick = e => {
+    console.log('form this')
     e.preventDefault()
-    router.push({
-      pathname: '/Carrier/carrier-detail',
 
-          query:{ 
-        
-        slug: e.target.innerText  
+    setFormError(validate(inputValue))
+    console.log(formerror, 'formError')
 
-        }
-    })
-  
-  
+    setIsSubmit(true)
   }
-      useEffect(()=>{
-      // $('#imageParent').css('display', 'block')
-  
-      Axios.get("https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428").then((response)=>{
-      console.log(response);
+  const validate = values => {
+    const error = {}
+    //     Email with gmail.com
+    //    const regx= /^[a-z0-9](\.?[a-z0-9]){2,}@g(oogle)?mail\.com$/gm;
+    const regxEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    const regxPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+    const regxName = /^[A-Za-z\s]+$/
+
+    const pass_regx = /[0-9]/gm
+    //    console.log(arr,"arrrrr")
+    if (!values.name) {
+      error.Name = 'Please Enter A Name !'
+    } else if (!regxName.test(values.name)) {
+      error.Name = 'Name must have only characters !'
+    }
+
+    if (!values.email) {
+      error.Email = 'Please Enter An Email !'
+    } else if (!regxEmail.test(values.email)) {
+      error.Email = 'Please enter a valid email (i.e user@gmail.com) !'
+    }
 
 
-      const array=countries.filter((arr)=>arr.code.toUpperCase()==response.data.country.iso_code.toUpperCase())
- array.map((obj)=>setInputValue({...inputValue,ph_code:obj}))
-      console.log(array,"array123444")
-     
-      
+    if (!values.phone) {
+      error.Phone = 'Please Enter A Phone No !'
+    } else if (!regxPhone.test(values.phone)) {
+      error.Phone = 'Phone no must be of 10 digits !'
+    }
+
+    if (!values.current_location) {
+      error.Current_location = 'Please enter your location !'
+    }
+    if (!values.cv) {
+      error.Cv = 'Please upload your cv !'
+    }
 
 
-    
-    
-    
-    
-    }).catch(error => console.log('error', error));
-    },[])
-  useEffect(()=>{
 
-    async function getData(db) {
-        const citiesCol = collection(db, '1234');
-        const data = await getDocs(citiesCol);
+    return error
+  }
 
-        console.log(data,"firebaseData")
-        const dataOrg = data.docs.map(doc => doc.data());
-        // return cityList;
-        console.log(dataOrg,"kolkatatattat")
-        setOnlyData(dataOrg)
-      }
-      getData(db)
-
-  },[])
-
-      //  query:{ 
-        
-      //   slug: e.target.innerText  
-
-      //   }
-
-
-   
-       
-  //      }
-  // )
-      // }
-      useEffect(() => {
-        console.log(formerror, 'errorllll')
-        console.log(Object, 'object')
-        
-    
-        if (Object.keys(formerror).length === 0 && isSubmit) {
-          console.log(inputValue, 'passed object')
-  
-    
-     
-  
-      
-    
-  
-        }
-      }, [formerror])
-      const handleClick = e => {
-        console.log('form this')
-        e.preventDefault()
-  
-    
-       
-          setFormError(validate(inputValue))
-          console.log(formerror,"formError")
-       
-    
-        setIsSubmit(true)
-      }
-      const validate = values => {
-        const error = {}
-        //     Email with gmail.com
-        //    const regx= /^[a-z0-9](\.?[a-z0-9]){2,}@g(oogle)?mail\.com$/gm;
-        const regxEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-        const regxPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
-        const regxName = /^[A-Za-z\s]+$/
-    
-        const pass_regx = /[0-9]/gm
-        //    console.log(arr,"arrrrr")
-        if (!values.name) {
-          error.Name = 'Please Enter A Name !'
-        } else if (!regxName.test(values.name)) {
-          error.Name = 'Name must have only characters !'
-        }
-    
-        if (!values.email) {
-          error.Email = 'Please Enter An Email !'
-        } else if (!regxEmail.test(values.email)) {
-          error.Email = 'Please enter a valid email (i.e user@gmail.com) !'
-        }
-    
-        //    else if(!pass_regx.test(values.password))
-        //    {
-        //     error.Password="Please Enter only numeric number !"
-        //    }
-    
-        if (!values.phone) {
-          error.Phone = 'Please Enter A Phone No !'
-        } else if (!regxPhone.test(values.phone)) {
-          error.Phone = 'Phone no must be of 10 digits !'
-        }
-     
-    
-       
-    
-        if (!values.current_location) {
-          error.Current_location = 'Please enter your location !'
-        }
-        if (!values.cv) {
-          error.Cv = 'Please upload your cv !'
-        }
-      
-       
-       
-    
-        //    if(!values.photo){
-        //     error.File="Please select a file !"
-        //    }
-    
-        // $('.flexbox .flexBox-inner .wrong').css("display","block")
-    
-        // else if( (values.password!=arr[0].password)) {
-        //     console.log(arr[0].password,"emailll")
-        //  error.Password=" Username And Password din't match !"
-    
-        // $('.flexbox .flexBox-inner .wrong').css("display","block")
-    
-        return error
-      }
-  
-  
   return (
     <>
       <Header navData='Carrier' />
-  
+
       <div
         _ngcontent-c13=''
         className='container career_banner_holder'
@@ -685,30 +618,27 @@ const Carrier = () => {
     <div class="col-6 col-sm-6 col-md-4">col8</div>
     <div class="col-6 col-sm-6 col-md-4 ">col8</div>
     <div class="col-6 col-sm-6 col-md-4">col8</div> */}
-           
-            {onlyData.map((arr,index) => {
+
+            {onlyData.map((arr, index) => {
               return (
                 <div
-                key={index}
-                id={`${index}`}
+                  key={index}
+                  id={`${index}`}
                   className='card col-6 col-sm-6 col-md-4 mb-4'
                   style={{ border: 'none' }}
-                  onClick={goToDetail}
-              
+                  onClick={()=>{router.push({pathname:'/Carrier/carrier-detail',query: { slug: arr.title}})}}
                 >
-                  <div className='carrier_card_holder' >
+                {/* `/Carrier/carrier-detail` */}
+                  <div className='carrier_card_holder'>
                     <div className='card-header'>
-                      <p>  {arr.title}</p>
+                      <p> {arr.title}</p>
                     </div>
                     <div className='card-body-only'>
                       <div className='card-body-inner'>
                         <div className='card-image'>
                           <img src={badgeCard.src} />
                         </div>
-                        <p>
-                          {' '}
-                         {arr.skill}
-                        </p>
+                        <p> {arr.skill}</p>
 
                         <div className='card-image'>
                           <img src={ndBadge.src} />
@@ -742,10 +672,10 @@ const Carrier = () => {
         <div className='text-center'>
           <h2>Join Our Team</h2>
         </div>
-        <form onSubmit={handleClick}
+        <form
+          onSubmit={handleClick}
           autocomplete='off'
           className='contact-form ng-pristine ng-invalid ng-touched'
-       
         >
           <div className='row text-center'>
             <div className='col-lg-6 col-md-6 relativeError'>
@@ -756,15 +686,13 @@ const Carrier = () => {
                 name='name'
                 value={inputValue.name}
                 placeholder='Name*'
-             
                 onChange={changeBt}
                 onKeyDown={() => {
-                    setFormError({...formerror, Name:'' })
-                  }}
-               
+                  setFormError({ ...formerror, Name: '' })
+                }}
               />
-              {console.log(formerror,"formerror")}
-               <div className='formerror'>{<p>{formerror.Name} </p>}</div>
+              {console.log(formerror, 'formerror')}
+              <div className='formerror'>{<p>{formerror.Name} </p>}</div>
             </div>
 
             <div className='col-lg-6  col-md-6 relativeError'>
@@ -777,9 +705,8 @@ const Carrier = () => {
                 value={inputValue.email}
                 onChange={changeBt}
                 onKeyDown={() => {
-                    setFormError({...formerror, Email:'' })
-                  }}
-               
+                  setFormError({ ...formerror, Email: '' })
+                }}
               />
               <div className='formerror'>{<p>{formerror.Email} </p>}</div>
             </div>
@@ -792,17 +719,17 @@ const Carrier = () => {
                   sx={{ width: 400 }}
                   value={inputValue.ph_code}
                   onChange={(event, newValue) => {
-          console.log(newValue,"value of thisss")
-          setInputValue({...inputValue,ph_code:newValue});
-        }}
-        inputValue={inputValue.textChange1}
-        onInputChange={(event, newInputValue) => {
-            // console.log(event,"event")
+                    console.log(newValue, 'value of thisss')
+                    setInputValue({ ...inputValue, ph_code: newValue })
+                  }}
+                  inputValue={inputValue.textChange1}
+                  onInputChange={(event, newInputValue) => {
+                    // console.log(event,"event")
 
-            console.log(newInputValue,"inputttvaluethjpolp")
-          setInputValue({...inputValue,textChange1:newInputValue});
-        }}
-        getOptionLabel={(option) => `  +${option.phone}`}
+                    console.log(newInputValue, 'inputttvaluethjpolp')
+                    setInputValue({ ...inputValue, textChange1: newInputValue })
+                  }}
+                  getOptionLabel={option => `  +${option.phone}`}
                   // value={inputValue.}
                   // onChange={(event, newValue) => {
                   //     console.log(newValue,"value of thisss")
@@ -831,7 +758,7 @@ const Carrier = () => {
                   //       borderTop:'none'}
 
                   //  }}
-                //   countries.map((arr)=>arr.phone)
+                  //   countries.map((arr)=>arr.phone)
                   options={countries}
                   autoHighlight
                   fullWidth={false}
@@ -854,30 +781,26 @@ const Carrier = () => {
                   )}
                   renderInput={params => (
                     <TextField
-                    id= "standard-basic" 
-                    
-                    variant= "standard"
-                   
+                      id='standard-basic'
+                      variant='standard'
+                      fullWidth
                       className='textfield'
                       {...params}
                       label='Choose a country'
-                  
-
-
                       InputProps={{
-              ...params.InputProps,
-              startAdornment: inputValue.ph_code ? (
-                <InputAdornment >
-                  <img
-                    loading="lazy"
-                    width="20"
-                    src={`https://flagcdn.com/w20/${inputValue.ph_code.code.toLowerCase()}.png`}
-                    srcSet={`https://flagcdn.com/w40/${inputValue.ph_code.code.toLowerCase()}.png 2x`}
-                    alt=""
-                  />
-                </InputAdornment>
-              ) : null
-            }}
+                        ...params.InputProps,
+                        startAdornment: inputValue.ph_code ? (
+                          <InputAdornment>
+                            <img
+                              loading='lazy'
+                              width='20'
+                              src={`https://flagcdn.com/w20/${inputValue.ph_code.code.toLowerCase()}.png`}
+                              srcSet={`https://flagcdn.com/w40/${inputValue.ph_code.code.toLowerCase()}.png 2x`}
+                              alt=''
+                            />
+                          </InputAdornment>
+                        ) : null
+                      }}
                       //   renderInput={(params) => (
                       //   <div ref={params.InputProps.ref}>
                       //     <input type="text" {...params.inputProps} />
@@ -898,10 +821,8 @@ const Carrier = () => {
                   // title='Please provide only gmail.com email'
                   onChange={changeBt}
                   onKeyDown={() => {
-                    setFormError({...formerror, Phone:'' })
+                    setFormError({ ...formerror, Phone: '' })
                   }}
-                  
-                 
                 />
                 <div className='formerror'>{<p>{formerror.Phone} </p>}</div>
               </div>
@@ -920,11 +841,12 @@ const Carrier = () => {
                 // title='Please provide only gmail.com email'
                 onChange={changeBt}
                 onKeyDown={() => {
-                    setFormError({...formerror, Current_location:'' })
-                  }}
-               
+                  setFormError({ ...formerror, Current_location: '' })
+                }}
               />
-              <div className='formerror'>{<p>{formerror.Current_location} </p>}</div>
+              <div className='formerror'>
+                {<p>{formerror.Current_location} </p>}
+              </div>
             </div>
 
             <div className='col-lg-6  col-md-6'>
@@ -976,12 +898,10 @@ const Carrier = () => {
                 name='cv'
                 onChange={changeBt1}
                 onClick={() => {
-                    setFormError({...formerror, Cv: '' })
-                  }}
-                
-                
+                  setFormError({ ...formerror, Cv: '' })
+                }}
               />
-                            <div className='formerror'>{<p>{formerror.Cv} </p>}</div>
+              <div className='formerror'>{<p>{formerror.Cv} </p>}</div>
             </div>
           </div>
           <div className='text-center ng-star-inserted'>

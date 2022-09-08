@@ -4,7 +4,7 @@
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 // import "bootstrap/dist/js/bootstrap.bundle.min";
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useRef } from 'react'
 import Header from '../components/header/Header'
 import home_banner from '../public/assets/home_banner.webp'
 
@@ -33,7 +33,26 @@ import $ from 'jquery'
 
 export default function Home() {
   const router=useRouter()
-   
+  const focus = useRef()
+//   useEffect(() => {
+//     function handleClickOutside (event) {
+//       console.log(event.target)
+//       console.log(focus.current)
+//       if (focus.current && !focus.current.contains(event.target)) {
+       
+//         // $('.hide').css('display', 'none')
+//         // $('#myInputautocomplete-list').css('height','0vh')
+//         // myInputautocomplete-list
+// console.log("outside click")
+//         // setHandFocus(false)
+//       }
+//     }
+
+//     document.addEventListener('mousedown', handleClickOutside)
+//     return () => {
+//       document.removeEventListener('mousedown', handleClickOutside)
+//     }
+//   }, [focus])
   
   
   const [data, setData] = useState('')
@@ -52,6 +71,20 @@ export default function Home() {
       setData('Home')
     }
   }, [router.query])
+  useEffect(()=>{
+    if(showModal){
+      
+    $('#whole_content').css("-webkit-filter","brightness(50%)")
+    // $('#whole_content').css("background","black")
+    // $('#whole_content').css("filter","8px")
+    $('#whole_content').css("background-color","rgba(0,0,0,.5)")
+    $('#whole_content').css("-webkit-filter","blur(8px)")
+    }
+    
+
+  },[showModal])
+
+
   return (
     <>
 
@@ -627,14 +660,27 @@ export default function Home() {
           Leave a Message{' '}
         </button>
       </section>
-      {
-      (showModal && <Modal/>)
-      }
+
+     
 
 
 
 
     </div>
+     
+    {
+      (showModal &&
+      <div className="overlay" >
+      <div className="overlay-inner " >
+      <Modal />
+      </div>
+      
+      </div>
+        
+
+  
+      )
+      }
 
 
     </>

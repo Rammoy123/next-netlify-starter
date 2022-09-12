@@ -49,7 +49,7 @@ console.log(router,"router")
   useEffect(() => {
     console.log(router,"outside router")
     async function getData (db) {
-      const citiesCol = collection(db, '1234')
+      const citiesCol = collection(db, '12345')
       const data = await getDocs(citiesCol)
 
       console.log(data, 'firebaseData')
@@ -57,8 +57,50 @@ console.log(router,"router")
       console.log(dataOrg,"get data")
       // return cityList;
       console.log(router.query.slug,"inside router")
-   const dataFiltered= dataOrg.filter((arr)=>arr.title==routerData)
-   dataFiltered.map((arr)=>setOnlyData(arr))
+   const dataFiltered= dataOrg.filter((arr)=>arr.jobTitle==routerData)
+   let dataFilteredOnly=dataFiltered[0]
+
+console.log(dataFilteredOnly,"dataFilteredOnly")
+// if(Object.keys(dataFilteredOnly).length>0)
+if(dataFilteredOnly)
+{
+
+
+dataFilteredOnly={
+...dataFilteredOnly,
+technicalSkill: dataFilteredOnly.technicalSkill.split(','),
+softSkill: dataFilteredOnly.softSkill.split(','),
+desiredSkill:dataFilteredOnly.desiredSkill.split(',')
+
+
+
+}
+setOnlyData(dataFilteredOnly)
+}
+
+
+
+  //  const takenData=dataFiltered.map((arr)=>{
+  //   console.log(arr,"arr")
+  //   if(Object.keys(arr).map((arrDe)=>{if(arrDe=="technicalSkill"){
+  //     console.log(dataFilteredOnly,"da")
+  //  dataFilteredOnly={...dataFilteredOnly,technicalSkill: arr.technicalSkill.split(',')}
+  // console.log(dataFilteredOnly,"dataOnlyOriginal")  
+  // }
+  // else if(arrDe=="softSkill"){
+    
+  // }
+  
+  // }))
+  //   {
+  //     console.log(arr.softSkill,"lol")
+      
+  //   }
+    
+  //  })
+  
+
+  //  dataFiltered.map((arr)=>setOnlyData(arr))
       // setOnlyData( dataOrg.filter((arr)=>arr.title==routerData))
     }
     getData(db)
@@ -512,25 +554,25 @@ console.log(router,"router")
    
   }
 
-  useEffect(() => {
+  // useEffect(() => {
 
 
-    Axios.get(
-      'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
-    )
-      .then(response => {
-        console.log(response)
+  //   Axios.get(
+  //     'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
+  //   )
+  //     .then(response => {
+  //       console.log(response)
 
-        const array = countries.filter(
-          arr =>
-            arr.code.toUpperCase() ==
-            response.data.country.iso_code.toUpperCase()
-        )
-        array.map(obj => setInputValue({ ...inputValue, ph_code: obj }))
-        console.log(array, 'array123444')
-      })
-      .catch(error => console.log('error', error))
-  }, [])
+  //       const array = countries.filter(
+  //         arr =>
+  //           arr.code.toUpperCase() ==
+  //           response.data.country.iso_code.toUpperCase()
+  //       )
+  //       array.map(obj => setInputValue({ ...inputValue, ph_code: obj }))
+  //       console.log(array, 'array123444')
+  //     })
+  //     .catch(error => console.log('error', error))
+  // }, [])
 
   useEffect(() => {
     console.log(formerror, 'errorllll')
@@ -635,7 +677,7 @@ console.log(router,"router")
                     className='detail_holder_heading text-capiatlize'
                   >
                     <h3 _ngcontent-c14='' className='heading2  '>
-                      {onlyData.title}
+                      {onlyData.jobTitle}
                     </h3>
                     <div _ngcontent-c14='' className='carrier_card_twenty mt-4'>
                       <div _ngcontent-c14='' className='cip_holder'>
@@ -646,7 +688,7 @@ console.log(router,"router")
                         />
                       </div>
                       <p>
-                       {onlyData.skill}
+                       {onlyData.subTitle}
                       </p>
                     </div>
                     <div _ngcontent-c14='' className='carrier_card_twenty mt-0'>
@@ -752,15 +794,15 @@ onlyData.softSkill.map((arr)=>
     <ul className='un-list'>
    
     {
-      (onlyData.desiredCandidate) && (
-      (onlyData.desiredCandidate.length==1)?(
-      onlyData.desiredCandidate.map((arr)=>
+      (onlyData.desiredSkill) && (
+      (onlyData.desiredSkill.length==1)?(
+      onlyData.desiredSkill.map((arr)=>
 
   <p>{arr}</p>
 )):
      ( 
 
-onlyData.desiredCandidate.map((arr)=>
+onlyData.desiredSkill.map((arr)=>
 
   <li>{arr}</li>
 )

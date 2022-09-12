@@ -8,7 +8,8 @@ import carrierBanner from '../../public/assets/career-banner.png'
 
 import Autocomplete from '@mui/material/Autocomplete'
 import { useRouter } from 'next/router'
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite'
+import { getFirestore, collection, getDocs,query,doc,onSnapshot } from 'firebase/firestore/lite'
+import {  } from "firebase/firestore"
 import { db } from '@components/Firebase-config'
 import InputAdornment from '@mui/material/InputAdornment'
 import Axios from 'axios'
@@ -482,29 +483,41 @@ const Carrier = () => {
   }
 
 
-  useEffect(() => {
+  // useEffect(() => {
     
 
-    Axios.get(
-      'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
-    )
-      .then(response => {
-        console.log(response)
+  //   Axios.get(
+  //     'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
+  //   )
+  //     .then(response => {
+  //       console.log(response)
 
-        const array = countries.filter(
-          arr =>
-            arr.code.toUpperCase() ==
-            response.data.country.iso_code.toUpperCase()
-        )
-        array.map(obj => setInputValue({ ...inputValue, ph_code: obj }))
-        console.log(array, 'array123444')
-      })
-      .catch(error => console.log('error', error))
-  }, [])
+  //       const array = countries.filter(
+  //         arr =>
+  //           arr.code.toUpperCase() ==
+  //           response.data.country.iso_code.toUpperCase()
+  //       )
+  //       array.map(obj => setInputValue({ ...inputValue, ph_code: obj }))
+  //       console.log(array, 'array123444')
+  //     })
+  //     .catch(error => console.log('error', error))
+  // }, [])
   useEffect(() => {
     async function getData (db) {
-      const citiesCol = collection(db, '1234')
+      const citiesCol = collection(db, '12345')
+      // const data = await getDocs(citiesCol)
       const data = await getDocs(citiesCol)
+      // const q = query(collection(db, "12345"))
+      // const unsub = onSnapshot(q, (querySnapshot) => {
+      //   console.log("Data", querySnapshot.docs.map(d => doc.data()));
+      // });
+    
+
+    
+    //   const unsub =  onSnapshot(doc(db, "citiesCol","m2VVTybDBw1lw5VNIwF8"), (doc) => {
+    //     console.log("Current data: ", doc.data());
+    // });
+  //  const dataOrg= db.collection(citiesCol).onSnapshot((snapshot)=>snapshot.docs.map(doc => doc.data()))
 
       console.log(data, 'firebaseData')
       const dataOrg = data.docs.map(doc => doc.data())
@@ -626,19 +639,19 @@ const Carrier = () => {
                   id={`${index}`}
                   className='card col-6 col-sm-6 col-md-4 mb-4'
                   style={{ border: 'none' }}
-                  onClick={()=>{router.push({pathname:'/Carrier/carrier-detail',query: { slug: arr.title}})}}
+                  onClick={()=>{router.push({pathname:'/Carrier/carrier-detail',query: { slug: arr.jobTitle}})}}
                 >
                 {/* `/Carrier/carrier-detail` */}
                   <div className='carrier_card_holder'>
                     <div className='card-header'>
-                      <p> {arr.title}</p>
+                      <p> {arr.jobTitle}</p>
                     </div>
                     <div className='card-body-only'>
                       <div className='card-body-inner'>
                         <div className='card-image'>
                           <img src={badgeCard.src} />
                         </div>
-                        <p> {arr.skill}</p>
+                        <p> {arr.subTitle}</p>
 
                         <div className='card-image'>
                           <img src={ndBadge.src} />

@@ -8,8 +8,14 @@ import carrierBanner from '../../public/assets/career-banner.png'
 
 import Autocomplete from '@mui/material/Autocomplete'
 import { useRouter } from 'next/router'
-import { getFirestore, collection, getDocs,query,doc,onSnapshot } from 'firebase/firestore/lite'
-import {  } from "firebase/firestore"
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  doc
+} from 'firebase/firestore'
+import { onSnapshot } from 'firebase/firestore'
 import { db } from '@components/Firebase-config'
 import InputAdornment from '@mui/material/InputAdornment'
 import Axios from 'axios'
@@ -464,11 +470,9 @@ const Carrier = () => {
     console.log(e)
     const { name, value } = e.target
 
-  
     console.log(name, value, 'kolllllllll')
     setInputValue({
       ...inputValue,
-  
 
       [name]: value
     })
@@ -482,9 +486,7 @@ const Carrier = () => {
     // console.log(editPhoto,"edit photo")
   }
 
-
   // useEffect(() => {
-    
 
   //   Axios.get(
   //     'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
@@ -504,34 +506,39 @@ const Carrier = () => {
   // }, [])
   useEffect(() => {
     async function getData (db) {
-      const citiesCol = collection(db, '12345')
+      //..........using getDocs without real time update------
+      // const citiesCol = collection(db, '12345')
+
       // const data = await getDocs(citiesCol)
-      const data = await getDocs(citiesCol)
-      // const q = query(collection(db, "12345"))
-      // const unsub = onSnapshot(q, (querySnapshot) => {
-      //   console.log("Data", querySnapshot.docs.map(d => doc.data()));
-      // });
-    
 
-    
-    //   const unsub =  onSnapshot(doc(db, "citiesCol","m2VVTybDBw1lw5VNIwF8"), (doc) => {
-    //     console.log("Current data: ", doc.data());
-    // });
-  //  const dataOrg= db.collection(citiesCol).onSnapshot((snapshot)=>snapshot.docs.map(doc => doc.data()))
+      
+      // const dataOrg = data.docs.map(doc => doc.data())
 
-      console.log(data, 'firebaseData')
-      const dataOrg = data.docs.map(doc => doc.data())
+      //........ Using onSnapShot real time update from firebase-------
+     //https://firebase.google.com/docs/firestore/query-data/listen
+      // const q = query(collection(db, "cities"), where("state", "==", "CA"));
+
+      const q = query(collection(db, '12345'))
+
+      const unsubscribe = onSnapshot(q, querySnapshot => {
+        console.log(querySnapshot, 'snapshott')
+        setOnlyData(querySnapshot.docs.map(doc => {  let original = doc.data()
+     
+
+        return Object.assign(original, { id_: doc.id })
+        }))
+      
+        // console.log(snapData,"snapDtaaa")
+      })
+
       // return cityList;
-      console.log(dataOrg, 'kolkatatattat')
-      setOnlyData(dataOrg)
+      console.log(unsubscribe, 'kolkatatattat')
+      // setOnlyData(dataOrg)
     }
     getData(db)
   }, [])
 
-
   useEffect(() => {
-  
-
     if (Object.keys(formerror).length === 0 && isSubmit) {
       console.log(inputValue, 'passed object')
     }
@@ -567,7 +574,6 @@ const Carrier = () => {
       error.Email = 'Please enter a valid email (i.e user@gmail.com) !'
     }
 
-
     if (!values.phone) {
       error.Phone = 'Please Enter A Phone No !'
     } else if (!regxPhone.test(values.phone)) {
@@ -580,8 +586,6 @@ const Carrier = () => {
     if (!values.cv) {
       error.Cv = 'Please upload your cv !'
     }
-
-
 
     return error
   }
@@ -639,9 +643,14 @@ const Carrier = () => {
                   id={`${index}`}
                   className='card col-6 col-sm-6 col-md-4 mb-4'
                   style={{ border: 'none' }}
-                  onClick={()=>{router.push({pathname:'/Carrier/carrier-detail',query: { slug: arr.jobTitle}})}}
+                  onClick={() => {
+                    router.push({
+                      pathname: '/Carrier/carrier-detail',
+                      query: { slug: arr.id_ }
+                    })
+                  }}
                 >
-                {/* `/Carrier/carrier-detail` */}
+                  {/* `/Carrier/carrier-detail` */}
                   <div className='carrier_card_holder'>
                     <div className='card-header'>
                       <p> {arr.jobTitle}</p>

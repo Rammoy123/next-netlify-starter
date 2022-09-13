@@ -12,18 +12,24 @@ import Autocomplete from '@mui/material/Autocomplete'
 import { useRouter } from 'next/router'
 import InputAdornment from '@mui/material/InputAdornment'
 import Axios from 'axios'
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite'
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  doc,
+  onSnapshot,
+  query
+} from 'firebase/firestore'
 
 import { db } from '@components/Firebase-config'
 // https://codesandbox.io/s/selectedvalue-with-icon-cicoo3?file=/demo.js
 
 const detail = () => {
   const router = useRouter()
-  const routerData=router.query.slug
+  const routerData = router.query.slug
 
   useEffect(() => {
-console.log(router,"router")
-    
+    console.log(router, 'router')
   }, [router.query])
   const [onlyData, setOnlyData] = useState({})
 
@@ -47,65 +53,77 @@ console.log(router,"router")
     //   inputValue1: ''
   })
   useEffect(() => {
-    console.log(router,"outside router")
+    console.log(router, 'outside router')
+   
     async function getData (db) {
-      const citiesCol = collection(db, '12345')
-      const data = await getDocs(citiesCol)
+      //..........using getDocs without real time update------
+      // const citiesCol = collection(db, '12345')
+      // const data = await getDocs(citiesCol)
+      // const dataOrg = data.docs.map(doc => doc.data())
 
-      console.log(data, 'firebaseData')
-      const dataOrg = data.docs.map(doc => doc.data())
-      console.log(dataOrg,"get data")
-      // return cityList;
-      console.log(router.query.slug,"inside router")
-   const dataFiltered= dataOrg.filter((arr)=>arr.jobTitle==routerData)
-   let dataFilteredOnly=dataFiltered[0]
+      //........ Using onSnapShot real time update from firebase-------
+      const q = query(collection(db, '12345'))
+     
+     
+      const unsubscribe = onSnapshot(q, querySnapshot => {
+        console.log(querySnapshot, 'snapshott')
+        // let dataOrg=querySnapshot.docs.map(doc => doc.data())
+        let dataOrg=querySnapshot.docs.map(doc => {  let original = doc.data()
+     
 
-console.log(dataFilteredOnly,"dataFilteredOnly")
-// if(Object.keys(dataFilteredOnly).length>0)
-if(dataFilteredOnly)
-{
-
-
-dataFilteredOnly={
-...dataFilteredOnly,
-technicalSkill: dataFilteredOnly.technicalSkill.split(','),
-softSkill: dataFilteredOnly.softSkill.split(','),
-desiredSkill:dataFilteredOnly.desiredSkill.split(',')
-
-
-
-}
-setOnlyData(dataFilteredOnly)
-}
-
-
-
-  //  const takenData=dataFiltered.map((arr)=>{
-  //   console.log(arr,"arr")
-  //   if(Object.keys(arr).map((arrDe)=>{if(arrDe=="technicalSkill"){
-  //     console.log(dataFilteredOnly,"da")
-  //  dataFilteredOnly={...dataFilteredOnly,technicalSkill: arr.technicalSkill.split(',')}
-  // console.log(dataFilteredOnly,"dataOnlyOriginal")  
-  // }
-  // else if(arrDe=="softSkill"){
-    
-  // }
-  
-  // }))
-  //   {
-  //     console.log(arr.softSkill,"lol")
+          return Object.assign(original, { id_: doc.id })
+          })
+        console.log(routerData,"routerData")
+        const dataFiltered = dataOrg.filter(arr => arr.id_ == routerData)
+        let dataFilteredOnly = dataFiltered[0]
+        if (dataFilteredOnly) {
+          dataFilteredOnly = {
+            ...dataFilteredOnly,
+            technicalSkill: dataFilteredOnly.technicalSkill.split(','),
+            softSkill: dataFilteredOnly.softSkill.split(','),
+            desiredSkill: dataFilteredOnly.desiredSkill.split(',')
+          }
+          setOnlyData(dataFilteredOnly)
+        }
+       
+       
+        
+      })
       
-  //   }
-    
-  //  })
-  
+      
 
-  //  dataFiltered.map((arr)=>setOnlyData(arr))
+
+
+
+     
+      // if(Object.keys(dataFilteredOnly).length>0)
+ 
+
+      //  const takenData=dataFiltered.map((arr)=>{
+      //   console.log(arr,"arr")
+      //   if(Object.keys(arr).map((arrDe)=>{if(arrDe=="technicalSkill"){
+      //     console.log(dataFilteredOnly,"da")
+      //  dataFilteredOnly={...dataFilteredOnly,technicalSkill: arr.technicalSkill.split(',')}
+      // console.log(dataFilteredOnly,"dataOnlyOriginal")
+      // }
+      // else if(arrDe=="softSkill"){
+
+      // }
+
+      // }))
+      //   {
+      //     console.log(arr.softSkill,"lol")
+
+      //   }
+
+      //  })
+
+      //  dataFiltered.map((arr)=>setOnlyData(arr))
       // setOnlyData( dataOrg.filter((arr)=>arr.title==routerData))
     }
     getData(db)
+    
   }, [routerData])
-
 
   const countries = [
     { code: 'AD', label: 'Andorra', phone: '376' },
@@ -541,21 +559,17 @@ setOnlyData(dataFilteredOnly)
     setInputValue({
       ...inputValue,
 
-
       [name]: value
     })
     console.log(inputValue, 'inputvalueeee')
   }
   const changeBt1 = e => {
     const { name, value } = e.target
-    
 
     setInputValue({ ...inputValue, [name]: e.target.files[0] })
-   
   }
 
   // useEffect(() => {
-
 
   //   Axios.get(
   //     'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
@@ -649,182 +663,135 @@ setOnlyData(dataFilteredOnly)
   }
 
   return (
-    
-      
     <>
       <Header navData='Carrier' />
-      {
-        (Object.keys(onlyData).length>0) &&
+      {Object.keys(onlyData).length > 0 && (
+        <section className='first'>
+          <div className='banner'>
+            <div className=' banner-parent'>
+              <img
+                className='img-fluid banner_img'
+                src={detailphoto.src}
+                alt=''
+              />
+            </div>
 
-      
-      <section className='first'>
-    
-        <div className='banner'>
-          <div className=' banner-parent'>
-            <img
-              className='img-fluid banner_img'
-              src={detailphoto.src}
-              alt=''
-            />
-          </div>
-
-          <div _ngcontent-c14='' className='details_banner_twenty'>
-            <div _ngcontent-c14='' className='container'>
-              <div _ngcontent-c14='' className='twenty_twenty'>
-                <div _ngcontent-c14='' className='twenty_twenty_right'>
-                  <div
-                    _ngcontent-c14=''
-                    className='detail_holder_heading text-capiatlize'
-                  >
-                    <h3 _ngcontent-c14='' className='heading2  '>
-                      {onlyData.jobTitle}
-                    </h3>
-                    <div _ngcontent-c14='' className='carrier_card_twenty mt-4'>
-                      <div _ngcontent-c14='' className='cip_holder'>
-                        <img
-                          _ngcontent-c14=''
-                          className='career_icon_pic'
-                          src={badgeCard.src}
-                        />
+            <div _ngcontent-c14='' className='details_banner_twenty'>
+              <div _ngcontent-c14='' className='container'>
+                <div _ngcontent-c14='' className='twenty_twenty'>
+                  <div _ngcontent-c14='' className='twenty_twenty_right'>
+                    <div
+                      _ngcontent-c14=''
+                      className='detail_holder_heading text-capiatlize'
+                    >
+                      <h3 _ngcontent-c14='' className='heading2  '>
+                        {onlyData.jobTitle}
+                      </h3>
+                      <div
+                        _ngcontent-c14=''
+                        className='carrier_card_twenty mt-4'
+                      >
+                        <div _ngcontent-c14='' className='cip_holder'>
+                          <img
+                            _ngcontent-c14=''
+                            className='career_icon_pic'
+                            src={badgeCard.src}
+                          />
+                        </div>
+                        <p>{onlyData.subTitle}</p>
                       </div>
-                      <p>
-                       {onlyData.subTitle}
-                      </p>
-                    </div>
-                    <div _ngcontent-c14='' className='carrier_card_twenty mt-0'>
-                      <div _ngcontent-c14='' className='cip_holder'>
-                        <img
-                          _ngcontent-c14=''
-                          className='career_icon_pic'
-                          src={ndBadge.src}
-                        />
+                      <div
+                        _ngcontent-c14=''
+                        className='carrier_card_twenty mt-0'
+                      >
+                        <div _ngcontent-c14='' className='cip_holder'>
+                          <img
+                            _ngcontent-c14=''
+                            className='career_icon_pic'
+                            src={ndBadge.src}
+                          />
+                        </div>
+                        <p _ngcontent-c14=''>
+                          Experience : {onlyData.experience}
+                        </p>
                       </div>
-                      <p _ngcontent-c14=''>Experience : {onlyData.experience}</p>
-                    </div>
-                    <div _ngcontent-c14='' className='carrier_card_twenty mt-0'>
-                      <div _ngcontent-c14='' className='cip_holder'>
-                        <img
-                          _ngcontent-c14=''
-                          className='career_icon_pic'
-                          src={locationBadge.src}
-                        />
+                      <div
+                        _ngcontent-c14=''
+                        className='carrier_card_twenty mt-0'
+                      >
+                        <div _ngcontent-c14='' className='cip_holder'>
+                          <img
+                            _ngcontent-c14=''
+                            className='career_icon_pic'
+                            src={locationBadge.src}
+                          />
+                        </div>
+                        <p _ngcontent-c14=''>Location : {onlyData.location}</p>
                       </div>
-                      <p _ngcontent-c14=''>Location : {onlyData.location}</p>
-                    </div>
-                    <div _ngcontent-c14='' className='a_holder'>
-                      <a _ngcontent-c14='' className='ripple-btn'>
-                        Apply Now
-                      </a>
+                      <div _ngcontent-c14='' className='a_holder'>
+                        <a _ngcontent-c14='' className='ripple-btn'>
+                          Apply Now
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-<div className="container skill-container">
-<div className="outer">
-  <div className="inner">
-    <div className='heading-sec'>
-    <p className='inner-para'>
-    We are hiring dynamic Business Development Associate/Business Development Manager experienced in Online Bidding platforms
-    <br/>
-    <br/>
-    The current position requires the following skills:
-
-
-
-
-    </p>
-    </div>
-    <div className="row">
-      <div className="col-md-4">
-    
-<h3>
-Technical Skills:
-</h3>
-      </div>
-      <div className="col-md-8">
-      <ul className='un-list'>
-      {
-        (onlyData.technicalSkill) &&
-        onlyData.technicalSkill.map((arr)=>
-        
-          <li>{arr}</li>
-      )
-
-      }
-
-</ul>
-    
-
-    </div>
-
-    </div>
-    <div className="row">
-    <div className="col-md-4">
-
-<h3>Soft Skills:</h3>
-
-    </div>
-    <div className="col-md-8">
-    <ul className='un-list'>
-    {
-      (onlyData.softSkill) &&
-
-onlyData.softSkill.map((arr)=>
-
-  <li>{arr}</li>
-)
-
-}
-</ul>
-</div>
-
-
-    </div>
-    <div className="row">
-    <div className="col-md-4">
-
-<h3>Desired Candidate Profile:
-</h3>
-
-    </div>
-    <div className="col-md-8">
-    <ul className='un-list'>
-   
-    {
-      (onlyData.desiredSkill) && (
-      (onlyData.desiredSkill.length==1)?(
-      onlyData.desiredSkill.map((arr)=>
-
-  <p>{arr}</p>
-)):
-     ( 
-
-onlyData.desiredSkill.map((arr)=>
-
-  <li>{arr}</li>
-)
-     )
-      )
-
-}
-</ul>
-</div>
-
-
-    </div>
-    
-  </div>
-</div>
-
-
-</div>
-
-      </section>
-      }
-      
+          <div className='container skill-container'>
+            <div className='outer'>
+              <div className='inner'>
+                <div className='heading-sec'>
+                  <p className='inner-para'>
+                    We are hiring dynamic Business Development
+                    Associate/Business Development Manager experienced in Online
+                    Bidding platforms
+                    <br />
+                    <br />
+                    The current position requires the following skills:
+                  </p>
+                </div>
+                <div className='row'>
+                  <div className='col-md-4'>
+                    <h3>Technical Skills:</h3>
+                  </div>
+                  <div className='col-md-8'>
+                    <ul className='un-list'>
+                      {onlyData.technicalSkill &&
+                        onlyData.technicalSkill.map(arr => <li>{arr}</li>)}
+                    </ul>
+                  </div>
+                </div>
+                <div className='row'>
+                  <div className='col-md-4'>
+                    <h3>Soft Skills:</h3>
+                  </div>
+                  <div className='col-md-8'>
+                    <ul className='un-list'>
+                      {onlyData.softSkill &&
+                        onlyData.softSkill.map(arr => <li>{arr}</li>)}
+                    </ul>
+                  </div>
+                </div>
+                <div className='row'>
+                  <div className='col-md-4'>
+                    <h3>Desired Candidate Profile:</h3>
+                  </div>
+                  <div className='col-md-8'>
+                    <ul className='un-list'>
+                      {onlyData.desiredSkill &&
+                        (onlyData.desiredSkill.length == 1
+                          ? onlyData.desiredSkill.map(arr => <p>{arr}</p>)
+                          : onlyData.desiredSkill.map(arr => <li>{arr}</li>))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className='form-sec'>
         <div className='text-center'>
@@ -882,17 +849,13 @@ onlyData.desiredSkill.map((arr)=>
                   }}
                   inputValue={inputValue.textChange1}
                   onInputChange={(event, newInputValue) => {
-                  
-
                     console.log(newInputValue, 'inputttvaluethjpolp')
                     setInputValue({ ...inputValue, textChange1: newInputValue })
                   }}
                   getOptionLabel={option => `  +${option.phone}`}
-      
                   options={countries}
                   autoHighlight
                   fullWidth={false}
-                 
                   renderOption={(props, option) => (
                     <Box
                       component='li'
@@ -930,7 +893,6 @@ onlyData.desiredSkill.map((arr)=>
                           </InputAdornment>
                         ) : null
                       }}
-                 
                     />
                   )}
                 />
@@ -943,7 +905,6 @@ onlyData.desiredSkill.map((arr)=>
                   name='phone'
                   value={inputValue.phone}
                   placeholder='Phone No*'
-                
                   onChange={changeBt}
                   onKeyDown={() => {
                     setFormError({ ...formerror, Phone: '' })
@@ -963,7 +924,6 @@ onlyData.desiredSkill.map((arr)=>
                 name='current_location'
                 value={inputValue.current_location}
                 placeholder='Current Location*'
-              
                 onChange={changeBt}
                 onKeyDown={() => {
                   setFormError({ ...formerror, Current_location: '' })
@@ -995,7 +955,6 @@ onlyData.desiredSkill.map((arr)=>
                 name='experience'
                 value={inputValue.experience}
                 placeholder='Years of experience(Optional)'
-                
                 onChange={changeBt}
               />
             </div>
@@ -1014,10 +973,8 @@ onlyData.desiredSkill.map((arr)=>
           <div className='row'>
             <div className='col-lg-12  col-md-12 relativeError'>
               <input
-                
                 className='form-controller'
                 type='file'
-              
                 name='cv'
                 onChange={changeBt1}
                 onClick={() => {
@@ -1028,22 +985,12 @@ onlyData.desiredSkill.map((arr)=>
             </div>
           </div>
           <div className='text-center ng-star-inserted'>
-            <button
-              _ngcontent-c12=''
-              className='wt-btn hol btn'
-              type='submit'
-              
-            >
+            <button _ngcontent-c12='' className='wt-btn hol btn' type='submit'>
               Send
             </button>
             <p class='agree-policy'>
               By clicking "Send", you agree to our{' '}
-              <a
-                _ngcontent-c12=''
-                
-                target='_blank'
-                href='#/privacy-policy'
-              >
+              <a _ngcontent-c12='' target='_blank' href='#/privacy-policy'>
                 Privacy Policy.
               </a>
             </p>
@@ -1051,9 +998,6 @@ onlyData.desiredSkill.map((arr)=>
         </form>
       </section>
     </>
-      
-    
-    
   )
 }
 

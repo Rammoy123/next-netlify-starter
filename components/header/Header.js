@@ -55,6 +55,7 @@ const Header = ({navData}) => {
     
     
     },[navData])
+
     
     const goToSection =(e)=>{
       let position=""
@@ -75,13 +76,14 @@ const Header = ({navData}) => {
          else if(e.target.id=="make_services"){
           position="services"
          }
-
+       
+        
 
         setTimeout(() => {
             $('html, body').animate({
               scrollTop: $('#' + position).offset().top - (50),
             }, 2);
-          }, 100);
+          }, 120);
           console.log(e.target.id,"id")
           // if(e.target.id=="make_home"){
           //   $('#make_services').removeClass("active")
@@ -192,7 +194,7 @@ useEffect(()=>{
                     </Link>
                   </li>
                   <li className={style.liItem}>
-                    <button className={style.firstButton}>Get In Touch</button>
+                    <button onClick={()=>{router.push(`/free-quotes`)}} className={style.firstButton}>Get In Touch</button>
                   </li>
                 </ul>
               </nav>

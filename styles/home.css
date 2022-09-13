@@ -2,6 +2,14 @@
 *{
     box-sizing: border-box;
 }
+.activeHome{
+    /* -webkit-filter:brightness(50%); */
+    background-color:rgba(0,0,0,.5) ;
+    -webkit-filter:blur(8px)
+
+
+}
+
 .hero-content{
     padding-top: 40px;
     padding-bottom: 40px;
@@ -130,6 +138,7 @@ width: 100%;
     position: relative;
     border-bottom: 1px solid #f1f0f0;
     border-right: 1px solid #f1f0f0;
+    
 }
 
 .service .fbox-icon {

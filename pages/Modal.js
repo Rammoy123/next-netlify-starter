@@ -9,18 +9,21 @@ import { useState } from 'react'
 import InputAdornment from '@mui/material/InputAdornment'
 
 
-const Modal = () => {
+const Modal = ({hideMe}) => {
   const focus = useRef()
   useEffect(() => {
     function handleClickOutside (event) {
-      console.log(event.target)
-      console.log(focus.current)
+      console.log(event.target.role)
+      // console.log(focus.current)
       if (focus.current && !focus.current.contains(event.target)) {
        
-        // $('.hide').css('display', 'none')
-        // $('#myInputautocomplete-list').css('height','0vh')
-        // myInputautocomplete-list
-console.log("outside click")
+     
+        // if(!event.target.role=="option"){
+         
+        // console.log("outside")
+        // }
+        // if()
+hideMe()
         // setHandFocus(false)
       }
     }
@@ -507,7 +510,7 @@ console.log("outside click")
   ]
   const services = ['Shopify Store', 'Website', 'Mobile App', 'UI/UX Design']
   return (
-    <div className='parent'>
+    <div className='parent' style={{overflowY:"hidden"}} >
       <div
         className='modal fade show'
        
@@ -519,23 +522,13 @@ console.log("outside click")
         aria-modal='true'
         role='dialog'
       >
-        <div className='modal-dialog'  ref={focus}  >
+        <div className='modal-dialog'    >
         
-          <div className='modal-content'>
-            <div className='modal-header'>
-              <h5 className='modal-title' id='exampleModalLongTitle'>
-                Modal title
-              </h5>
-              <button
-                type='button'
-                className='btn-close'
-                data-bs-dismiss='modal'
-                aria-label='Close'
-              ></button>
-            </div>
+          <div className='modal-content'ref={focus}>
+        
             {/* style={{minHeight: "1500px"}} */}
             <div className='modal-body'>
-              <div className='container'>
+              <div className='container' >
                 <div className='row'>
                   <div _ngcontent-c1='' className='col-md-6'>
                     <div className='full-height'>
@@ -629,8 +622,10 @@ console.log("outside click")
                                   id='controllable-states-demo'
                                   sx={{ width: 400 }}
                                   value={inputValue.ph_code}
+                                 
+                                   disableClearable
                                   onChange={(event, newValue) => {
-                                    console.log(newValue, 'value of thisss')
+                                    console.log(event.target.parentElement.id, 'value of thisss')
                                     setInputValue({
                                       ...inputValue,
                                       ph_code: newValue
@@ -707,7 +702,8 @@ console.log("outside click")
                                       variant='standard'
                                       className='textfield'
                                       {...params}
-                                      label='Choose a country'
+                                      // disableClearable
+                                      // label='Choose a country'
                                       InputProps={{
                                         ...params.InputProps,
                                         startAdornment: inputValue.ph_code ? (
@@ -734,6 +730,7 @@ console.log("outside click")
                               <div className='right-side col-md-8 relativeError'>
                                 <input
                                   type='text'
+                                 
                                   id='phone'
                                   className='form-controller'
                                   name='phone'

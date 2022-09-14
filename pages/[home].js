@@ -80,6 +80,7 @@ const Home1 = () => {
   }, [showModal])
   return (
     <>
+    
 
 <div id='whole_content'>
         {' '}

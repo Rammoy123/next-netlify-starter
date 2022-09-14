@@ -7,23 +7,55 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import { useState } from 'react'
 import InputAdornment from '@mui/material/InputAdornment'
+import { lightGreen } from '@mui/material/colors'
+import { grey,purple } from '@mui/material/colors'
+import { createTheme } from '@mui/material/styles';
+import  Axios  from 'axios'
 
 
+
+
+
+const style= theme => ({
+  multilineColor:{
+      color:'red'
+  }
+});
 const Modal = ({hideMe}) => {
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: purple[500]
+
+      }
+  
+    },
+  });
+
+
+
+
+  const classes1 = style();
+
+
+
+ 
   const focus = useRef()
   useEffect(() => {
     function handleClickOutside (event) {
-      console.log(event.target.role)
+      console.log(event.target.role,"roleee")
       // console.log(focus.current)
       if (focus.current && !focus.current.contains(event.target)) {
        
      
-        // if(!event.target.role=="option"){
+        if(event.target.role!="option"){
+          hideMe()
          
-        // console.log("outside")
-        // }
+        
+        }
         // if()
-hideMe()
+// hideMe()
         // setHandFocus(false)
       }
     }
@@ -63,15 +95,17 @@ hideMe()
     name: '',
     email: '',
     phone: '',
+    option1:'',
     ph_code: '',
-    current_location: '',
-    qualification: '',
-    experience: '',
-    noticePeriod: '',
-    cv: null,
+ message:'',
     textChange1: '',
     textChange2: ''
   })
+  const [formerror, setFormError] = useState({})
+
+  const [isSubmit, setIsSubmit] = useState(false)
+  // const [input,setInput]=useState([])
+  const [checker, setChecker] = useState(false)
 
   const changeBt = e => {
     console.log(e)
@@ -83,6 +117,48 @@ hideMe()
 
       [name]: value
     })
+    console.log(inputValue,"inputValue")
+  }
+  const handleClick = e => {
+    console.log('form this')
+    e.preventDefault()
+
+    setFormError(validate(inputValue))
+    console.log(formerror, 'formError')
+
+    setIsSubmit(true)
+  }
+  const validate = values => {
+    const error = {}
+    //     Email with gmail.com
+    //    const regx= /^[a-z0-9](\.?[a-z0-9]){2,}@g(oogle)?mail\.com$/gm;
+    const regxEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    const regxPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+    const regxName = /^[A-Za-z\s]+$/
+
+    const pass_regx = /[0-9]/gm
+    //    console.log(arr,"arrrrr")
+    if (!values.name) {
+      error.Name = 'Please Enter A Name !'
+    } else if (!regxName.test(values.name)) {
+      error.Name = 'Name must have only characters !'
+    }
+
+    if (!values.email) {
+      error.Email = 'Please Enter An Email !'
+    } else if (!regxEmail.test(values.email)) {
+      error.Email = 'Please enter a valid email (i.e user@gmail.com) !'
+    }
+
+    if (!values.phone) {
+      error.Phone = 'Please Enter A Phone No !'
+    } else if (!regxPhone.test(values.phone)) {
+      error.Phone = 'Phone no must be of 10 digits !'
+    }
+
+
+
+    return error
   }
   const countries = [
     { code: 'AD', label: 'Andorra', phone: '376' },
@@ -508,6 +584,31 @@ hideMe()
     { code: 'ZM', label: 'Zambia', phone: '260' },
     { code: 'ZW', label: 'Zimbabwe', phone: '263' }
   ]
+
+  
+  // useEffect(() => {
+
+  //   Axios.get(
+  //     'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
+  //   )
+  //     .then(response => {
+  //       console.log(response)
+
+  //       const array = countries.filter(
+  //         arr =>
+  //           arr.code.toUpperCase() ==
+  //           response.data.country.iso_code.toUpperCase()
+  //       )
+  //       array.map(obj => setInputValue({ ...inputValue, ph_code: obj }))
+  //       console.log(array, 'array123444')
+  //     })
+  //     .catch(error => console.log('error', error))
+  // }, [])
+  useEffect(() => {
+    if (Object.keys(formerror).length === 0 && isSubmit) {
+      console.log(inputValue, 'passed object')
+    }
+  }, [formerror])
   const services = ['Shopify Store', 'Website', 'Mobile App', 'UI/UX Design']
   return (
     <div className='parent' style={{overflowY:"hidden"}} >
@@ -529,7 +630,7 @@ hideMe()
             {/* style={{minHeight: "1500px"}} */}
             <div className='modal-body'>
               <div className='container' >
-                <div className='row'>
+                <div className='row '>
                   <div _ngcontent-c1='' className='col-md-6'>
                     <div className='full-height'>
                       <img
@@ -545,14 +646,17 @@ hideMe()
                   <div _ngcontent-c1='' className='col-md-6'>
                     <div className='form-wrapper'>
                       <div className='form-inner'>
-                        <form>
-                          <div className='row row-modal-p'>
+                        <form onSubmit={handleClick}>
+                          <div className='row row-modal-p '>
                             <div className='modal-para col-md-4  position-r'>
+                            <div className='want-parent' >
                               <p className='p-item'>I Want </p>
+                              </div>
                             </div>
-                            <div className='modal-auto col-md-6'>
+                            <div className='modal-auto col-md-8'>
                               <Autocomplete
                                 value={inputValue.option1}
+                                fullWidth
                                 onChange={(event, newValue) => {
                                   console.log(newValue, 'value of thisss')
                                   setInputValue({
@@ -560,6 +664,7 @@ hideMe()
                                     option1: newValue
                                   })
                                 }}
+                                // style={{ marginTop:"50px" }}
                                 inputValue={inputValue.textChange1}
                                 onInputChange={(event, newInputValue) => {
                                   setInputValue({
@@ -567,6 +672,7 @@ hideMe()
                                     textChange1: newInputValue
                                   })
                                 }}
+                                // style={{width:'100%'}}
                                 // id="disable-clearable"
                                 disableClearable
                                 id='controllable-states-demo'
@@ -574,18 +680,21 @@ hideMe()
                                 // sx={{ width: 200 }}
                                 renderInput={params => (
                                   <TextField
-                                    id='standard-basic'
+                                   
                                     variant='standard'
                                     {...params}
-                                    fullWidth
-                                    label='Select'
+                                    color="primary" 
+                                    // focused
+                                    label="Select"
+                                    
+                                    
                                   />
                                 )}
                               />
                             </div>
                           </div>
                           <div className='row'>
-                            <div className='modal-auto col-md-12'>
+                            <div className='modal-auto col-md-12 relativeError'>
                               <input
                                 type='text'
                                 className='form-controller'
@@ -594,13 +703,14 @@ hideMe()
                                 value={inputValue.name}
                                 placeholder='Name*'
                                 onChange={changeBt}
-                                // onKeyDown={() => {
-                                //   setFormError({ ...formerror, Name: '' })
-                                // }}
+                                onKeyDown={() => {
+                                  setFormError({ ...formerror, Name: '' })
+                                }}
                               />
+                               <div className='formerror'>{<p>{formerror.Name} </p>}</div>
                             </div>
 
-                            <div className='modal-auto col-md-12'>
+                            <div className='modal-auto col-md-12 relativeError'>
                               <input
                                 className='form-controller'
                                 id='email'
@@ -609,10 +719,11 @@ hideMe()
                                 name='email'
                                 value={inputValue.email}
                                 onChange={changeBt}
-                                // onKeyDown={() => {
-                                //   setFormError({ ...formerror, Email: '' })
-                                // }}
+                                onKeyDown={() => {
+                                  setFormError({ ...formerror, Email: '' })
+                                }}
                               />
+                               <div className='formerror'>{<p>{formerror.Email} </p>}</div>
                             </div>
                           </div>
                           <div className='phone-sec'>
@@ -620,7 +731,12 @@ hideMe()
                               <div className='phone-left col-md-4 text-center d'>
                                 <Autocomplete
                                   id='controllable-states-demo'
-                                  sx={{ width: 400 }}
+                                  sx={{ width: 400,marginTop:0.5,outline:"none",color:"transparent", outline:"none",background:"transparent" }}
+                                
+                                  
+                                  // ListboxProps={{sx:{right:}}}
+                                
+                                 className='in'
                                   value={inputValue.ph_code}
                                  
                                    disableClearable
@@ -645,35 +761,7 @@ hideMe()
                                     })
                                   }}
                                   getOptionLabel={option => ``}
-                                  // value={inputValue.}
-                                  // onChange={(event, newValue) => {
-                                  //     console.log(newValue,"value of thisss")
-                                  //     setInputValue({...inputValue1,option2:newValue});
-                                  //   }}
-                                  //   inputValue={inputValue1.textChange2}
-                                  //   onInputChange={(event, newInputValue) => {
-                                  //     setInputValue({...inputValue1,textChange2:newInputValue});
-
-                                  //   }}
-
-                                  //  '& input': {
-                                  //    width: 200,
-                                  //    outline:'none',
-                                  //    borderTop:'none',
-                                  //    color:"red",
-                                  //    bgcolor: 'background.paper',
-                                  //    color: (theme) =>
-                                  //      theme.palette.getContrastText(theme.palette.background.paper),
-                                  //  },
-
-                                  // sx={{
-
-                                  // '& input': {
-
-                                  //       borderTop:'none'}
-
-                                  //  }}
-                                  //   countries.map((arr)=>arr.phone)
+                    
                                   options={countries}
                                   autoHighlight
                                   fullWidth={false}
@@ -701,10 +789,16 @@ hideMe()
                                       id='standard-basic'
                                       variant='standard'
                                       className='textfield'
+                                      // color='secondary'
+                                      //  focused
+                                       
+                                       
                                       {...params}
                                       // disableClearable
-                                      // label='Choose a country'
+                                      label='Select'
+
                                       InputProps={{
+                                        //  style: { color: "red" } ,
                                         ...params.InputProps,
                                         startAdornment: inputValue.ph_code ? (
                                           <InputAdornment>
@@ -738,11 +832,11 @@ hideMe()
                                   placeholder='Phone No*'
                                   // title='Please provide only gmail.com email'
                                   onChange={changeBt}
-                                  // onKeyDown={() => {
-                                  //   setFormError({ ...formerror, Phone: '' })
-                                  // }}
+                                  onKeyDown={() => {
+                                    setFormError({ ...formerror, Phone: '' })
+                                  }}
                                 />
-                                {/* <div className='formerror'>{<p>{formerror.Phone} </p>}</div> */}
+                                <div className='formerror'>{<p>{formerror.Phone} </p>}</div>
                               </div>
                             </div>
 
@@ -753,7 +847,7 @@ hideMe()
                                 className='form-controller'
                                 name='message'
                                 value={inputValue.message}
-                                placeholder='Message*'
+                                placeholder='Message(optional)'
                                 // title='Please provide only gmail.com email'
                                 onChange={changeBt}
                                 // onKeyDown={() => {
@@ -764,7 +858,7 @@ hideMe()
                             </div>
                           </div>
 
-Name                          <div _ngcontent-c1='' className='text-center'>
+                     <div _ngcontent-c1='' className='text-center'>
                             <button
                               _ngcontent-c1=''
                               className='btn btn-secondary send-btn'

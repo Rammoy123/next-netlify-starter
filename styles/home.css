@@ -457,6 +457,10 @@ margin-top: 10px;
 input:focus {
     outline:none !important;
 }
+.in:focus{
+
+outline:none !important;
+}
 
 .phone-form-job  {
     border-radius: 0!important;
@@ -743,13 +747,26 @@ background: #23b428!important;
 }
 .position-r{
     position: relative;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
 }
-.p-item{
+.row-modal-p{
+    margin-bottom: 18px;
+}
+.p-item {
+    font-size: 17px;
     position: absolute;
-    bottom: -10px;
+    bottom: -12px;
    
 }
+.want-parent{
+    width:100%;
+    border-bottom:1px solid grey ;
+    position: absolute;
+    bottom:0px;
+    display:flex
+}
+
+
 /* .row-modal-p{
     border-bottom: 1px solid black;
 } */

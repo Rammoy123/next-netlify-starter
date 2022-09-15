@@ -12,6 +12,7 @@ import Autocomplete from '@mui/material/Autocomplete'
 import { useRouter } from 'next/router'
 import InputAdornment from '@mui/material/InputAdornment'
 import Axios from 'axios'
+import $ from 'jquery'
 import {
   getFirestore,
   collection,
@@ -79,10 +80,11 @@ const detail = () => {
         if (dataFilteredOnly) {
           dataFilteredOnly = {
             ...dataFilteredOnly,
-            technicalSkill: dataFilteredOnly.technicalSkill.split(','),
-            softSkill: dataFilteredOnly.softSkill.split(','),
-            desiredSkill: dataFilteredOnly.desiredSkill.split(',')
+            technicalSkill: dataFilteredOnly.technicalSkill.trim().split(','),
+            softSkill: dataFilteredOnly.softSkill.trim().split(','),
+            desiredSkill: dataFilteredOnly.desiredSkill.trim().split(',')
           }
+          console.log(dataFilteredOnly.softSkill.length,"dataFilteredOnlyyy")
           setOnlyData(dataFilteredOnly)
         }
        
@@ -569,24 +571,24 @@ const detail = () => {
     setInputValue({ ...inputValue, [name]: e.target.files[0] })
   }
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   Axios.get(
-  //     'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
-  //   )
-  //     .then(response => {
-  //       console.log(response)
+    Axios.get(
+      'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
+    )
+      .then(response => {
+        console.log(response)
 
-  //       const array = countries.filter(
-  //         arr =>
-  //           arr.code.toUpperCase() ==
-  //           response.data.country.iso_code.toUpperCase()
-  //       )
-  //       array.map(obj => setInputValue({ ...inputValue, ph_code: obj }))
-  //       console.log(array, 'array123444')
-  //     })
-  //     .catch(error => console.log('error', error))
-  // }, [])
+        const array = countries.filter(
+          arr =>
+            arr.code.toUpperCase() ==
+            response.data.country.iso_code.toUpperCase()
+        )
+        array.map(obj => setInputValue({ ...inputValue, ph_code: obj }))
+        console.log(array, 'array123444')
+      })
+      .catch(error => console.log('error', error))
+  }, [])
 
   useEffect(() => {
     console.log(formerror, 'errorllll')
@@ -661,6 +663,18 @@ const detail = () => {
 
     return error
   }
+const goToApply=(e)=>{
+  e.preventDefault()
+  setTimeout(() => {
+    $('html, body').animate(
+      {
+        scrollTop: $("#forFormOnly").offset().top - 10
+      },
+      2
+    )
+  }, 120)
+
+}
 
   return (
     <>
@@ -729,7 +743,7 @@ const detail = () => {
                         <p _ngcontent-c14=''>Location : {onlyData.location}</p>
                       </div>
                       <div _ngcontent-c14='' className='a_holder'>
-                        <a _ngcontent-c14='' className='ripple-btn'>
+                        <a onClick={goToApply} className='ripple-btn'>
                           Apply Now
                         </a>
                       </div>
@@ -752,6 +766,8 @@ const detail = () => {
                     The current position requires the following skills:
                   </p>
                 </div>
+                {
+                  (onlyData.technicalSkill[0]!='') &&(
                 <div className='row'>
                   <div className='col-md-4'>
                     <h3>Technical Skills:</h3>
@@ -763,17 +779,27 @@ const detail = () => {
                     </ul>
                   </div>
                 </div>
+      )}
+                {
+                  (onlyData.softSkill[0]!='') &&(
                 <div className='row'>
                   <div className='col-md-4'>
                     <h3>Soft Skills:</h3>
                   </div>
                   <div className='col-md-8'>
                     <ul className='un-list'>
+                  
                       {onlyData.softSkill &&
-                        onlyData.softSkill.map(arr => <li>{arr}</li>)}
+                        onlyData.softSkill.map(arr => <li>{arr}</li>
+                        )}
                     </ul>
                   </div>
                 </div>
+       ) }
+       {
+        (onlyData.desiredSkill[0]!='') &&(
+
+       
                 <div className='row'>
                   <div className='col-md-4'>
                     <h3>Desired Candidate Profile:</h3>
@@ -787,13 +813,14 @@ const detail = () => {
                     </ul>
                   </div>
                 </div>
+       ) }
               </div>
             </div>
           </div>
         </section>
       )}
 
-      <section className='form-sec'>
+      <section id='forFormOnly' className='form-sec'>
         <div className='text-center'>
           <h2>Join Our Team</h2>
         </div>
@@ -838,10 +865,11 @@ const detail = () => {
           </div>
           <div className='phone-sec'>
             <div className=' row'>
-              <div className='phone-left col-md-4 text-center d'>
+              <div className='phone-left col-md-2 text-center d'>
                 <Autocomplete
                   id='controllable-states-demo'
-                  sx={{ width: 400 }}
+                  disableClearable
+                  sx={{ width: 400 ,marginTop:2.4}}
                   value={inputValue.ph_code}
                   onChange={(event, newValue) => {
                     console.log(newValue, 'value of thisss')
@@ -869,7 +897,7 @@ const detail = () => {
                         srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
                         alt=''
                       />
-                      {option.label} ({option.code}) +{option.phone}
+                      +{option.phone}
                     </Box>
                   )}
                   renderInput={params => (
@@ -878,7 +906,7 @@ const detail = () => {
                       variant='standard'
                       className='textfield'
                       {...params}
-                      label='Choose a country'
+                      
                       InputProps={{
                         ...params.InputProps,
                         startAdornment: inputValue.ph_code ? (

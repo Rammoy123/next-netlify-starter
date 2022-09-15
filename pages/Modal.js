@@ -874,7 +874,7 @@ const Modal = ({hideMe}) => {
                                 className='ng-tns-c1-0'
                                 // routerlink='/privacy-policy'
                                 target='_blank'
-                                href='#/privacy-policy'
+                                href='https://www.bitpastel.com/#/privacy-policy'
                               >
                                 Privacy Policy.
                               </a>

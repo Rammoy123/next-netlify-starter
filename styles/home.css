@@ -361,20 +361,37 @@ margin-left: 10px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    min-height: 180px;
+    min-height: 240px;
 }
 .card-image {
     width:5px;
     height: 5px
 }
 
-.card-body-only p{
+/* .card-body-only p{
     margin-left: 5px;
-}
+} */
+.name-flex{
 
+display:flex;
+width:100%;
+gap:75px;
+
+/* justify-content: space-between; */
+
+
+}
+.subtitile-sec{
+    width:300px
+
+}
+.subtitile-sec p{
+    text-align: left;
+}
 .card-image img{
     width:20px;
-    height: 20px
+    height: 20px;
+    margin-top :5px;
 }
 .cc_button_holder {
     width: 116px;
@@ -722,6 +739,13 @@ background: #23b428!important;
     max-width:1000px !important;
 }
 }
+.css-1a1fmpi-MuiInputBase-root-MuiInput-root:before {
+
+border-bottom:1px solid #ddd !important;
+right:-25px;
+bottom:-1px
+
+}
 
 .map-bottom h3 {
     font-size: 22px;
@@ -760,9 +784,9 @@ background: #23b428!important;
 }
 .want-parent{
     width:100%;
-    border-bottom:1px solid grey ;
+    border-bottom:1px solid #ddd !important; ;
     position: absolute;
-    bottom:0px;
+    bottom:-1px;
     display:flex
 }
 

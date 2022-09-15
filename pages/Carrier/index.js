@@ -8,6 +8,7 @@ import carrierBanner from '../../public/assets/career-banner.png'
 
 import Autocomplete from '@mui/material/Autocomplete'
 import { useRouter } from 'next/router'
+import $ from 'jquery'
 import {
   getFirestore,
   collection,
@@ -589,9 +590,21 @@ const Carrier = () => {
 
     return error
   }
+  const goCarrier=(e)=>{
+    e.preventDefault()
+    setTimeout(() => {
+      $('html, body').animate(
+        {
+          scrollTop: $("#cardOnlySec").offset().top - 100
+        },
+        2
+      )
+    }, 120)
+  }
 
   return (
     <>
+    {console.log(navData,"navDataaaa")}
       <Header navData='Carrier' />
 
       <div
@@ -610,7 +623,7 @@ const Carrier = () => {
               <li _ngcontent-c13=''>Enjoy a Happy work enviroment</li>
               <li _ngcontent-c13=''>Fast-track career progress</li>
             </ul>
-            <button _ngcontent-c13='' className='wt-btn'>
+            <button onClick={goCarrier} className='wt-btn'>
               Explore Opportunities
             </button>
           </div>
@@ -626,7 +639,7 @@ const Carrier = () => {
         </div>
       </div>
 
-      <section className='card-section'>
+      <section id='cardOnlySec' className='card-section'>
         <div className='container text-center'>
           <div className='row'>
             {/* <div class="col-6 col-sm-6 col-md-4  ">col8</div>
@@ -657,10 +670,15 @@ const Carrier = () => {
                     </div>
                     <div className='card-body-only'>
                       <div className='card-body-inner'>
+                      <div className="name-flex">
+
                         <div className='card-image'>
                           <img src={badgeCard.src} />
                         </div>
+                        <div className='subtitile-sec'>
                         <p> {arr.subTitle}</p>
+                        </div>
+                      </div>
 
                         <div className='card-image'>
                           <img src={ndBadge.src} />
@@ -735,10 +753,11 @@ const Carrier = () => {
           </div>
           <div className='phone-sec'>
             <div className=' row'>
-              <div className='phone-left col-md-4 text-center d'>
+              <div className='phone-left col-md-2 text-center d'>
                 <Autocomplete
                   id='controllable-states-demo'
-                  sx={{ width: 400 }}
+                  sx={{ width: 800,marginTop:2.4 }}
+                  disableClearable
                   value={inputValue.ph_code}
                   onChange={(event, newValue) => {
                     console.log(newValue, 'value of thisss')
@@ -798,7 +817,7 @@ const Carrier = () => {
                         srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
                         alt=''
                       />
-                      {option.label} ({option.code}) +{option.phone}
+                       +{option.phone}
                     </Box>
                   )}
                   renderInput={params => (
@@ -807,7 +826,7 @@ const Carrier = () => {
                       variant='standard'
                       className='textfield'
                       {...params}
-                      label='Choose a country'
+                      // label='Choose a country'
                       InputProps={{
                         ...params.InputProps,
                         startAdornment: inputValue.ph_code ? (

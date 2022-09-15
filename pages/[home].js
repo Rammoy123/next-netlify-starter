@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState, useRef } from 'react'
 import Header from '../components/header/Header'
 import home_banner from '../public/assets/home_banner.webp'
@@ -60,29 +58,25 @@ const Home1 = () => {
     } else {
       setData('Home')
     }
-    if(router.query.home=="free-quotes"){
+    if (router.query.home == 'free-quotes') {
       setShowModal(true)
     }
   }, [router.query])
   useEffect(() => {
-
     // router.push("/")
     if (showModal) {
-      $('#whole_content').addClass("activeHome")
+      $('#whole_content').addClass('activeHome')
       // $('#whole_content').css('-webkit-filter', 'brightness(50%)')
-  
+
       // $('#whole_content').css('background-color', 'rgba(0,0,0,.5)')
       // $('#whole_content').css('-webkit-filter', 'blur(8px)')
-    }
-    else{
-      $('#whole_content').removeClass("activeHome")
+    } else {
+      $('#whole_content').removeClass('activeHome')
     }
   }, [showModal])
   return (
     <>
-    
-
-<div id='whole_content'>
+      <div id='whole_content'>
         {' '}
         {setData.length > 0 && <Header navData={data} />}
         <div className='container height_unset' id='banner'>
@@ -98,12 +92,13 @@ const Home1 = () => {
                 <li> Web &amp; Mobile App Development </li>
                 <li> Marketing Solutions </li>
               </ul>
-              <button onClick={() => {
-              
-              router.push(`/free-quotes`)
-
-              
-            }} className='wt-btn first-button' tabindex='0'>
+              <button
+                onClick={() => {
+                  router.push(`/free-quotes`)
+                }}
+                className='wt-btn first-button'
+                tabindex='0'
+              >
                 Lets Work Together
               </button>
             </div>
@@ -148,11 +143,11 @@ const Home1 = () => {
                       className='wt-btn hnoi_right_button_holder'
                       tabindex='0'
                       onClick={() => {
-              // $('#whole_content').addClass(activeHome)
-              router.push(`/free-quotes`)
+                        // $('#whole_content').addClass(activeHome)
+                        router.push(`/free-quotes`)
 
-              // setShowModal(!showModal)
-            }}
+                        // setShowModal(!showModal)
+                      }}
                     >
                       Contact Us
                     </button>
@@ -499,65 +494,57 @@ const Home1 = () => {
 
               {readMore && (
                 <div className='row'>
-                
-
-              
                   {' '}
-                  {
-                  [...Array(6)].map(()=>{
-                    return(
-                    
-                  <div
-                    _ngcontent-c5=''
-                    className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani hide-show'
-                  >
-                    <div _ngcontent-c5='' className='testimonial-child'>
-                      <div _ngcontent-c5='' className='author-img'>
-                        <img
-                          _ngcontent-c5=''
-                          alt='Client Dan Miller'
-                          height='100'
-                          src={Anthony.src}
-                          width='100'
-                        />
+                  {[...Array(6)].map(() => {
+                    return (
+                      <div
+                        _ngcontent-c5=''
+                        className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani hide-show'
+                      >
+                        <div _ngcontent-c5='' className='testimonial-child'>
+                          <div _ngcontent-c5='' className='author-img'>
+                            <img
+                              _ngcontent-c5=''
+                              alt='Client Dan Miller'
+                              height='100'
+                              src={Anthony.src}
+                              width='100'
+                            />
+                          </div>
+                          <p _ngcontent-c5='' className='content'>
+                            <img
+                              _ngcontent-c5=''
+                              alt='quote-start'
+                              height='12'
+                              src={Comma.src}
+                              width='12'
+                            />
+                            We have worked with Bitpastel now for over 2 years
+                            and we've been really happy with the level of
+                            service and development work we have had done. They
+                            now manage all of our technology needs on an ongoing
+                            basis and nothing ever seems to be an issue with our
+                            requirements. Work is completed on time and to the
+                            highest quality that meets our expectations.
+                            <img
+                              _ngcontent-c5=''
+                              alt='quote-end'
+                              className='last'
+                              height='12'
+                              src={Comma.src}
+                              width='12'
+                            />
+                          </p>
+                          <div _ngcontent-c5='' className='bottom'>
+                            <p _ngcontent-c5=''>Dan Miller</p>
+                            <span _ngcontent-c5=''>
+                              CEO, Young Professionals, UK
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                      <p _ngcontent-c5='' className='content'>
-                        <img
-                          _ngcontent-c5=''
-                          alt='quote-start'
-                          height='12'
-                          src={Comma.src}
-                          width='12'
-                        />
-                        We have worked with Bitpastel now for over 2 years and
-                        we've been really happy with the level of service and
-                        development work we have had done. They now manage all
-                        of our technology needs on an ongoing basis and nothing
-                        ever seems to be an issue with our requirements. Work is
-                        completed on time and to the highest quality that meets
-                        our expectations.
-                        <img
-                          _ngcontent-c5=''
-                          alt='quote-end'
-                          className='last'
-                          height='12'
-                          src={Comma.src}
-                          width='12'
-                        />
-                      </p>
-                      <div _ngcontent-c5='' className='bottom'>
-                        <p _ngcontent-c5=''>Dan Miller</p>
-                        <span _ngcontent-c5=''>
-                          CEO, Young Professionals, UK
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  )
-                })
-                  }
-                
-              
+                    )
+                  })}
                 </div>
               )}
               {!readMore && (
@@ -587,24 +574,22 @@ const Home1 = () => {
           <button
             _ngcontent-c5=''
             className='wt-btn small-padding'
-          //  $("#whole_content").css("overflow-y")
-   onClick={()=>{
-  // $("#whole_content").css("overflow-y","hidden")
+            //  $("#whole_content").css("overflow-y")
+            onClick={() => {
+              // $("#whole_content").css("overflow-y","hidden")
               router.push(`/free-quotes`)
-
-   }}
-              // $('#whole_content').addClass(activeHome)
-              // let position="stories"
+            }}
+            // $('#whole_content').addClass(activeHome)
+            // let position="stories"
             //   setTimeout(()=>{
             //     $('html, body').stop().animate({
             //   scrollTop: $('#' + position).offset().top - (50),
             // }, 2);
 
-
             //   },500)
 
-              // setShowModal(!showModal)
-            
+            // setShowModal(!showModal)
+
             tabindex='0'
           >
             Leave a Message{' '}
@@ -613,18 +598,12 @@ const Home1 = () => {
       </div>
 
       {showModal && (
-        
-        <Modal hideMe={()=>{
-        
-         
-          router.push("/")
-        
-        
-        
-        }} /> 
+        <Modal
+          hideMe={() => {
+            router.push('/')
+          }}
+        />
       )}
-
-        
     </>
   )
 }

@@ -1,234 +1,209 @@
 import React from 'react'
-import '../footer/footer.css'
+import style from './footer.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSolid, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import {
+  faFacebookF,
+  faInstagram,
+  faLinkedinIn,
+  faFontAwesome
+} from '@fortawesome/free-brands-svg-icons'
+import whatsApp from '../../public/assets/whatsapp_dropshadow.png'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <div>
-      <footer _ngcontent-c9='' class='main-footer'>
-        <div _ngcontent-c9='' class='four_box container'>
-          <div _ngcontent-c9='' class='box'>
-            <p _ngcontent-c9='' class='white_grey'>
-              Information
-            </p>
+    <>
+      <div className={style.footerMain}>
+        <div className={`container ${style.fourBox}`}>
+          <div className={style.information}>
+            <p className={`${style.awesomeIcone}`}>information</p>
+
             <a
-              _ngcontent-c9=''
-              class='d-flex align-items-center p_height'
+              className={`d-flex align-items-center ${style.p_height}`}
               href='tel:+442081446579'
             >
-              <span _ngcontent-c9=''>
-                <i
-                  _ngcontent-c9=''
-                  aria-hidden='true'
-                  class='fa fa-phone mr-2 white_grey'
-                ></i>
+              <span>
+                {' '}
+                <FontAwesomeIcon
+                  className={`${style.awesomeIcone} me-2`}
+                  icon={faPhone}
+                />
               </span>
-              <span _ngcontent-c9=''> UK: +44 2081 446579</span>
+
+              <span> UK: +44 2081 446579</span>
             </a>
+
             <a
-              _ngcontent-c9=''
-              class='d-flex align-items-center p_height'
+              className={`d-flex align-items-center ${style.p_height}`}
               href='tel:+1(872)4446679'
             >
-              <span _ngcontent-c9=''>
-                <i
-                  _ngcontent-c9=''
-                  aria-hidden='true'
-                  class='fa fa-phone mr-2 white_grey'
-                ></i>
+              <span>
+                <FontAwesomeIcon
+                  className={`${style.awesomeIcone} me-2`}
+                  icon={faPhone}
+                />
               </span>
-              <span _ngcontent-c9=''> US: +1 (872) 444 6679</span>
+              <span> US: +1 (872) 444 6679</span>
             </a>
             <a
-              _ngcontent-c9=''
-              class='d-flex align-items-center p_height'
+              className={`d-flex align-items-center ${style.p_height}`}
               href='tel:+919830566248'
             >
-              <span _ngcontent-c9=''>
-                <i
-                  _ngcontent-c9=''
-                  aria-hidden='true'
-                  class='fa fa-phone mr-2 white_grey'
-                ></i>
+              <span>
+                <FontAwesomeIcon
+                  className={`${style.awesomeIcone} me-2`}
+                  icon={faPhone}
+                />
               </span>
-              <span _ngcontent-c9=''> IN: +91 9830 566 248</span>
+              <span> IN: +91 9830 566 248</span>
             </a>
+
             <a
-              _ngcontent-c9=''
-              class='d-flex align-items-center p_height'
+              className={`d-flex align-items-center ${style.p_height}`}
               href='mailto:connect@bitpastel.com'
             >
-              <span _ngcontent-c9=''>
-                <i
-                  _ngcontent-c9=''
-                  aria-hidden='true'
-                  class='fa fa-envelope mr-2 white_grey'
-                ></i>
+              <span>
+                <FontAwesomeIcon
+                  className={`${style.awesomeIcone} me-2`}
+                  icon={faEnvelope}
+                />
               </span>
-              <span _ngcontent-c9=''> connect@bitpastel.com</span>
+              <span>connect@bitpastel.com</span>
             </a>
           </div>
-          <div _ngcontent-c9='' class='box'>
-            <p _ngcontent-c9='' class='white_grey'>
-              Quick Links
+
+          <div className={style.information}>
+            <p className={`${style.awesomeIcone}`}>QUICK LINKS</p>
+            <Link href={{ pathname: '/' }}>
+              <a className={`d-flex align-items-center ${style.p_height}`}>
+                <span> Home </span>
+              </a>
+            </Link>
+            <Link href={{ pathname: '/' }}>
+              <a className={`d-flex align-items-center ${style.p_height}`}>
+                <span> Services </span>
+              </a>
+            </Link>
+            <Link href={{ pathname: '/' }}>
+              <a className={`d-flex align-items-center ${style.p_height}`}>
+                <span> About </span>
+              </a>
+            </Link>
+            <Link href={{ pathname: '/' }}>
+              <a className={`d-flex align-items-center ${style.p_height}`}>
+                <span> Stories </span>
+              </a>
+            </Link>
+          </div>
+          <div className={style.information}>
+            <p style={{ color: '#494949' }} className={`${style.awesomeIcone}`}>
+              abbb
             </p>
-            <a
-              _ngcontent-c9=''
-              class='d-flex align-items-center p_height'
-              href='javascript:void(0)'
-            >
-              <span _ngcontent-c9=''>Home</span>
-            </a>
-            <a
-              _ngcontent-c9=''
-              class='d-flex align-items-center p_height'
-              href='javascript:void(0)'
-            >
-              <span _ngcontent-c9=''>Services</span>
-            </a>
-            <a
-              _ngcontent-c9=''
-              class='d-flex align-items-center p_height'
-              href='javascript:void(0)'
-            >
-              <span _ngcontent-c9=''>About</span>
-            </a>
-            <a
-              _ngcontent-c9=''
-              class='d-flex align-items-center p_height'
-              href='javascript:void(0)'
-            >
-              <span _ngcontent-c9=''>Stories</span>
-            </a>
+
+            <Link href={{ pathname: '/' }}>
+              <a className={`d-flex align-items-center ${style.p_height}`}>
+                <span> Team </span>
+              </a>
+            </Link>
+            <Link href={{ pathname: '/' }}>
+              <a className={`d-flex align-items-center ${style.p_height}`}>
+                <span> Clientele </span>
+              </a>
+            </Link>
+            <Link href={{ pathname: '/Carrer' }}>
+              <a className={`d-flex align-items-center ${style.p_height}`}>
+                <span> Careers </span>
+              </a>
+            </Link>
           </div>
-          <div _ngcontent-c9='' class='box'>
-            <a
-              _ngcontent-c9=''
-              class='d-flex align-items-center p_height'
-              href='javascript:void(0)'
-            >
-              <span _ngcontent-c9=''>Team</span>
-            </a>
-            <a
-              _ngcontent-c9=''
-              class='d-flex align-items-center p_height'
-              href='javascript:void(0)'
-            >
-              <span _ngcontent-c9=''>Clientele</span>
-            </a>
-            <a
-              _ngcontent-c9=''
-              class='d-flex align-items-center p_height'
-              href='javascript:void(0)'
-            >
-              <span _ngcontent-c9=''>Careers</span>
-            </a>
-            <a _ngcontent-c9='' class='d-flex align-items-center p_height'>
-              <span _ngcontent-c9=''></span>
-            </a>
-          </div>
-          <div _ngcontent-c9='' class='box'>
-            <p _ngcontent-c9='' class='white_grey'>
-              Connect With Us
-            </p>
-            <div _ngcontent-c9='' class='social_icon_holder'>
+          <div className={style.information}>
+            <p className={`${style.awesomeIcone}`}>CONNECT WITH US</p>
+            <div className={style.social_icon_holder}>
               <div
-                _ngcontent-c9=''
-                class='circle d-flex align-items-center justify-content-center'
+                className={`${style.circle} d-flex align-items-center justify-content-center`}
               >
                 <a
-                  _ngcontent-c9=''
                   aria-label='Linkedin'
                   class='d-flex align-items-center'
                   href='https://www.linkedin.com/company/bitpastel'
                   rel='noopener noreferrer'
                   target='_blank'
                 >
-                  <i _ngcontent-c9='' class='fa fa-linkedin'></i>
+                  <FontAwesomeIcon
+                    className={`${style.awesomeIconeBrand} `}
+                    icon={faLinkedinIn}
+                  />
                 </a>
               </div>
               <div
-                _ngcontent-c9=''
-                class='circle d-flex align-items-center justify-content-center'
+                className={`${style.circle} d-flex align-items-center justify-content-center`}
               >
                 <a
-                  _ngcontent-c9=''
-                  aria-label='instagram'
+                  aria-label='Linkedin'
                   class='d-flex align-items-center'
-                  href='https://www.instagram.com/bitpastel.io/'
+                  href='https://www.instagram.com/bitpastel.io'
                   rel='noopener noreferrer'
                   target='_blank'
                 >
-                  <i _ngcontent-c9='' class='fa fa-instagram'></i>
+                  <FontAwesomeIcon
+                    className={`${style.awesomeIconeBrand} `}
+                    icon={faInstagram}
+                  />
                 </a>
               </div>
               <div
-                _ngcontent-c9=''
-                class='circle d-flex align-items-center justify-content-center'
+                className={`${style.circle} d-flex align-items-center justify-content-center`}
               >
                 <a
-                  _ngcontent-c9=''
-                  aria-label='Facebook'
+                  aria-label='Linkedin'
                   class='d-flex align-items-center'
                   href='https://www.facebook.com/bitpastel'
                   rel='noopener noreferrer'
                   target='_blank'
                 >
-                  <i _ngcontent-c9='' class='fa fa-facebook'></i>
+                  <FontAwesomeIcon
+                    className={`${style.awesomeIconeBrand} `}
+                    icon={faFacebookF}
+                  />
                 </a>
               </div>
             </div>
           </div>
         </div>
-        <div _ngcontent-c9='' class='container mt-4'>
-          <div _ngcontent-c9='' class='footer_copyright'>
-            <small _ngcontent-c9=''>
-              <span _ngcontent-c9=''>
-                {' '}
-                Copyright © Bitpastel Solution Private Limited 2022{' '}
-              </span>
-              <span _ngcontent-c9=''>
-                <span _ngcontent-c9='' class='seperator'>
-                  &nbsp;|&nbsp;
-                </span>{' '}
-                All Rights Reserved{' '}
+        <div className='container mt-4'>
+          <div className={style.footerCopyright}>
+            <small>
+              <span>Copyright © Bitpastel Solution Private Limited 2022</span>
+              <span>
+                <span className='ms-1 me-1'> | </span>
+                All Rights Reserved
               </span>
             </small>
-            <small _ngcontent-c9=''>
-              <a
-                _ngcontent-c9=''
-                routerlink='/privacy-policy'
-                href='#/privacy-policy'
+            <small>
+            <span className='ms-2 me-1'>{`  `}   |    {`   `}</span>
+             
+              <Link
+                href={{
+                  pathname: 'https://www.bitpastel.com/#/privacy-policy'
+                }}
               >
-                <span _ngcontent-c9='' class='pp_divider'>
-                  &nbsp; | &nbsp;
-                </span>
-                Privacy Policy{' '}
-              </a>
+                <a>
+             
+                  Privacy Policy{' '}
+                </a>
+              </Link>
             </small>
           </div>
         </div>
-        <div
-          _ngcontent-c9=''
-          class='whatsapp d-flex justify-content-center align-items-center ripplefb'
-        >
-          <a
-            _ngcontent-c9=''
-            aria-label='whatsapp'
-            class='d-flex justify-content-center align-items-center'
-            href=''
-            target='_blank'
-          >
-            <img
-              _ngcontent-c9=''
-              alt='whatsapp'
-              height='55'
-              src='assets/img/whatsapp_dropshadow.png'
-              width='55'
-            />
-          </a>
+
+
+        <div className={`${style.whatsapp} d-flex justify-content-center align-items-center ripplefb`}>
+<img height='55' width='55' src={whatsApp.src}/>
         </div>
-      </footer>
-    </div>
+      </div>
+    </>
   )
 }
 

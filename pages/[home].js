@@ -13,6 +13,7 @@ import Web_Development from '../public/assets/Web_Development.svg'
 import Cart from '../public/assets/Cart.svg'
 import Anthony from '../public/assets/Anthony-5.jpg'
 import Comma from '../public/assets/comma.png'
+import Footer from '@components/footer/Footer'
 import Link from 'next/link'
 
 import { requirePropFactory } from '@mui/material'
@@ -595,6 +596,8 @@ const Home1 = () => {
             Leave a Message{' '}
           </button>
         </section>
+<Footer/>
+
       </div>
 
       {showModal && (

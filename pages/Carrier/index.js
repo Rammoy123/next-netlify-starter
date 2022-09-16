@@ -21,6 +21,7 @@ import { db } from '@components/Firebase-config'
 import InputAdornment from '@mui/material/InputAdornment'
 import Axios from 'axios'
 
+import Footer from '@components/footer/Footer'
 const Carrier = () => {
   const router = useRouter()
   const [inputValue, setInputValue] = useState({
@@ -604,7 +605,7 @@ const Carrier = () => {
 
   return (
     <>
-    {console.log(navData,"navDataaaa")}
+   
       <Header navData='Carrier' />
 
       <div
@@ -973,6 +974,7 @@ const Carrier = () => {
         className='text-center padding-area d-flex justify-content-center align-items-center common_banner_bottom'
         id='contact'
       ></section>
+      <Footer/>
     </>
   )
 }

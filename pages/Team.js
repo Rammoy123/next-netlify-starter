@@ -114,7 +114,7 @@ height="1000" src={secSectionFirst.src} width="700">
         </section>
 
 
-    {/* <Footer/> */}
+    <Footer/>
 
     </>
   )

@@ -307,14 +307,136 @@ img {
     font-size: .6rem;
     color: #757575;
 }
+/* .......Map-clientile---section... */
+
+.home_footer_upper_section {
+    padding-top: 45px;
+}
+.matrices-grid {
+    display: grid;
+    grid-template-columns: 6fr 2fr;
+}
+h3{
+line-height: 1.5!important;
+color: #2a2a2a;
+font-weight: 400;
+margin: 0 0 30px;
+}
+.map_right_holder {
+    padding-bottom: 19px;
+}
+.satisfied_clientele {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.satisfied_clientele > div {
+    align-self: center;
+}
+.satisfied_clientele p {
+    margin-bottom: 5px;
+    font-size: 23px;
+    font-weight: 700;
+}
+.satisfied_clientele p, .satisfied_clientele span {
+    color: #099;
+    line-height: 1!important;
+}
+.satisfied_clientele span {
+    font-size: 15px;
+    display: block;
+}
+.left_right_angle_one::before {
+    background: url(../public/assets/home_twenty_1.png) 0 0/contain no-repeat;
+    content: "";
+    position: absolute;
+    left: 0;
+    z-index: -56;
+    width: 537px;
+    height: 225px;
+    bottom: -77px;
+}
+.wwu-div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+}
+.wwu-div .lt-side img {
+    -webkit-transform: rotate(-2.5deg);
+    transform: rotate(-2.5deg);
+}
 
 
+.wwu-div img {
+    width: 90%;
+}
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+.wwu-div .rt-side p.tt {
+    font-size: 23px;
+    margin: 0;
+    font-weight: 500;
+    
+}
+.wwu-div .rt-side {
+    align-self: center;
+    font-family: "Source Sans Pro",sans-serif;
+}
+.re {
+    color: #a983db;
+    fill: #a983db;
+}
+.qa{
+    color: #04c3b6;
+    fill: #04c3b6;
+}
+
+.wwu-div .points .checkOnly{
+    font-size: 24px;
+    margin-top: 3px;
+    
+}
+/* .wwu-div .points i {
+    font-size: 24px;
+    margin-top: 3px;
+} */
+.icon-check:before {
+    content: "\e080";
+}
+.wwu-div .rt-side p.pt {
+    font-size: 19px;
+    font-weight: 300 ;
+    color: #2a2a2a ;
+    font-family: Roboto,sans-serif;
+    margin: 0;
+}
+.ml-3, .mx-3 {
+    margin-left: 1rem!important;
+}
+.left_right_angle_two ::before {
+    background: url(../public//assets/home_twenty_two.png) 0 0/contain no-repeat;
+    content: "";
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    width: 537px;
+    height: 225px;
+    bottom: -77px;
+}
+/* h4, p {
+    font-family: Roboto,sans-serif!important;
+} */
+/* .......leave msg section---section... */
 .hide_show_button {
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
 }
+/* ...1st from footer...image section... */
 .position-relative {
     position: relative!important;
 }
@@ -953,3 +1075,78 @@ overflow: hidden;
     place-items: initial;
     text-align: center;
 } */
+.lifeAtBitpastel .common-lb.second-lb {
+    margin-top: -300px;
+}
+
+.lifeAtBitpastel .common-lb.second-lb .content {
+    padding-top: 40%;
+}
+.lifeAtBitpastel .common-lb p.culture {
+    color: #d7b942;
+    margin-bottom: 100px;
+    font-family: "Source Sans Pro",sans-serif!important;
+}
+.lifeAtBitpastel .common-lb p.desc {
+    font-size: 23px;
+    font-family: "Source Sans Pro",sans-serif!important;
+}
+.lifeAtBitpastel .common-lb.fourth-lb {
+    text-align: center;
+}
+p.fun-bp {
+    color: #099;
+    text-align: center;
+    padding: 0 15px;
+    font-size: 49px;
+    font-weight: 700;
+    line-height: 1;
+    font-family: "Source Sans Pro",sans-serif!important;
+    margin: 30px 0;
+}
+.team_lower_section_holder {
+    position: relative;
+    margin-bottom: -150px;
+    margin-top: 30px;
+}
+
+
+.team_lower_section_desk {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 0;
+}
+.team_lower_section_desk .tlsi_left {
+    width: 70%;
+}
+.team_lower_section_desk img {
+    width: 100%;
+    height: auto;
+}
+.tlsi_right_responsive{
+    display :none;;
+}
+.tlsi_right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 25px;
+}
+.team_lower_section_desk .tlsi_right {
+    width: 30%;
+    padding-left: 20px;
+}
+.tlsi_right h2  {
+    font-weight: 700;
+    font-size: 23px;
+}
+.tlsi_right p {
+    font-size: 21px;
+    margin-bottom: 20px;
+}
+.team_lower_section_desk .tlsi_right p {
+    font-size: 14px;
+}
+.padding-area {
+    padding: 45px 0;
+}

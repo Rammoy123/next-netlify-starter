@@ -14,9 +14,19 @@ import Cart from '../public/assets/Cart.svg'
 import Anthony from '../public/assets/Anthony-5.jpg'
 import Comma from '../public/assets/comma.png'
 import Footer from '@components/footer/Footer'
+import clientel from '../public/assets/bitpastel_clientele-1.png'
+import why1 from '../public/assets/why_work_1.webp'
+import why2 from '../public/assets/why_work_2.webp'
+import why3 from '../public/assets/why_work_3.webp'
+import why4 from '../public/assets/why_work_4.webp'
+import why5 from '../public/assets/why_work_5.webp'
 import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSolid, faPhone, faEnvelope,faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { BiCheckCircle } from 'react-icons/bi'
 
-import { requirePropFactory } from '@mui/material'
+
+// import { requirePropFactory } from '@mui/material'
 
 import Modal from './Modal'
 
@@ -78,6 +88,9 @@ const Home1 = () => {
   return (
     <>
       <div id='whole_content'>
+
+
+   
         {' '}
         {setData.length > 0 && <Header navData={data} />}
         <div className='container height_unset' id='banner'>
@@ -567,11 +580,140 @@ const Home1 = () => {
             </div>
           </div>
         </section>
+
+
+<div className="home_footer_upper_section pb-0">
+
+<h3 className="text-center heading-2">
+Satisfied Clientele Worldwide
+
+</h3> 
+<div className="container">
+  <div className="padding-area matrices-grid">
+  <div>
+    <figure>
+    <img  alt="clients wordwide map" className="img-fluid" height="424" src={clientel.src} width="854"/>
+    </figure>
+  </div>
+  <div className="container d-flex justify-content-end map_right_holder">
+<div className="satisfied_clientele">
+  <div className="child text-center">
+  <p>800</p>
+  <span className='text-uppercase'>Clients</span>
+
+  </div>
+  <div className="child text-center">
+  <p>1000</p>
+  <span className='text-uppercase'>Projects</span>
+
+  </div>
+  <div className="child text-center">
+  <p>30M</p>
+  <span className='text-uppercase'>LINES OF CODE</span>
+
+  </div>
+  <div className="child text-center">
+  <p>30</p>
+  <span className='text-uppercase'>Countries</span>
+
+  </div>
+</div>
+
+</div>
+  </div>
+</div>
+
+</div>
+<div className="pt-5" id='about'>
+
+<h3  className="text-center heading-2">Why work with us?</h3>
+
+
+
+</div>
+<div className="padding-area">
+  <div className="wwu-grid">
+ <div className="left_right_angle_one  position-relative">
+ <div className="container">
+  <div className="wwu-div mb-3">
+ <div className='lt-side d-flex justify-content-center align-items-center'>
+
+ <img _ngcontent-c5="" alt="Reliable Engineering image" class="img-fluid fadeIn" height="380" src={why1.src} width="500"/>
+ </div>
+ <div className="rt-side">
+ <p className="re mb-4 tt">
+ Reliable Engineering
+ </p>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+ <BiCheckCircle className='re checkOnly'/>
+ <p _ngcontent-c5="" className="ml-3 pt">Multifunctional engineering teams with deep expertise</p>
+
+ </div>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+<BiCheckCircle className='re checkOnly'/>
+ <p _ngcontent-c5="" className="ml-3 pt">Multifunctional engineering teams with deep expertise</p>
+
+ </div>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+ <BiCheckCircle className='re checkOnly'/>
+ <p _ngcontent-c5="" className="ml-3 pt">Multifunctional engineering teams with deep expertise</p>
+
+ </div>
+
+ </div>
+
+ 
+
+
+  </div>
+ </div>
+
+ </div>
+ <div className="left_right_angle_two  position-relative">
+ <div className="container">
+  <div className="wwu-div mb-3">
+  <div className="rt-side">
+ <p className="qa mb-4 tt">
+ Reliable Engineering
+ </p>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+ <BiCheckCircle className='qa checkOnly'/>
+ <p className="ml-3 pt">Multifunctional engineering teams with deep expertise</p>
+
+ </div>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+ <BiCheckCircle className='qa checkOnly'/>
+ <p className="ml-3 pt">Multifunctional engineering teams with deep expertise</p>
+
+ </div>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+ <BiCheckCircle className='qa checkOnly'/>
+ <p  className="ml-3 pt">Multifunctional engineering teams with deep expertise</p>
+
+ </div>
+
+ </div>
+ <div className='lt-side d-flex justify-content-center align-items-center'>
+
+<img alt="Reliable Engineering image" class="img-fluid fadeIn" height="380" src={why2.src} width="500"/>
+</div>
+
+  </div>
+  </div>
+
+ </div>
+ 
+ 
+  </div>
+</div>
+
+
         <section
-          _ngcontent-c5=''
+      
           className='text-center  d-flex justify-content-center align-items-center common_banner_bottom'
           id='contact'
         >
+        
           <button
             _ngcontent-c5=''
             className='wt-btn small-padding'

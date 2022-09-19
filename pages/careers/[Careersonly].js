@@ -22,7 +22,7 @@ import InputAdornment from '@mui/material/InputAdornment'
 import Axios from 'axios'
 
 import Footer from '@components/footer/Footer'
-const Carrier = () => {
+const careerOnly = () => {
   const router = useRouter()
   const [inputValue, setInputValue] = useState({
     name: '',
@@ -659,7 +659,7 @@ const Carrier = () => {
                   style={{ border: 'none' }}
                   onClick={() => {
                     router.push({
-                      pathname: '/Carrier/carrier-detail',
+                      pathname: '/careers/careers-detail',
                       query: { slug: arr.id_ }
                     })
                   }}
@@ -979,7 +979,7 @@ const Carrier = () => {
   )
 }
 
-export default Carrier
+export default careerOnly
 
 {
   /* <div class="card-body">

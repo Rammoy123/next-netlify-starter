@@ -9,6 +9,36 @@ import $ from 'jquery'
 
 const Header = ({ navData }) => {
   const router = useRouter()
+  const callTop=(goToData)=>{
+   const position=goToData
+    setTimeout(() => {
+      $('html, body').animate(
+        {
+          scrollTop: $('#' + position).offset().top - 100
+        },
+        2
+      )
+    }, 120)
+
+    
+  }
+  useEffect(()=>{
+    console.log(router)
+ if(router.query.Careersonly=="oppertunity"){
+callTop('cardOnlySec')
+
+ }
+ else if(router.query.state=="make_services"){
+  callTop('services')
+ }
+ else if(router.query.state=="make_stories"){
+  callTop('stories')
+ }
+
+
+
+  },[router.query])
+ 
 
   console.log(navData, 'headerdata')
   useEffect(() => {
@@ -159,10 +189,10 @@ const Header = ({ navData }) => {
                   <li className={style.liItem}>
                     <Link
                       href={{
-                        pathname: '/Carrier'
+                        pathname: '/careers'
                       }}
                     >
-                      <a id='make_carrier'>Carrears</a>
+                      <a id='make_carrier'>Careers</a>
                     </Link>
                   </li>
                   <li className={style.liItem}>

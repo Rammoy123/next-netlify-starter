@@ -22,6 +22,7 @@ import InputAdornment from '@mui/material/InputAdornment'
 import Axios from 'axios'
 
 import Footer from '@components/footer/Footer'
+import { BiCheckCircle } from 'react-icons/bi'
 const careerOnly = () => {
   const router = useRouter()
   const [inputValue, setInputValue] = useState({
@@ -613,24 +614,24 @@ const careerOnly = () => {
         className='container career_banner_holder'
         id='banner'
       >
-        <div _ngcontent-c13='' className='hero-content'>
-          <div _ngcontent-c13='' className='left-side'>
-            <h1 _ngcontent-c13=''>
+        <div  className='hero-content'>
+          <div  className='left-side'>
+            <h1 >
               Work @ Bitpastel <br />
               on Awesome Projects
             </h1>
-            <ul _ngcontent-c13=''>
-              <li _ngcontent-c13=''>Dynamic Teams working on new ideas</li>
-              <li _ngcontent-c13=''>Enjoy a Happy work enviroment</li>
-              <li _ngcontent-c13=''>Fast-track career progress</li>
+            <ul >
+              <li ><BiCheckCircle className='first-check '/>Dynamic Teams working on new ideas</li>
+              <li ><BiCheckCircle className='first-check '/>Enjoy a Happy work enviroment</li>
+              <li ><BiCheckCircle className='first-check '/>Fast-track career progress</li>
             </ul>
             <button onClick={goCarrier} className='wt-btn'>
               Explore Opportunities
             </button>
           </div>
-          <div _ngcontent-c13='' className='right-side'>
+          <div  className='right-side'>
             <img
-              _ngcontent-c13=''
+              
               alt='Work at Bitpastel on Awesome Projects'
               height='650'
               src={carrierBanner.src}
@@ -719,7 +720,7 @@ const careerOnly = () => {
           className='contact-form ng-pristine ng-invalid ng-touched'
         >
           <div className='row text-center'>
-            <div className='col-lg-6 col-md-6 relativeError'>
+            <div className='col-lg-6 col-md-6 inputForm relativeError'>
               <input
                 type='text'
                 className='form-controller'
@@ -736,7 +737,7 @@ const careerOnly = () => {
               <div className='formerror'>{<p>{formerror.Name} </p>}</div>
             </div>
 
-            <div className='col-lg-6  col-md-6 relativeError'>
+            <div className='col-lg-6 inputForm col-md-6 relativeError'>
               <input
                 className='form-controller'
                 id='email'
@@ -851,7 +852,7 @@ const careerOnly = () => {
                   )}
                 />
               </div>
-              <div className='right-side col-md-8 relativeError'>
+              <div className='right-side col-md-8 inputForm relativeError'>
                 <input
                   type='text'
                   id='phone'
@@ -871,7 +872,7 @@ const careerOnly = () => {
           </div>
 
           <div className='row text-center'>
-            <div className='col-lg-6 col-md-6 relativeError'>
+            <div className='col-lg-6 col-md-6 inputForm relativeError'>
               <input
                 type='text'
                 className='form-controller'
@@ -890,7 +891,7 @@ const careerOnly = () => {
               </div>
             </div>
 
-            <div className='col-lg-6  col-md-6'>
+            <div className='col-lg-6 inputForm col-md-6'>
               <input
                 className='form-controller'
                 type='text'
@@ -903,7 +904,7 @@ const careerOnly = () => {
           </div>
 
           <div className='row text-center'>
-            <div className='col-lg-6 col-md-6'>
+            <div className='col-lg-6 inputForm col-md-6'>
               <input
                 type='text'
                 className='form-controller'
@@ -916,7 +917,7 @@ const careerOnly = () => {
               />
             </div>
 
-            <div className='col-lg-6  col-md-6'>
+            <div className='col-lg-6 inputForm  col-md-6'>
               <input
                 className='form-controller'
                 type='text'
@@ -928,7 +929,7 @@ const careerOnly = () => {
             </div>
           </div>
           <div className='row'>
-            <div className='col-lg-12  col-md-12 relativeError'>
+            <div className='col-lg-12 inputForm col-md-12 relativeError'>
               <input
                 // className='name2'
                 className='form-controller'

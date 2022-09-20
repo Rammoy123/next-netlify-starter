@@ -12,12 +12,13 @@ const Header = ({ navData }) => {
   const callTop=(goToData)=>{
    const position=goToData
     setTimeout(() => {
-      $('html, body').animate(
-        {
-          scrollTop: $('#' + position).offset().top - 100
-        },
-        2
-      )
+      scrollTop: $('#' + position).offset().top - 100
+      // $('html, body').animate(
+      //   {
+      //     scrollTop: $('#' + position).offset().top - 100
+      //   },
+      //   2
+      // )
     }, 120)
 
     
@@ -180,7 +181,7 @@ callTop('cardOnlySec')
                     <Link
                       href={{
                         pathname: '/Team'
-                      }}
+                      }} scroll={false}
                     >
                       <a id='make_team'>Team</a>
                     </Link>
@@ -196,6 +197,7 @@ callTop('cardOnlySec')
                     </Link>
                   </li>
                   <li className={style.liItem}>
+                  {/* <Link href={{pathanme:'/free-quotes'}}> */}
                     <button
                       onClick={() => {
                         router.push(`/free-quotes`)
@@ -204,6 +206,7 @@ callTop('cardOnlySec')
                     >
                       Get In Touch
                     </button>
+                    {/* </Link> */}
                   </li>
                 </ul>
               </nav>

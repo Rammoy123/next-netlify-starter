@@ -1,4 +1,4 @@
-import React, { useEffect,useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import $ from 'jquery'
 import BitpastelNew from '../public/assets/bitpastel_Clientele_5_new.png'
 
@@ -7,55 +7,41 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import { useState } from 'react'
 import InputAdornment from '@mui/material/InputAdornment'
-import { lightGreen } from '@mui/material/colors'
-import { grey,purple } from '@mui/material/colors'
-import { createTheme } from '@mui/material/styles';
-import  Axios  from 'axios'
 
+import { grey, purple } from '@mui/material/colors'
+import { createTheme } from '@mui/material/styles'
+import modal_1 from '../public/assets/modal-1.png'
+import modal_2 from '../public/assets/modal-2.png'
+import modal_3 from '../public/assets/modal-3.png'
+import modal_4 from '../public/assets/modal-4.png'
 
-
-
-
-const style= theme => ({
-  multilineColor:{
-      color:'red'
+const style = theme => ({
+  multilineColor: {
+    color: 'red'
   }
-});
-const Modal = ({hideMe}) => {
-
+})
+const Modal = ({ hideMe }) => {
   const theme = createTheme({
     palette: {
       primary: {
         main: purple[500]
-
       }
-  
-    },
-  });
+    }
+  })
 
+  const classes1 = style()
 
-
-
-  const classes1 = style();
-
-
-
- 
   const focus = useRef()
   useEffect(() => {
     function handleClickOutside (event) {
-      console.log(event.target.role,"roleee")
+      console.log(event.target.role, 'roleee')
       // console.log(focus.current)
       if (focus.current && !focus.current.contains(event.target)) {
-       
-     
-        if(event.target.role!="option"){
+        if (event.target.role != 'option') {
           hideMe()
-         
-        
         }
         // if()
-// hideMe()
+        // hideMe()
         // setHandFocus(false)
       }
     }
@@ -95,9 +81,9 @@ const Modal = ({hideMe}) => {
     name: '',
     email: '',
     phone: '',
-    option1:'',
+    option1: '',
     ph_code: '',
- message:'',
+    message: '',
     textChange1: '',
     textChange2: ''
   })
@@ -117,7 +103,7 @@ const Modal = ({hideMe}) => {
 
       [name]: value
     })
-    console.log(inputValue,"inputValue")
+    console.log(inputValue, 'inputValue')
   }
   const handleClick = e => {
     console.log('form this')
@@ -155,8 +141,6 @@ const Modal = ({hideMe}) => {
     } else if (!regxPhone.test(values.phone)) {
       error.Phone = 'Phone no must be of 10 digits !'
     }
-
-
 
     return error
   }
@@ -585,7 +569,6 @@ const Modal = ({hideMe}) => {
     { code: 'ZW', label: 'Zimbabwe', phone: '263' }
   ]
 
-  
   // useEffect(() => {
 
   //   Axios.get(
@@ -611,10 +594,9 @@ const Modal = ({hideMe}) => {
   }, [formerror])
   const services = ['Shopify Store', 'Website', 'Mobile App', 'UI/UX Design']
   return (
-    <div className='parent' style={{overflowY:"hidden"}} >
+    <div className='parent' style={{ overflowY: 'hidden' }}>
       <div
         className='modal fade show'
-       
         data-bs-backdrop='false'
         id='exampleModalLong'
         tabindex='-1'
@@ -623,13 +605,11 @@ const Modal = ({hideMe}) => {
         aria-modal='true'
         role='dialog'
       >
-        <div className='modal-dialog'    >
-        
-          <div className='modal-content'ref={focus}>
-        
+        <div className='modal-dialog'>
+          <div className='modal-content animated zoomIn' ref={focus} >
             {/* style={{minHeight: "1500px"}} */}
             <div className='modal-body'>
-              <div className='container' >
+              <div className='container'>
                 <div className='row '>
                   <div _ngcontent-c1='' className='col-md-6'>
                     <div className='full-height'>
@@ -641,6 +621,74 @@ const Modal = ({hideMe}) => {
                         src={BitpastelNew.src}
                         width='584'
                       />
+                      <div className='map-bottom'>
+                        <h3 class='text-center'>
+                          {' '}
+                          Satisfied Clientele Worldwide{' '}
+                        </h3>
+                        <div className='client-area'>
+                          <div className='area-one animated'>
+                            <img
+                              className='map-icons'
+                              alt=''
+                              src={modal_1.src}
+                            />
+                            <h6 className='ng-tns-c1-0'>800</h6>
+                            <p className='ng-tns-c1-0'>Clients</p>
+                          </div>
+                          <div className='area-two animated'>
+                            <img
+                              className='map-icons'
+                              alt=''
+                              src={modal_2.src}
+                            />
+                            <h6 className='ng-tns-c1-0'>1000</h6>
+                            <p className='ng-tns-c1-0'>Projects</p>
+                          </div>
+                          <div className='area-three animated'>
+                            <img
+                              className='map-icons'
+                              alt=''
+                              src={modal_3.src}
+                            />
+                            <h6 className='ng-tns-c1-0'>30M</h6>
+                            <p className='ng-tns-c1-0'>Lines of Code</p>
+                          </div>
+                          <div className='area-four animated'>
+                            <img
+                              className='map-icons'
+                              alt=''
+                              src={modal_4.src}
+                            />
+                            <h6 className='ng-tns-c1-0'>30</h6>
+                            <p className='ng-tns-c1-0'>Countries</p>
+                          </div>
+                        </div>
+                        <div className='text-center calling-area calling-desk-area'>
+                          <div className='new_popup_buttom'>
+                            <div className='new_popup_buttom_holder'>
+                              <a
+                                
+                                class='number_holder'
+                                href='tel:+442081446579'
+                              >
+                                UK: +44 2081 446579
+                              </a>
+                            </div>
+                          </div>
+                          <div className='new_popup_buttom'>
+                            <div className='new_popup_buttom_holder'>
+                            <a  class="number_holder" href="tel:+1(872)4446679">US: +1 (872) 444 6679  </a>{'  '}
+                            </div>
+
+                          </div>
+                          <div className='new_popup_buttom_last'>
+                            <div className='new_popup_buttom_holder'>
+                            <a  class="number_holder" href="tel:+919830566248">IN: +91 9830 566 248</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div _ngcontent-c1='' className='col-md-6'>
@@ -649,8 +697,8 @@ const Modal = ({hideMe}) => {
                         <form onSubmit={handleClick}>
                           <div className='row row-modal-p '>
                             <div className='modal-para col-md-4  position-r'>
-                            <div className='want-parent' >
-                              <p className='p-item'>I Want </p>
+                              <div className='want-parent'>
+                                <p className='p-item'>I want </p>
                               </div>
                             </div>
                             <div className='modal-auto col-md-8'>
@@ -680,14 +728,11 @@ const Modal = ({hideMe}) => {
                                 // sx={{ width: 200 }}
                                 renderInput={params => (
                                   <TextField
-                                   
                                     variant='standard'
                                     {...params}
-                                    color="primary" 
+                                    color='primary'
                                     // focused
-                                    label="Select"
-                                    
-                                    
+                                    label='select'
                                   />
                                 )}
                               />
@@ -697,7 +742,7 @@ const Modal = ({hideMe}) => {
                             <div className='modal-auto col-md-12 relativeError'>
                               <input
                                 type='text'
-                                className='form-controller'
+                                className='form-controller modal-form'
                                 id='name'
                                 name='name'
                                 value={inputValue.name}
@@ -707,12 +752,14 @@ const Modal = ({hideMe}) => {
                                   setFormError({ ...formerror, Name: '' })
                                 }}
                               />
-                               <div className='formerror'>{<p>{formerror.Name} </p>}</div>
+                              <div className='formerror'>
+                                {<p>{formerror.Name} </p>}
+                              </div>
                             </div>
 
                             <div className='modal-auto col-md-12 relativeError'>
                               <input
-                                className='form-controller'
+                                className='form-controller modal-form'
                                 id='email'
                                 type='text'
                                 placeholder='Email*'
@@ -723,7 +770,9 @@ const Modal = ({hideMe}) => {
                                   setFormError({ ...formerror, Email: '' })
                                 }}
                               />
-                               <div className='formerror'>{<p>{formerror.Email} </p>}</div>
+                              <div className='formerror'>
+                                {<p>{formerror.Email} </p>}
+                              </div>
                             </div>
                           </div>
                           <div className='phone-sec'>
@@ -731,17 +780,24 @@ const Modal = ({hideMe}) => {
                               <div className='phone-left col-md-4 text-center d'>
                                 <Autocomplete
                                   id='controllable-states-demo'
-                                  sx={{ width: 400,marginTop:0.5,outline:"none",color:"transparent", outline:"none",background:"transparent" }}
-                                
-                                  
+                                  sx={{
+                                    width: 400,
+                                    marginTop: -1.2,
+                                    outline: 'none',
+                                    color: 'transparent',
+                                    outline: 'none',
+                                    background: 'transparent'
+                                  }}
                                   // ListboxProps={{sx:{right:}}}
-                                
-                                 className='in'
+
+                                  className='in'
                                   value={inputValue.ph_code}
-                                 
-                                   disableClearable
+                                  disableClearable
                                   onChange={(event, newValue) => {
-                                    console.log(event.target.parentElement.id, 'value of thisss')
+                                    console.log(
+                                      event.target.parentElement.id,
+                                      'value of thisss'
+                                    )
                                     setInputValue({
                                       ...inputValue,
                                       ph_code: newValue
@@ -761,7 +817,6 @@ const Modal = ({hideMe}) => {
                                     })
                                   }}
                                   getOptionLabel={option => ``}
-                    
                                   options={countries}
                                   autoHighlight
                                   fullWidth={false}
@@ -791,12 +846,10 @@ const Modal = ({hideMe}) => {
                                       className='textfield'
                                       // color='secondary'
                                       //  focused
-                                       
-                                       
+
                                       {...params}
                                       // disableClearable
                                       label='Select'
-
                                       InputProps={{
                                         //  style: { color: "red" } ,
                                         ...params.InputProps,
@@ -824,9 +877,8 @@ const Modal = ({hideMe}) => {
                               <div className='right-side col-md-8 relativeError'>
                                 <input
                                   type='text'
-                                 
                                   id='phone'
-                                  className='form-controller'
+                                  className='form-controller modal-form'
                                   name='phone'
                                   value={inputValue.phone}
                                   placeholder='Phone No*'
@@ -836,7 +888,9 @@ const Modal = ({hideMe}) => {
                                     setFormError({ ...formerror, Phone: '' })
                                   }}
                                 />
-                                <div className='formerror'>{<p>{formerror.Phone} </p>}</div>
+                                <div className='formerror'>
+                                  {<p>{formerror.Phone} </p>}
+                                </div>
                               </div>
                             </div>
 
@@ -844,7 +898,7 @@ const Modal = ({hideMe}) => {
                               <input
                                 type='text'
                                 id='message'
-                                className='form-controller'
+                                className='form-controller modal-form'
                                 name='message'
                                 value={inputValue.message}
                                 placeholder='Message(optional)'
@@ -858,7 +912,7 @@ const Modal = ({hideMe}) => {
                             </div>
                           </div>
 
-                     <div _ngcontent-c1='' className='text-center'>
+                          <div _ngcontent-c1='' className='text-center'>
                             <button
                               _ngcontent-c1=''
                               className='btn btn-secondary send-btn'
@@ -880,6 +934,10 @@ const Modal = ({hideMe}) => {
                               </a>
                             </p>
                           </div>
+
+                        <div  className='text-center calling-area another chatB calling-mob-area'>
+                        <a  className="btn btn-secondary send-btn chatWUs" target="_blank" href="https://wa.me/919830566248/?text=Hey...+I+would+like+to+have+a+quick+chat+with+you.&amp;type=phone_number&amp;app_absent=0"> Chat with Us </a>
+                        </div>
                         </form>
                       </div>
                     </div>
@@ -945,6 +1003,8 @@ const Modal = ({hideMe}) => {
                   </div> */}
                 </div>
               </div>
+
+
             </div>
           </div>
         </div>

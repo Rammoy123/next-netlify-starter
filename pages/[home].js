@@ -21,8 +21,7 @@ import why3 from '../public/assets/why_work_3.webp'
 import why4 from '../public/assets/why_work_4.webp'
 import why5 from '../public/assets/why_work_5.webp'
 import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSolid, faPhone, faEnvelope,faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+
 import { BiCheckCircle } from 'react-icons/bi'
 
 
@@ -102,9 +101,9 @@ const Home1 = () => {
                 for your business
               </h1>
               <ul>
-                <li> Shopify Plus &amp; eCom Development </li>
-                <li> Web &amp; Mobile App Development </li>
-                <li> Marketing Solutions </li>
+                <li> <BiCheckCircle className='first-check '/> Shopify Plus &amp; eCom Development </li>
+                <li> <BiCheckCircle className='first-check '/> Web &amp; Mobile App Development </li>
+                <li> <BiCheckCircle className='first-check '/> Marketing Solutions </li>
               </ul>
               <button
                 onClick={() => {
@@ -702,6 +701,135 @@ Satisfied Clientele Worldwide
   </div>
 
  </div>
+ <div className="left_right_angle_three  position-relative">
+ <div className="container">
+  <div className="wwu-div mb-3">
+ <div className='lt-side d-flex justify-content-center align-items-center'>
+
+ <img  alt="Reliable Engineering image" class="img-fluid fadeIn" height="380" src={why3.src} width="500"/>
+ </div>
+ <div className="rt-side">
+ <p className="ced mb-4 tt">
+ Cool & Elegant Designs
+ </p>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+ <BiCheckCircle className='ced checkOnly'/>
+ <p className="ml-3 pt">Dedicated design studio with a talented team
+
+
+
+</p>
+
+ </div>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+<BiCheckCircle className='ced checkOnly'/>
+ <p className="ml-3 pt">Specialists in high-quality UI/UX</p>
+
+ </div>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+ <BiCheckCircle className='ced checkOnly'/>
+ <p  className="ml-3 pt">Experts in Social & Digital Marketing creatives</p>
+
+ </div>
+
+ </div>
+
+ 
+
+
+  </div>
+ </div>
+
+ </div>
+ <div className="left_right_angle_four  position-relative">
+ <div className="container">
+  <div className="wwu-div mb-3">
+  <div className="rt-side">
+ <p className="idp mb-4 tt">
+ Idea & Data Protection
+ </p>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+ <BiCheckCircle className='idp checkOnly'/>
+ <p className="ml-3 pt">Non Disclosure Agreements</p>
+
+ </div>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+ <BiCheckCircle className='idp checkOnly'/>
+ <p className="ml-3 pt">Stringent Data Privacy</p>
+
+ </div>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+ <BiCheckCircle className='idp checkOnly'/>
+ <p  className="ml-3 pt">Best-in-class Secure Coding Practices
+
+</p>
+
+ </div>
+
+ </div>
+ <div className='lt-side d-flex justify-content-center align-items-center'>
+
+<img alt="Reliable Engineering image" class="img-fluid fadeIn" height="380" src={why4.src} width="500"/>
+</div>
+
+  </div>
+  </div>
+
+ </div>
+ <div className="left_right_angle_five  position-relative">
+ <div className="container">
+  <div className="wwu-div mb-3">
+ <div className='lt-side d-flex justify-content-center align-items-center'>
+
+ <img  alt="Reliable Engineering image" class="img-fluid fadeIn" height="380" src={why5.src} width="500"/>
+ </div>
+ <div className="rt-side">
+ <p className="ad mb-4 tt">
+ 
+Agile Delivery
+ </p>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+ <BiCheckCircle className='ad checkOnly'/>
+ <p className="ml-3 pt">Delivery on demanding timelines
+
+
+
+
+
+</p>
+
+ </div>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+<BiCheckCircle className='ad checkOnly'/>
+ <p className="ml-3 pt">
+Extensive use of new-age communication tools</p>
+
+ </div>
+ <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+ <BiCheckCircle className='ad checkOnly'/>
+ <p  className="ml-3 pt">
+Fast-paced response across all timezones</p>
+
+ </div>
+
+ </div>
+
+ 
+
+
+  </div>
+ </div>
+
+ </div>
+
+
+
+
+
+
+
+
+
  
  
   </div>

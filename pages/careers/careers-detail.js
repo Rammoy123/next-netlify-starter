@@ -830,7 +830,7 @@ const goToApply=(e)=>{
           className='contact-form ng-pristine ng-invalid ng-touched'
         >
           <div className='row text-center'>
-            <div className='col-lg-6 col-md-6 relativeError'>
+            <div className='col-lg-6 col-md-6 inputForm relativeError'>
               <input
                 type='text'
                 className='form-controller'
@@ -847,7 +847,7 @@ const goToApply=(e)=>{
               <div className='formerror'>{<p>{formerror.Name} </p>}</div>
             </div>
 
-            <div className='col-lg-6  col-md-6 relativeError'>
+            <div className='col-lg-6 inputForm  col-md-6 relativeError'>
               <input
                 className='form-controller'
                 id='email'
@@ -925,7 +925,7 @@ const goToApply=(e)=>{
                   )}
                 />
               </div>
-              <div className='right-side col-md-8 relativeError'>
+              <div className='right-side col-md-8 inputForm relativeError'>
                 <input
                   type='text'
                   id='phone'
@@ -944,7 +944,7 @@ const goToApply=(e)=>{
           </div>
 
           <div className='row text-center'>
-            <div className='col-lg-6 col-md-6 relativeError'>
+            <div className='col-lg-6 col-md-6 inputForm relativeError'>
               <input
                 type='text'
                 className='form-controller'
@@ -962,7 +962,7 @@ const goToApply=(e)=>{
               </div>
             </div>
 
-            <div className='col-lg-6  col-md-6'>
+            <div className='col-lg-6  col-md-6 inputForm'>
               <input
                 className='form-controller'
                 type='text'
@@ -975,7 +975,7 @@ const goToApply=(e)=>{
           </div>
 
           <div className='row text-center'>
-            <div className='col-lg-6 col-md-6'>
+            <div className='col-lg-6 col-md-6 inputForm'>
               <input
                 type='text'
                 className='form-controller'
@@ -987,7 +987,7 @@ const goToApply=(e)=>{
               />
             </div>
 
-            <div className='col-lg-6  col-md-6'>
+            <div className='col-lg-6  col-md-6 inputForm'>
               <input
                 className='form-controller'
                 type='text'
@@ -999,7 +999,7 @@ const goToApply=(e)=>{
             </div>
           </div>
           <div className='row'>
-            <div className='col-lg-12  col-md-12 relativeError'>
+            <div className='col-lg-12  col-md-12 relativeError inputForm'>
               <input
                 className='form-controller'
                 type='file'

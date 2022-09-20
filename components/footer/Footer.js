@@ -200,7 +200,8 @@ const Footer = () => {
 
 
         <div className={`${style.whatsapp} d-flex justify-content-center align-items-center ripplefb`}>
-<img height='55' width='55' src={whatsApp.src}/>
+{/* <img height='55' width='55' src={whatsApp.src}/> */}
+<a  aria-label="whatsapp" className="d-flex justify-content-center align-items-center" href="https://wa.me/919830566248/?text=Hey...+I+would+like+to+have+a+quick+chat+with+you.&amp;type=phone_number&amp;app_absent=0" target="_blank"><img height='55' width='55' src={whatsApp.src}/></a>
         </div>
       </div>
     </>

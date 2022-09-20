@@ -26,6 +26,7 @@ import teamLastResponsive from '../public/assets/team_last_responsive.webp'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { BiCheckCircle } from 'react-icons/bi'
 const Team = () => {
   const router=useRouter()
     return (
@@ -41,9 +42,9 @@ const Team = () => {
               makes it happen
             </h1>
             <ul>
-              <li> We are serious about Quality </li>
-              <li> We are passionate about our Craft </li>
-              <li>Always Super-charged... Super-fast… </li>
+              <li><BiCheckCircle className='first-check '/> We are serious about Quality </li>
+              <li><BiCheckCircle className='first-check '/> We are passionate about our Craft </li>
+              <li><BiCheckCircle className='first-check '/>Always Super-charged... Super-fast… </li>
             </ul>
             <button
               onClick={() => {

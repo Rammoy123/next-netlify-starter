@@ -560,6 +560,106 @@ margin: 0 0 30px;
 }
 
 /* ............carrier-card........... */
+.m-bot-30 {
+    margin-bottom: 30px;
+}
+
+.body-text {
+    color: #2a2a2a;
+    font-size: 19px;
+    line-height: 1.5!important;
+    font-family: Roboto,sans-serif;
+}
+.body-text .job-desc {
+    color: #099;
+}
+.body-text strong a{
+
+        text-decoration: none;
+        background-color: transparent !important;
+        color: #099 !important;
+        cursor: pointer;
+    
+}
+
+
+.carrier_card {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 30px;
+    width: 80%;
+    margin: 0 auto;
+}
+.job-thumbnail {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 1px 1px 4px #ccc;
+    transition: all .5s ease;
+}
+.color-grad{
+    background: linear-gradient(-45deg, rgb(0, 103, 183), rgb(140, 13, 99));
+}
+.carrier_card_heading {
+    padding: 10px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.job-thumbnail .carrier_card_heading p {
+    color: #fff!important;
+    font-size: 19px!important;
+    font-family: "Source Sans Pro",sans-serif!important;
+    margin: 0;
+    text-align: center;
+    line-height: 1.1!important;
+}
+.carrier_card_body {
+    padding: 30px 20px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 180px;
+}
+.cip_holder {
+    margin-right: 12px;
+    /* margin-top: 3px; */
+}
+.job-thumbnail .carrier_card_body p {
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-family: Roboto,sans-serif;
+    line-height: 1.8!important;
+}
+.carrier_card_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+.ripple1, .ripple2, .ripple3, .ripplefb, .rippletags {
+    position: relative;
+}
+.ripple1:before, .ripple2:before, .ripple3:before {
+    border: 10px solid #23b428;
+}
+.ripple1:before, .ripple2:before, .ripple3:before, .ripplefb:before, .rippletags:before {
+    content: '';
+    position: absolute;
+    border-radius: 5px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-animation-duration: 1s !important;
+    animation-duration: 1s !important;
+}
+
+
+
+
+
+
 .a
 {
 
@@ -678,10 +778,24 @@ padding-bottom: 30px;
     padding: 80px 0px 50px
 
 }
+.jobform-area h2 {
+    font-size: 33px!important;
+    font-weight:bold!important;
+    font-family: "Source Sans Pro",sans-serif!important;
+    margin: 0 0 30px;
+}
 .contact-form {
     width: 60%;
-    margin: 50px auto 50px;
+    margin: 0 auto 50px;
 }
+
+
+/* h1, h2, h3, h4, h5, h6 {
+    line-height: 1.5!important;
+   
+    font-weight: 400;
+    margin: 0 0 30px;
+} */
 
 .inputForm .form-controller{
 padding: 8px 4px;
@@ -693,7 +807,7 @@ border-top: transparent;
 border-right: transparent;
 border-left: transparent;
 border-bottom-width: 1px;
-font-family: "Source Sans Pro",sans-serif;
+/* font-family: "Source Sans Pro",sans-serif; */
 border-radius: 0;
 color: #555;
 transition: border-color ease-in-out .15s;
@@ -702,7 +816,7 @@ font-weight: 300;
 display: block;
 width: 100%;
 height: calc(1.5em + 0.75rem + 2px);
-margin-top: 10px;
+margin-top: 0px;
 }
 
 input:focus {
@@ -752,6 +866,16 @@ border-right: transparent;
 border-left: transparent;
 border-bottom-width: 1px;
  }
+ .hiden{
+    display:none !important;
+ }
+ .paperClip{
+    color: #b3b3b3;
+    margin-right: 10px;
+    transform: rotate(-45deg);
+    /* font-size: 25px; */
+ }
+
 
  .agree-policy {
     font-size: 10px!important;
@@ -822,10 +946,7 @@ h3{
     display: flex;
 }
 
-.cip_holder {
-    margin-right: 12px;
-    /* margin-top: 3px; */
-}
+
 .career_icon_pic {
     width: 20px;
     margin-right: 7px;
@@ -957,6 +1078,10 @@ background: #23b428!important;
     /* padding: 0px 10px; */
     font-weight: bold;
 }
+
+.error-modal{
+    bottom:-15px !important
+}
 /* 
 ...modal section...... */
 .modal-form {
@@ -996,8 +1121,19 @@ background: #23b428!important;
 }
 .zoomIn {
     -webkit-animation-name: zoomIn;
-    animation-name: zoomIn;
+    animation-name: zoomIn ease-in;
 }
+@keyframes zoomIn {
+    0% {
+      transform: scale(0, 0);
+    }
+    /* 50% {
+      transform: scale(0.5, 0.5);
+    } */
+    100% {
+      transform: scale(1, 1);
+    }
+  }
 
 .map-image{
     width: 100%;

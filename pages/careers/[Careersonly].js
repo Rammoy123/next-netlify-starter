@@ -5,9 +5,10 @@ import TextField from '@mui/material/TextField'
 import badgeCard from '../../public/assets/badge-card.png'
 import ndBadge from '../../public/assets/2nd-badge.png'
 import carrierBanner from '../../public/assets/career-banner.png'
-
+import { FaBeer } from 'react-icons/fa';
 import Autocomplete from '@mui/material/Autocomplete'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import $ from 'jquery'
 import {
   getFirestore,
@@ -22,6 +23,8 @@ import InputAdornment from '@mui/material/InputAdornment'
 import Axios from 'axios'
 
 import Footer from '@components/footer/Footer'
+
+import { BsPaperclip } from 'react-icons/Bs'
 import { BiCheckCircle } from 'react-icons/bi'
 const careerOnly = () => {
   const router = useRouter()
@@ -42,7 +45,8 @@ const careerOnly = () => {
 
   const [isSubmit, setIsSubmit] = useState(false)
   // const [input,setInput]=useState([])
-  const [checker, setChecker] = useState(false)
+  // const [checker, setChecker] = useState(false)
+  const [cvName,setCvName]=useState("Attach your CV / Resume")
 
   const countries = [
     { code: 'AD', label: 'Andorra', phone: '376' },
@@ -484,13 +488,12 @@ const careerOnly = () => {
     const { name, value } = e.target
     // URL.createObjectURL(e.target.files[0])
     //  setEditPhoto({photo: URL.createObjectURL(e.target.files[0])})
-
+   setCvName(e.target.files[0].name)
     setInputValue({ ...inputValue, [name]: e.target.files[0] })
     // console.log(editPhoto,"edit photo")
   }
 
   useEffect(() => {
-
     Axios.get(
       'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
     )
@@ -514,23 +517,24 @@ const careerOnly = () => {
 
       // const data = await getDocs(citiesCol)
 
-      
       // const dataOrg = data.docs.map(doc => doc.data())
 
       //........ Using onSnapShot real time update from firebase-------
-     //https://firebase.google.com/docs/firestore/query-data/listen
+      //https://firebase.google.com/docs/firestore/query-data/listen
       // const q = query(collection(db, "cities"), where("state", "==", "CA"));
 
       const q = query(collection(db, '12345'))
 
       const unsubscribe = onSnapshot(q, querySnapshot => {
         console.log(querySnapshot, 'snapshott')
-        setOnlyData(querySnapshot.docs.map(doc => {  let original = doc.data()
-     
+        setOnlyData(
+          querySnapshot.docs.map(doc => {
+            let original = doc.data()
 
-        return Object.assign(original, { id_: doc.id })
-        }))
-      
+            return Object.assign(original, { id_: doc.id })
+          })
+        )
+
         // console.log(snapData,"snapDtaaa")
       })
 
@@ -592,21 +596,34 @@ const careerOnly = () => {
 
     return error
   }
-  const goCarrier=(e)=>{
+  const goCarrier = e => {
+    console.log(e.target.id,"valueee")
     e.preventDefault()
+    if(e.target.id=='goCard'){
     setTimeout(() => {
       $('html, body').animate(
         {
-          scrollTop: $("#cardOnlySec").offset().top - 100
+          scrollTop: $('#cardOnlySec').offset().top - 100
         },
         2
       )
     }, 120)
   }
+  else if(e.target.id=='hereOnly'){
+    setTimeout(() => {
+      $('html, body').animate(
+        {
+          scrollTop: $('#formOnly').offset().top - 100
+        },
+        2
+      )
+    }, 120)
+
+  }
+  }
 
   return (
     <>
-   
       <Header navData='Carrier' />
 
       <div
@@ -614,24 +631,32 @@ const careerOnly = () => {
         className='container career_banner_holder'
         id='banner'
       >
-        <div  className='hero-content'>
-          <div  className='left-side'>
-            <h1 >
+        <div className='hero-content'>
+          <div className='left-side'>
+            <h1>
               Work @ Bitpastel <br />
               on Awesome Projects
             </h1>
-            <ul >
-              <li ><BiCheckCircle className='first-check '/>Dynamic Teams working on new ideas</li>
-              <li ><BiCheckCircle className='first-check '/>Enjoy a Happy work enviroment</li>
-              <li ><BiCheckCircle className='first-check '/>Fast-track career progress</li>
+            <ul>
+              <li>
+                <BiCheckCircle className='first-check ' />
+                Dynamic Teams working on new ideas
+              </li>
+              <li>
+                <BiCheckCircle className='first-check ' />
+                Enjoy a Happy work enviroment
+              </li>
+              <li>
+                <BiCheckCircle className='first-check ' />
+                Fast-track career progress
+              </li>
             </ul>
-            <button onClick={goCarrier} className='wt-btn'>
+            <button onClick={goCarrier} className='wt-btn' id='goCard'>
               Explore Opportunities
             </button>
           </div>
-          <div  className='right-side'>
+          <div className='right-side'>
             <img
-              
               alt='Work at Bitpastel on Awesome Projects'
               height='650'
               src={carrierBanner.src}
@@ -640,66 +665,72 @@ const careerOnly = () => {
           </div>
         </div>
       </div>
+      <div className='container opportunities-area' id='cardOnlySec'>
+        <section className='padding-area padding_twenty_twenty'>
+          <p className='text-center body-text m-bot-30'>
+            {' '}
+            To apply for any of the current job openings, please go to the
+            respective box below and click on the
+            <strong className='job-desc'>"Apply"</strong>
+            button.
+            <br />
+            If you don't see any suitable vacancy, send your resume
+            <strong>
+              {' '}
+              <a onClick={goCarrier}  id='hereOnly'> here </a>{' '}
+            </strong>
+            and we'll get in touch with you as soon as there is any opening that
+            matches your profile.
+          </p>
+          <div className='carrier_card'>
 
-      <section id='cardOnlySec' className='card-section'>
-        <div className='container text-center'>
-          <div className='row'>
-            {/* <div class="col-6 col-sm-6 col-md-4  ">col8</div>
-    <div class="col-6 col-sm-6 col-md-4 ">col8</div>
-    <div class="col-6 col-sm-6 col-md-4 ">col8</div>
-    <div class="col-6 col-sm-6 col-md-4">col8</div>
-    <div class="col-6 col-sm-6 col-md-4 ">col8</div>
-    <div class="col-6 col-sm-6 col-md-4">col8</div> */}
+          {onlyData.map((arr, index) => {
+           return (
+            <Link href={{  pathname: '/careers/careers-detail',
+              query: { slug: arr.id_ }}} >
+            <a style={{textDecoration:'none',color:'#2a2a2a'}}>
 
-            {onlyData.map((arr, index) => {
-              return (
-                <div
-                  key={index}
-                  id={`${index}`}
-                  className='card col-6 col-sm-6 col-md-4 mb-4'
-                  style={{ border: 'none' }}
-                  onClick={() => {
-                    router.push({
-                      pathname: '/careers/careers-detail',
-                      query: { slug: arr.id_ }
-                    })
-                  }}
-                >
-                  {/* `/Carrier/carrier-detail` */}
-                  <div className='carrier_card_holder'>
-                    <div className='card-header'>
-                      <p> {arr.jobTitle}</p>
+            
+            <div key={index} id={`${index}`} className='carrier_card_holder'>
+              <div className='job-thumbnail'>
+                <div className='carrier_card_heading color-grad'>
+                  <p>{arr.jobTitle}</p>
+                </div>
+                <div className='carrier_card_body'>
+                  <div>
+                    <div className='text-capitalize carrier_card_twenty first_twenty mb-2'>
+                      <div className='cip_holder'>
+                        <img src={badgeCard.src} width={15} height={15} />
+                      </div>
+                      <p>
+                      {arr.subTitle}
+                      </p>
                     </div>
-                    <div className='card-body-only'>
-                      <div className='card-body-inner'>
-                      <div className="name-flex">
-
-                        <div className='card-image'>
-                          <img src={badgeCard.src} />
-                        </div>
-                        <div className='subtitile-sec'>
-                        <p> {arr.subTitle}</p>
-                        </div>
+                    <div className='text-capitalize carrier_card_twenty mb-2'>
+                      <div className='cip_holder'>
+                        <img src={badgeCard.src} width={15} height={15} />
                       </div>
-
-                        <div className='card-image'>
-                          <img src={ndBadge.src} />
-                        </div>
-                        <p>Experience : {arr.experience}</p>
-                        <div className='onlyButton mt-4'>
-                          <button className='btn btn-primary ripple1 cc_button_holder'>
-                            Apply
-                          </button>
-                        </div>
-                      </div>
+                      <p>Experience : {arr.experience}</p>
                     </div>
                   </div>
                 </div>
-              )
-            })}
+                <div className='carrier_card_button'>
+                  <button className='btn btn-primary ripple1 cc_button_holder'>
+                    Apply
+                  </button>
+                </div>
+              </div>
+            </div>
+            </a>
+            </Link>
+            )
+          })
+          }
+
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
+
       {/* enctype="multipart/form-data" */}
       {/* name: '',
     email: '',
@@ -710,11 +741,12 @@ const careerOnly = () => {
     noticePeriod:'',
     cv:null */}
 
-      <section className='form-sec'>
-        <div className='text-center'>
+      <section  className='form-sec jobform-area'>
+        <div id='formOnly' className='text-center'>
           <h2>Join Our Team</h2>
         </div>
         <form
+        
           onSubmit={handleClick}
           autocomplete='off'
           className='contact-form ng-pristine ng-invalid ng-touched'
@@ -728,6 +760,7 @@ const careerOnly = () => {
                 name='name'
                 value={inputValue.name}
                 placeholder='Name*'
+                
                 onChange={changeBt}
                 onKeyDown={() => {
                   setFormError({ ...formerror, Name: '' })
@@ -742,7 +775,7 @@ const careerOnly = () => {
                 className='form-controller'
                 id='email'
                 type='text'
-                placeholder='Email*'
+                placeholder='Email Address*'
                 name='email'
                 value={inputValue.email}
                 onChange={changeBt}
@@ -758,7 +791,7 @@ const careerOnly = () => {
               <div className='phone-left col-md-2 text-center d'>
                 <Autocomplete
                   id='controllable-states-demo'
-                  sx={{ width: 800,marginTop:2.4 }}
+                  sx={{ width: 800, marginTop: 1.2 }}
                   disableClearable
                   value={inputValue.ph_code}
                   onChange={(event, newValue) => {
@@ -819,7 +852,7 @@ const careerOnly = () => {
                         srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
                         alt=''
                       />
-                       +{option.phone}
+                      +{option.phone}
                     </Box>
                   )}
                   renderInput={params => (
@@ -921,7 +954,7 @@ const careerOnly = () => {
               <input
                 className='form-controller'
                 type='text'
-                placeholder='noticePeriod(Optional)'
+                placeholder='Notice Period(Optional)'
                 name='noticePeriod'
                 value={inputValue.noticePeriod}
                 onChange={changeBt}
@@ -930,13 +963,16 @@ const careerOnly = () => {
           </div>
           <div className='row'>
             <div className='col-lg-12 inputForm col-md-12 relativeError'>
+            <label  className="form-controller twenty_twenty_file" for="file-choose" ><BsPaperclip className='paperClip'/>
+            <span className="green-text ">{cvName}</span></label>
               <input
                 // className='name2'
-                className='form-controller'
+                className='form-controller hiden'
                 type='file'
                 // onKeyDown={() => {
                 //   setFormError({ File: '' })
                 // }}
+                id='file-choose'
                 name='cv'
                 onChange={changeBt1}
                 onClick={() => {
@@ -948,7 +984,7 @@ const careerOnly = () => {
           </div>
           <div className='text-center ng-star-inserted'>
             <button
-              _ngcontent-c12=''
+              
               className='wt-btn hol btn'
               type='submit'
               // disabled=''
@@ -958,10 +994,10 @@ const careerOnly = () => {
             <p class='agree-policy'>
               By clicking "Send", you agree to our{' '}
               <a
-                _ngcontent-c12=''
+                
                 // routerlink='/privacy-policy'
                 target='_blank'
-                href='#/privacy-policy'
+               href='https://www.bitpastel.com/#/privacy-policy'
               >
                 Privacy Policy.
               </a>
@@ -975,7 +1011,7 @@ const careerOnly = () => {
         className='text-center padding-area d-flex justify-content-center align-items-center common_banner_bottom'
         id='contact'
       ></section>
-      <Footer/>
+      <Footer />
     </>
   )
 }
@@ -988,4 +1024,59 @@ export default careerOnly
 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 <a href="#" class="btn btn-primary">Go somewhere</a>
 </div> */
+}
+
+{
+  /* <section id='cardOnlySec' className='card-section'>
+<div className='container text-center'>
+  <div className='row'>
+{onlyData.map((arr, index) => {
+      return (
+        <div
+          key={index}
+          id={`${index}`}
+          className='card col-6 col-sm-6 col-md-4 mb-4'
+          style={{ border: 'none' }}
+          onClick={() => {
+            router.push({
+              pathname: '/careers/careers-detail',
+              query: { slug: arr.id_ }
+            })
+          }}
+        >
+         
+          <div className='carrier_card_holder'>
+            <div className='card-header'>
+              <p> {arr.jobTitle}</p>
+            </div>
+            <div className='card-body-only'>
+              <div className='card-body-inner'>
+              <div className="name-flex">
+
+                <div className='card-image'>
+                  <img src={badgeCard.src} />
+                </div>
+                <div className='subtitile-sec'>
+                <p> {arr.subTitle}</p>
+                </div>
+              </div>
+
+                <div className='card-image'>
+                  <img src={ndBadge.src} />
+                </div>
+                <p>Experience : {arr.experience}</p>
+                <div className='onlyButton mt-4'>
+                  <button className='btn btn-primary ripple1 cc_button_holder'>
+                    Apply
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    })}
+  </div>
+</div>
+</section> */
 }

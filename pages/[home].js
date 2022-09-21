@@ -59,11 +59,12 @@ const Home1 = () => {
   const [readMore, setReadMore] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
+
   useEffect(() => {
     console.log(router.query, 'location')
-    if (router.query.state == 'make_services') {
+    if (router.query.home == 'make_services') {
       setData('Service')
-    } else if (router.query.state == 'make_stories') {
+    } else if (router.query.home == 'make_stories') {
       setData('Stories')
     } else {
       setData('Home')
@@ -93,7 +94,7 @@ const Home1 = () => {
         {' '}
         {setData.length > 0 && <Header navData={data} />}
         <div className='container height_unset' id='banner'>
-          <div className='hero-content'>
+          <div className='hero-content' id='horo'>
             <div className='left-side'>
               <h1>
                 Crafting Digital Solutions
@@ -125,7 +126,7 @@ const Home1 = () => {
             </div>
           </div>
         </div>
-        <div className='home_new_one'>
+        <div className='home_new_one' id='home_new'>
           <div className='container'>
             <div className='home_new_one_inner'>
               <div className='hnoi_left'>
@@ -581,7 +582,7 @@ const Home1 = () => {
         </section>
 
 
-<div className="home_footer_upper_section pb-0">
+<div className="home_footer_upper_section pb-0" id='clientele'>
 
 <h3 className="text-center heading-2">
 Satisfied Clientele Worldwide
@@ -630,7 +631,7 @@ Satisfied Clientele Worldwide
 
 
 </div>
-<div className="padding-area">
+<div className="padding-area" id='last_area'>
   <div className="wwu-grid">
  <div className="left_right_angle_one  position-relative">
  <div className="container">

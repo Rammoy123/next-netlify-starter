@@ -11,8 +11,32 @@ import {
 import whatsApp from '../../public/assets/whatsapp_dropshadow.png'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import $ from 'jquery'
 
 const Footer = () => {
+  // const goToSection=(e)=>{
+  //   console.log(e.target.outerText,"vvv")
+  
+  //   if(e.target.outerText=="About")
+  //   {
+      
+  //       $('html, body').animate(
+  //         {
+  //           scrollTop: $('#about').offset().top - 50
+  //         })
+        
+ 
+  //   }
+  //   else if (e.target.outerText=="Clientele"){
+     
+  //     $('html, body').animate(
+  //       {
+  //         scrollTop: $('#clientele').offset().top - 50
+  //       })
+
+  //   }
+
+  // }
   return (
     <>
       <div className={style.footerMain}>
@@ -81,17 +105,18 @@ const Footer = () => {
                 <span> Home </span>
               </a>
             </Link>
-            <Link href={{ pathname: '/' }}>
+            <Link href={{ pathname: '/make_services' }} scroll={false}>
               <a className={`d-flex align-items-center ${style.p_height}`}>
                 <span> Services </span>
               </a>
             </Link>
-            <Link href={{ pathname: '/' }}>
+            {/* onClick={goToSection}  */}
+            <Link href={{pathname:'/about'}}>
               <a className={`d-flex align-items-center ${style.p_height}`}>
                 <span> About </span>
               </a>
-            </Link>
-            <Link href={{ pathname: '/' }}>
+  </Link>
+            <Link href={{ pathname: '/make_stories' }} scroll={false}>
               <a className={`d-flex align-items-center ${style.p_height}`}>
                 <span> Stories </span>
               </a>
@@ -102,17 +127,18 @@ const Footer = () => {
               abbb
             </p>
 
-            <Link href={{ pathname: '/' }}>
+            <Link href={{ pathname: '/Team' }} scroll={false}>
               <a className={`d-flex align-items-center ${style.p_height}`}>
                 <span> Team </span>
               </a>
             </Link>
-            <Link href={{ pathname: '/' }}>
-              <a className={`d-flex align-items-center ${style.p_height}`}>
+            <Link href={{ pathname: '/clientele' }}>
+              <a  className={`d-flex align-items-center ${style.p_height}`}>
                 <span> Clientele </span>
               </a>
-            </Link>
-            <Link href={{ pathname: '/Carrer' }}>
+              </Link>
+           
+            <Link href={{ pathname: '/careers' }} scroll={false}>
               <a className={`d-flex align-items-center ${style.p_height}`}>
                 <span> Careers </span>
               </a>
@@ -199,7 +225,7 @@ const Footer = () => {
         </div>
 
 
-        <div className={`${style.whatsapp} d-flex justify-content-center align-items-center ripplefb`}>
+        <div className={`${style.whatsapp} d-flex justify-content-center align-items-center ripplefb1`}>
 {/* <img height='55' width='55' src={whatsApp.src}/> */}
 <a  aria-label="whatsapp" className="d-flex justify-content-center align-items-center" href="https://wa.me/919830566248/?text=Hey...+I+would+like+to+have+a+quick+chat+with+you.&amp;type=phone_number&amp;app_absent=0" target="_blank"><img height='55' width='55' src={whatsApp.src}/></a>
         </div>

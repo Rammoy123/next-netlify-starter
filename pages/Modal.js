@@ -14,6 +14,7 @@ import modal_1 from '../public/assets/modal-1.png'
 import modal_2 from '../public/assets/modal-2.png'
 import modal_3 from '../public/assets/modal-3.png'
 import modal_4 from '../public/assets/modal-4.png'
+import  Axios  from 'axios'
 
 const style = theme => ({
   multilineColor: {
@@ -569,24 +570,24 @@ const Modal = ({ hideMe }) => {
     { code: 'ZW', label: 'Zimbabwe', phone: '263' }
   ]
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   Axios.get(
-  //     'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
-  //   )
-  //     .then(response => {
-  //       console.log(response)
+    Axios.get(
+      'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
+    )
+      .then(response => {
+        console.log(response)
 
-  //       const array = countries.filter(
-  //         arr =>
-  //           arr.code.toUpperCase() ==
-  //           response.data.country.iso_code.toUpperCase()
-  //       )
-  //       array.map(obj => setInputValue({ ...inputValue, ph_code: obj }))
-  //       console.log(array, 'array123444')
-  //     })
-  //     .catch(error => console.log('error', error))
-  // }, [])
+        const array = countries.filter(
+          arr =>
+            arr.code.toUpperCase() ==
+            response.data.country.iso_code.toUpperCase()
+        )
+        array.map(obj => setInputValue({ ...inputValue, ph_code: obj }))
+        console.log(array, 'array123444')
+      })
+      .catch(error => console.log('error', error))
+  }, [])
   useEffect(() => {
     if (Object.keys(formerror).length === 0 && isSubmit) {
       console.log(inputValue, 'passed object')
@@ -752,7 +753,7 @@ const Modal = ({ hideMe }) => {
                                   setFormError({ ...formerror, Name: '' })
                                 }}
                               />
-                              <div className='formerror'>
+                              <div className='formerror error-modal'>
                                 {<p>{formerror.Name} </p>}
                               </div>
                             </div>
@@ -770,7 +771,7 @@ const Modal = ({ hideMe }) => {
                                   setFormError({ ...formerror, Email: '' })
                                 }}
                               />
-                              <div className='formerror'>
+                              <div className='formerror error-modal'>
                                 {<p>{formerror.Email} </p>}
                               </div>
                             </div>
@@ -782,7 +783,7 @@ const Modal = ({ hideMe }) => {
                                   id='controllable-states-demo'
                                   sx={{
                                     width: 400,
-                                    marginTop: -1.2,
+                                    marginTop: 0.8,
                                     outline: 'none',
                                     color: 'transparent',
                                     outline: 'none',
@@ -849,7 +850,7 @@ const Modal = ({ hideMe }) => {
 
                                       {...params}
                                       // disableClearable
-                                      label='Select'
+                                      // label='Select'
                                       InputProps={{
                                         //  style: { color: "red" } ,
                                         ...params.InputProps,
@@ -888,7 +889,7 @@ const Modal = ({ hideMe }) => {
                                     setFormError({ ...formerror, Phone: '' })
                                   }}
                                 />
-                                <div className='formerror'>
+                                <div className='formerror error-modal'>
                                   {<p>{formerror.Phone} </p>}
                                 </div>
                               </div>

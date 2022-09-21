@@ -6,40 +6,37 @@ import Link from 'next/link'
 import style from './header.module.css'
 
 import $ from 'jquery'
+import { faThList } from '@fortawesome/free-solid-svg-icons'
 
 const Header = ({ navData }) => {
   const router = useRouter()
-  const callTop=(goToData)=>{
-   const position=goToData
+  const callTop = goToData => {
+    console.log(goToData, 'goTodataa')
+    const position = goToData
     setTimeout(() => {
-      scrollTop: $('#' + position).offset().top - 100
-      // $('html, body').animate(
-      //   {
-      //     scrollTop: $('#' + position).offset().top - 100
-      //   },
-      //   2
-      // )
-    }, 120)
-
-    
+      $('html, body').animate(
+        {
+          scrollTop: $('#' + position).offset().top - 100
+        },
+        2
+      )
+    }, 50)
   }
-  useEffect(()=>{
-    console.log(router)
- if(router.query.Careersonly=="oppertunity"){
-callTop('cardOnlySec')
-
- }
- else if(router.query.state=="make_services"){
-  callTop('services')
- }
- else if(router.query.state=="make_stories"){
-  callTop('stories')
- }
-
-
-
-  },[router.query])
- 
+  useEffect(() => {
+    console.log(router, 'router_header')
+    if (router.query.Careersonly == 'oppertunity') {
+      callTop('cardOnlySec')
+    } else if (router.query.home == 'make_services') {
+      console.log('servicess')
+      callTop('services')
+    } else if (router.query.home == 'make_stories') {
+      callTop('stories')
+    } else if (router.query.home == 'about') {
+      callTop('about')
+    } else if (router.query.home == 'clientele') {
+      callTop('clientele')
+    }
+  }, [router.query])
 
   console.log(navData, 'headerdata')
   useEffect(() => {
@@ -110,6 +107,57 @@ callTop('cardOnlySec')
 
     //       }
   }
+  // useEffect(() => {
+  //   console.log(router,"datanav")
+  //   if(Object.keys(router.query)[0]=='home'){
+  //   $(window).on('scroll', function () {
+  //     if (Object.keys($('.hero-content')).length > 0) {
+  //       if (
+  //         $(this).scrollTop() >=
+  //         $('.hero-content').offset().top +
+  //           $('.hero-content').outerHeight() -
+  //           window.innerHeight
+  //       ) {
+  //         console.log('homeeeee')
+  //         $('#make_home').addClass('active1')
+
+  //         $('#make_services').removeClass('active1')
+  //       }
+
+  //       if (
+  //         $(this).scrollTop() >=
+  //         $('#home_new').offset().top +
+  //           $('#home_new').outerHeight() -
+  //           window.innerHeight
+  //       ) {
+  //         console.log('rammmoyyyy')
+
+  //         $('#make_services').addClass('active1')
+  //         $('#make_stories').removeClass('active1')
+  //         $('#make_home').removeClass('active1')
+  //       }
+
+  //       if (
+  //         $(this).scrollTop() >=
+  //         $('#clientele').offset().top +
+  //           $('#clientele').outerHeight() -
+  //           window.innerHeight
+  //       ) {
+  //         $('#make_stories').addClass('active1')
+  //         $('#make_services').removeClass('active1')
+  //       }
+  //       if (
+  //         $(this).scrollTop() >=
+  //         $('#last_area').offset().top +
+  //           $('#last_area').outerHeight() -
+  //           window.innerHeight
+  //       ) {
+  //         $('#make_stories').removeClass('active1')
+  //       }
+  //     }
+  //   })
+  // }
+  // }, [router.query])
 
   useEffect(() => {
     $(window).scroll(function () {
@@ -137,12 +185,11 @@ callTop('cardOnlySec')
         <div className='container'>
           <div className='row'>
             <div className='col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 image-container'>
-            <Link href={{pathname:'/'}}>
-              <a>
-
-                <img src={logo.src} alt='logo' />
-              </a>
-            </Link>
+              <Link href={{ pathname: '/' }}>
+                <a>
+                  <img src={logo.src} alt='logo' />
+                </a>
+              </Link>
             </div>
 
             <div className='col-12 col-sm-12 col-md-12 col-lg-12 col-xl-10'>
@@ -158,16 +205,17 @@ callTop('cardOnlySec')
                     </Link>
                   </li>
                   <li className={style.liItem}>
-                    <a id='make_services' onClick={goToSection}>
-                      Service
-                    </a>
+                    <Link href={{ pathname: '/make_services' }} scroll={false}>
+                      <a id='make_services'>Service</a>
+                    </Link>
                   </li>
+
                   <li className={style.liItem}>
-                    <a id='make_stories' onClick={goToSection}>
-                      Stories
-                    </a>
+                    <Link href={{ pathname: '/make_stories' }}>
+                      <a id='make_stories'>Stories</a>
+                    </Link>
                   </li>
-                  <li className={style.liItem}>
+                  {/* <li className={style.liItem}>
                     <Link
                       href={{
                         pathname: '/Portfolio'
@@ -175,13 +223,14 @@ callTop('cardOnlySec')
                     >
                       <a id='make_portfolio'>Portfolio</a>
                     </Link>
-                  </li>
+                  </li> */}
 
                   <li className={style.liItem}>
                     <Link
                       href={{
                         pathname: '/Team'
-                      }} scroll={false}
+                      }}
+                      scroll={false}
                     >
                       <a id='make_team'>Team</a>
                     </Link>
@@ -197,7 +246,7 @@ callTop('cardOnlySec')
                     </Link>
                   </li>
                   <li className={style.liItem}>
-                  {/* <Link href={{pathanme:'/free-quotes'}}> */}
+                    {/* <Link href={{pathanme:'/free-quotes'}}> */}
                     <button
                       onClick={() => {
                         router.push(`/free-quotes`)

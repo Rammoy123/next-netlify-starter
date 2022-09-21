@@ -11,8 +11,10 @@ import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
 import { useRouter } from 'next/router'
 import InputAdornment from '@mui/material/InputAdornment'
+import { BsPaperclip } from 'react-icons/Bs'
 import Axios from 'axios'
 import $ from 'jquery'
+import Footer from '@components/footer/Footer'
 import {
   getFirestore,
   collection,
@@ -38,7 +40,8 @@ const detail = () => {
 
   const [isSubmit, setIsSubmit] = useState(false)
   // const [input,setInput]=useState([])
-  const [checker, setChecker] = useState(false)
+  // const [checker, setChecker] = useState(false)
+  const [cvName,setCvName]=useState("Attach your CV / Resume")
 
   const [inputValue, setInputValue] = useState({
     name: '',
@@ -567,6 +570,7 @@ const detail = () => {
   }
   const changeBt1 = e => {
     const { name, value } = e.target
+    setCvName(e.target.files[0].name)
 
     setInputValue({ ...inputValue, [name]: e.target.files[0] })
   }
@@ -820,7 +824,7 @@ const goToApply=(e)=>{
         </section>
       )}
 
-      <section id='forFormOnly' className='form-sec'>
+      <section id='forFormOnly' className='form-sec jobform-area '>
         <div className='text-center'>
           <h2>Join Our Team</h2>
         </div>
@@ -852,7 +856,7 @@ const goToApply=(e)=>{
                 className='form-controller'
                 id='email'
                 type='text'
-                placeholder='Email*'
+                placeholder='Email Address*'
                 name='email'
                 value={inputValue.email}
                 onChange={changeBt}
@@ -869,7 +873,7 @@ const goToApply=(e)=>{
                 <Autocomplete
                   id='controllable-states-demo'
                   disableClearable
-                  sx={{ width: 400 ,marginTop:2.4}}
+                  sx={{ width: 400 ,marginTop:1.2}}
                   value={inputValue.ph_code}
                   onChange={(event, newValue) => {
                     console.log(newValue, 'value of thisss')
@@ -992,7 +996,7 @@ const goToApply=(e)=>{
                 className='form-controller'
                 type='text'
                 placeholder='noticePeriod(Optional)'
-                name='noticePeriod'
+                name='Notice Period'
                 value={inputValue.noticePeriod}
                 onChange={changeBt}
               />
@@ -1000,8 +1004,12 @@ const goToApply=(e)=>{
           </div>
           <div className='row'>
             <div className='col-lg-12  col-md-12 relativeError inputForm'>
+             
+            <label  className="form-controller twenty_twenty_file" for="file-choose" ><BsPaperclip className='paperClip'/>
+            <span className="green-text ">{cvName}</span></label>
               <input
-                className='form-controller'
+                className='form-controller hiden'
+                id='file-choose'
                 type='file'
                 name='cv'
                 onChange={changeBt1}
@@ -1013,18 +1021,19 @@ const goToApply=(e)=>{
             </div>
           </div>
           <div className='text-center ng-star-inserted'>
-            <button _ngcontent-c12='' className='wt-btn hol btn' type='submit'>
+            <button className='wt-btn hol btn' type='submit'>
               Send
             </button>
             <p class='agree-policy'>
               By clicking "Send", you agree to our{' '}
-              <a _ngcontent-c12='' target='_blank' href='#/privacy-policy'>
+              <a  target='_blank' href='https://www.bitpastel.com/#/privacy-policy'>
                 Privacy Policy.
               </a>
             </p>
           </div>
         </form>
       </section>
+      <Footer />
     </>
   )
 }

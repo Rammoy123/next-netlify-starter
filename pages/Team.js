@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '@components/header/Header'
 import Footer from '@components/footer/Footer'
 import team_banner from '../public/assets/team_banner.webp'
@@ -27,14 +27,59 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { BiCheckCircle } from 'react-icons/bi'
+import $ from 'jquery'
 const Team = () => {
   const router=useRouter()
+  useEffect(()=>{
+    $(window).on('scroll', function () {
+          if (Object.keys($('#hero1')).length > 0) {
+            
+            if (
+              $(this).scrollTop() >=
+              $('#hero1').offset().top +
+                $('#hero1').outerHeight() -
+                window.innerHeight
+            ) {
+            $("#first_1").css('transform','translate(0px,0px)')
+              // $('#make_home').addClass('active1')
+    
+              // $('#make_services').removeClass('active1')
+            }
+            if (
+              $(this).scrollTop() >=
+              $('#first_').offset().top +
+                $('#first_').outerHeight() -
+                window.innerHeight
+            ) {
+            $("#second_1").css('transform','translate(0px,0px)')
+              // $('#make_home').addClass('active1')
+    
+              // $('#make_services').removeClass('active1')
+            }
+            if (
+              $(this).scrollTop() >=
+              $('#second_').offset().top +
+                $('#second_').outerHeight() -
+                window.innerHeight
+            ) {
+            $("#third_1").css('transform','translate(0px,0px)')
+              // $('#make_home').addClass('active1')
+    
+              // $('#make_services').removeClass('active1')
+            }
+          }
+        
+        })
+
+
+
+  },[])
     return (
     <>
       <Header navData='Team' />
 
       <div className='container height_unset' id='banner'>
-        <div className='hero-content'>
+        <div className='hero-content' id='hero1'>
           <div className='left-side'>
             <h1>
               The Team who
@@ -69,15 +114,17 @@ const Team = () => {
         </div>
       </div>
       <section className='team-first-banner mx-auto'>
-        <div className='first-banner'>
+        <div className='first-banner' id='first_'>
           <img
             alt="Souvik's image"
             className='testi-image'
+            id='first_1'
             src={sourav.src}
             style={{
-              transform: 'translate(0px, 0px)',
+              transform: 'translate(0px, 120px)',
               opacity: '1',
-              visibility: 'inherit'
+              visibility: 'inherit',
+              transitionDuration: '3s'
             }}
           />
 
@@ -88,34 +135,38 @@ const Team = () => {
             src={sourav_text.src}
           />
         </div>
-        <div className='second-banner'>
+        <div className='second-banner'  id='second_'>
           <img
             alt="Chandrima's image"
             className='testi-image'
+            id='second_1'
             src={chandrima.src}
             style={{
-              transform: 'translate(0px, 0px)',
+              transform: 'translate(0px, 120px)',
               opacity: '1',
-              visibility: 'inherit'
+              visibility: 'inherit',
+              transitionDuration: '3s'
             }}
           />
 
           <img
-            _ngcontent-c10=''
-            alt="Souvik's Testimonial"
+           
+            alt="Chandrima's Testimonial"
             className='testi-data desk-team'
             src={chandrima_text.src}
           />
         </div>
-        <div className='third-banner'>
+        <div className='third-banner'  id='third_'>
           <img
             alt="Ibrahim's image"
             className='testi-image'
+            id='third_1'
             src={ibrahim.src}
             style={{
-              transform: 'translate(0px, 0px)',
+              transform: 'translate(0px, 120px)',
               opacity: '1',
-              visibility: 'inherit'
+              visibility: 'inherit',
+              transitionDuration: '3s'
             }}
           />
 

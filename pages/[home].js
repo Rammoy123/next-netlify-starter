@@ -138,13 +138,13 @@ const Home1 = () => {
               </button>
             </div>
             <div className='right-side'>
-              <Image
+              <img
                 alt='Crafting Digital Solutions for your business image'
                 height='650'
-                src={home_banner}
-                placeholder='blur'
+                src={home_banner.src}
+                // placeholder='blur'
                 width='650'
-                priority
+                // priority
               />
             </div>
           </div>

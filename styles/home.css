@@ -872,7 +872,7 @@ border-bottom-width: 1px;
  .paperClip{
     color: #b3b3b3;
     margin-right: 10px;
-    transform: rotate(-45deg);
+    transform: rotate(-90deg);
     /* font-size: 25px; */
  }
 

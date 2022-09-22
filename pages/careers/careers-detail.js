@@ -11,7 +11,9 @@ import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
 import { useRouter } from 'next/router'
 import InputAdornment from '@mui/material/InputAdornment'
-import { BsPaperclip } from 'react-icons/Bs'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faPaperclip } from '@fortawesome/free-solid-svg-icons'
+// import { BsPaperclip } from 'react-icons/Bs'
 import Axios from 'axios'
 import $ from 'jquery'
 import Footer from '@components/footer/Footer'
@@ -1004,8 +1006,8 @@ const goToApply=(e)=>{
           </div>
           <div className='row'>
             <div className='col-lg-12  col-md-12 relativeError inputForm'>
-             
-            <label  className="form-controller twenty_twenty_file" for="file-choose" ><BsPaperclip className='paperClip'/>
+            {/* <BsPaperclip className='paperClip'/> */}
+            <label  className="form-controller twenty_twenty_file" for="file-choose" ><FontAwesomeIcon className='paperClip' icon={faPaperclip}  />
             <span className="green-text ">{cvName}</span></label>
               <input
                 className='form-controller hiden'

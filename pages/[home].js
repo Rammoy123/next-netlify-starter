@@ -32,7 +32,9 @@ import Modal from './Modal'
 import { useRouter } from 'next/router'
 
 import $ from 'jquery'
+import Image from 'next/image'
 const Home1 = () => {
+
   const router = useRouter()
   const focus = useRef()
   //   useEffect(() => {
@@ -117,11 +119,13 @@ const Home1 = () => {
               </button>
             </div>
             <div className='right-side'>
-              <img
+              <Image
                 alt='Crafting Digital Solutions for your business image'
                 height='650'
-                src={home_banner.src}
+                src={home_banner}
+                placeholder="blur"
                 width='650'
+                priority
               />
             </div>
           </div>

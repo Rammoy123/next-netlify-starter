@@ -9,6 +9,11 @@ import { FaBeer } from 'react-icons/fa';
 import Autocomplete from '@mui/material/Autocomplete'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faPaperclip } from '@fortawesome/free-solid-svg-icons'
+
+
+
 import $ from 'jquery'
 import {
   getFirestore,
@@ -24,7 +29,7 @@ import Axios from 'axios'
 
 import Footer from '@components/footer/Footer'
 
-import { BsPaperclip } from 'react-icons/Bs'
+// import { BsPaperclip } from 'react-icons/Bs'
 import { BiCheckCircle } from 'react-icons/bi'
 const careerOnly = () => {
   const router = useRouter()
@@ -963,7 +968,8 @@ const careerOnly = () => {
           </div>
           <div className='row'>
             <div className='col-lg-12 inputForm col-md-12 relativeError'>
-            <label  className="form-controller twenty_twenty_file" for="file-choose" ><BsPaperclip className='paperClip'/>
+            {/* <BsPaperclip className='paperClip'/> */}
+            <label  className="form-controller twenty_twenty_file" for="file-choose" ><FontAwesomeIcon className='paperClip' icon={faPaperclip}  />
             <span className="green-text ">{cvName}</span></label>
               <input
                 // className='name2'

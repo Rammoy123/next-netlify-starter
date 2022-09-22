@@ -71,7 +71,7 @@ const Home1 = () => {
   const [data, setData] = useState('')
   const [readMore, setReadMore] = useState(false)
   const [showModal, setShowModal] = useState(false)
-  console.log(storiesData)
+ 
 
   useEffect(() => {
     console.log(router.query, 'location')

@@ -890,7 +890,7 @@ const careerOnly = () => {
                   )}
                 />
               </div>
-              <div className='right-side col-md-8 inputForm relativeError'>
+              <div className='right-side col-md-10 inputForm relativeError'>
                 <input
                   type='text'
                   id='phone'
@@ -969,7 +969,8 @@ const careerOnly = () => {
           <div className='row'>
             <div className='col-lg-12 inputForm col-md-12 relativeError'>
             {/* <BsPaperclip className='paperClip'/> */}
-            <label  className="form-controller twenty_twenty_file" for="file-choose" ><FontAwesomeIcon className='paperClip' icon={faPaperclip}  />
+            {/* <FontAwesomeIcon className='paperClip' icon={faPaperclip}  /> */}
+            <label  className="form-controller twenty_twenty_file" for="file-choose" >  <FontAwesomeIcon className='paperClip' icon={faPaperclip}  />
             <span className="green-text ">{cvName}</span></label>
               <input
                 // className='name2'

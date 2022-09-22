@@ -931,7 +931,7 @@ const goToApply=(e)=>{
                   )}
                 />
               </div>
-              <div className='right-side col-md-8 inputForm relativeError'>
+              <div className='right-side col-md-10 inputForm relativeError'>
                 <input
                   type='text'
                   id='phone'
@@ -1007,7 +1007,8 @@ const goToApply=(e)=>{
           <div className='row'>
             <div className='col-lg-12  col-md-12 relativeError inputForm'>
             {/* <BsPaperclip className='paperClip'/> */}
-            <label  className="form-controller twenty_twenty_file" for="file-choose" ><FontAwesomeIcon className='paperClip' icon={faPaperclip}  />
+            {/* <FontAwesomeIcon className='paperClip' icon={faPaperclip}  /> */}
+            <label  className="form-controller twenty_twenty_file" for="file-choose" >
             <span className="green-text ">{cvName}</span></label>
               <input
                 className='form-controller hiden'

@@ -152,7 +152,7 @@ const Footer = () => {
               >
                 <a
                   aria-label='Linkedin'
-                  class='d-flex align-items-center'
+                  className='d-flex align-items-center'
                   href='https://www.linkedin.com/company/bitpastel'
                   rel='noopener noreferrer'
                   target='_blank'
@@ -168,7 +168,7 @@ const Footer = () => {
               >
                 <a
                   aria-label='Linkedin'
-                  class='d-flex align-items-center'
+                  className='d-flex align-items-center'
                   href='https://www.instagram.com/bitpastel.io'
                   rel='noopener noreferrer'
                   target='_blank'
@@ -184,7 +184,7 @@ const Footer = () => {
               >
                 <a
                   aria-label='Linkedin'
-                  class='d-flex align-items-center'
+                  className='d-flex align-items-center'
                   href='https://www.facebook.com/bitpastel'
                   rel='noopener noreferrer'
                   target='_blank'
@@ -223,6 +223,11 @@ const Footer = () => {
             </small>
           </div>
         </div>
+     
+                     {/* <FontAwesomeIcon
+                    className={`${style.awesomeIconeBrand} `}
+                    icon={faLinkedinIn}
+                  /> */}
 
 
         <div className={`${style.whatsapp} d-flex justify-content-center align-items-center ripplefb1`}>

@@ -995,9 +995,9 @@ const Home1 = () => {
                 <div className='wwu-div mb-3'>
                   <div className='lt-side d-flex justify-content-center align-items-center'>
                     <img
-                      _ngcontent-c5=''
+                   
                       alt='Reliable Engineering image'
-                      class='img-fluid fadeIn'
+                      className='img-fluid fadeIn'
                       height='380'
                       src={why1.src}
                       width='500'
@@ -1054,7 +1054,7 @@ const Home1 = () => {
                   <div className='lt-side d-flex justify-content-center align-items-center'>
                     <img
                       alt='Reliable Engineering image'
-                      class='img-fluid fadeIn'
+                      className='img-fluid fadeIn'
                       height='380'
                       src={why2.src}
                       width='500'
@@ -1069,7 +1069,7 @@ const Home1 = () => {
                   <div className='lt-side d-flex justify-content-center align-items-center'>
                     <img
                       alt='Reliable Engineering image'
-                      class='img-fluid fadeIn'
+                      className='img-fluid fadeIn'
                       height='380'
                       src={why3.src}
                       width='500'
@@ -1122,7 +1122,7 @@ const Home1 = () => {
                   <div className='lt-side d-flex justify-content-center align-items-center'>
                     <img
                       alt='Reliable Engineering image'
-                      class='img-fluid fadeIn'
+                      className='img-fluid fadeIn'
                       height='380'
                       src={why4.src}
                       width='500'
@@ -1137,7 +1137,7 @@ const Home1 = () => {
                   <div className='lt-side d-flex justify-content-center align-items-center'>
                     <img
                       alt='Reliable Engineering image'
-                      class='img-fluid fadeIn'
+                      className='img-fluid fadeIn'
                       height='380'
                       src={why5.src}
                       width='500'

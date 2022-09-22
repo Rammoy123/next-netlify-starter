@@ -18,6 +18,8 @@ text-transform: uppercase;
 }
 .awesomeIcone{
     color: #b2b2b2;
+    /* height: 1em !important; */
+    
 }
  .information a {
     color: #b2b2b2!important;

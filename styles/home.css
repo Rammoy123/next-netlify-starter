@@ -883,6 +883,7 @@ border-bottom-width: 1px;
     margin-top: 5px;
 }
 /* ....carrier-detail......... */
+
 .banner{
     display: flex;
     flex-direction: column;
@@ -1518,4 +1519,12 @@ p.fun-bp {
 }
 .padding-area {
     padding: 45px 0;
+}
+
+/* ..................for footer fontawesome */
+.svg-inline--fa {
+    /* display: var(--fa-display, inline-block); */
+    height: 1em !important;
+    overflow: visible;
+    /* vertical-align: -0.125em; */
 }

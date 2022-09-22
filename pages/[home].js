@@ -11,7 +11,7 @@ import Mobile_App from '../public/assets/Mobile_App.svg'
 import Ui_ux from '../public/assets/ui_ux.svg'
 import Web_Development from '../public/assets/Web_Development.svg'
 import Cart from '../public/assets/Cart.svg'
-import Anthony from '../public/assets/Anthony-5.jpg'
+// import Anthony from '../public/assets/Anthony-5.jpg'
 import Comma from '../public/assets/comma.png'
 import Footer from '@components/footer/Footer'
 import clientel from '../public/assets/bitpastel_clientele-1.png'
@@ -20,10 +20,22 @@ import why2 from '../public/assets/why_work_2.webp'
 import why3 from '../public/assets/why_work_3.webp'
 import why4 from '../public/assets/why_work_4.webp'
 import why5 from '../public/assets/why_work_5.webp'
+import one from '../public/assets/stories/1.jpg'
+import two from '../public/assets/stories/2.jpg'
+import three from '../public/assets/stories/3.jpg'
+import four from '../public/assets/stories/4.jpg'
+import five from '../public/assets/stories/5.jpg'
+import six from '../public/assets/stories/6.jpg'
+import seven from '../public/assets/stories/7.jpg'
+import eight from '../public/assets/stories/8.jpg'
+import nine from '../public/assets/stories/9.jpg'
+import ten from '../public/assets/stories/10.jpg'
+import eleven from '../public/assets/stories/11.jpg'
+import twelve from '../public/assets/stories/12.jpeg'
 import Link from 'next/link'
 
-import { BiCheckCircle } from 'react-icons/bi'
 
+import { BiCheckCircle } from 'react-icons/bi'
 
 // import { requirePropFactory } from '@mui/material'
 
@@ -34,7 +46,6 @@ import { useRouter } from 'next/router'
 import $ from 'jquery'
 import Image from 'next/image'
 const Home1 = () => {
-
   const router = useRouter()
   const focus = useRef()
   //   useEffect(() => {
@@ -60,7 +71,7 @@ const Home1 = () => {
   const [data, setData] = useState('')
   const [readMore, setReadMore] = useState(false)
   const [showModal, setShowModal] = useState(false)
-
+  console.log(storiesData)
 
   useEffect(() => {
     console.log(router.query, 'location')
@@ -90,9 +101,6 @@ const Home1 = () => {
   return (
     <>
       <div id='whole_content'>
-
-
-   
         {' '}
         {setData.length > 0 && <Header navData={data} />}
         <div className='container height_unset' id='banner'>
@@ -104,9 +112,20 @@ const Home1 = () => {
                 for your business
               </h1>
               <ul>
-                <li> <BiCheckCircle className='first-check '/> Shopify Plus &amp; eCom Development </li>
-                <li> <BiCheckCircle className='first-check '/> Web &amp; Mobile App Development </li>
-                <li> <BiCheckCircle className='first-check '/> Marketing Solutions </li>
+                <li>
+                  {' '}
+                  <BiCheckCircle className='first-check ' /> Shopify Plus &amp;
+                  eCom Development{' '}
+                </li>
+                <li>
+                  {' '}
+                  <BiCheckCircle className='first-check ' /> Web &amp; Mobile
+                  App Development{' '}
+                </li>
+                <li>
+                  {' '}
+                  <BiCheckCircle className='first-check ' /> Marketing Solutions{' '}
+                </li>
               </ul>
               <button
                 onClick={() => {
@@ -123,7 +142,7 @@ const Home1 = () => {
                 alt='Crafting Digital Solutions for your business image'
                 height='650'
                 src={home_banner}
-                placeholder="blur"
+                placeholder='blur'
                 width='650'
                 priority
               />
@@ -461,37 +480,372 @@ const Home1 = () => {
               What our clients say about us
             </p>
             <div _ngcontent-c5='' className='row justify-content-center'>
-              {[...Array(9)].map(arr => {
-                return (
-                  <div
-                    _ngcontent-c5=''
-                    className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani grayscaleani'
-                  >
-                    <div _ngcontent-c5='' className='testimonial-child'>
-                      <div _ngcontent-c5='' className='author-img'>
+              {/* {storiesData.arr.map(arrOrg => {
+                return ( */}
+              <div className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani grayscaleani'>
+                <div className='testimonial-child'>
+                  <div className='author-img'>
+                    <img
+                      alt='Client - Reece Wabara'
+                      height='100'
+                      src={one.src}
+                      width='100'
+                    />
+                  </div>
+                  <p className='content'>
+                    <img
+                      alt='quote-start'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                    Ayan and his team are superstars, they interpret suggestions
+                    well and propose even better and more efficient
+                    alternatives, the team's work is to a very high standard and
+                    turn around time is much faster than a UK equivalent
+                    <img
+                      alt='quote-end'
+                      className='last'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                  </p>
+                  <div className='bottom'>
+                    <p>Reece Wabara</p>
+                    <span>CEO, Maniére De Voir, UK | Forbes 30 Under 30 </span>
+                  </div>
+                </div>
+              </div>
+              <div className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani grayscaleani'>
+                <div className='testimonial-child'>
+                  <div className='author-img'>
+                    <img
+                      alt='Client - Cameron Sangster'
+                      height='100'
+                      src={two.src}
+                      width='100'
+                    />
+                  </div>
+                  <p className='content'>
+                    <img
+                      alt='quote-start'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                    As soon as I came into contact with Ayan and his Bitpastel
+                    team, I felt in safe hands. What impressed me most is Ayan’s
+                    level of communication. In the past I have experienced slow
+                    turnaround times and lack of communication but with Ayan and
+                    his team I genuinely felt like I was their only client and
+                    the attention to detail is impeccable. I highly recommend
+                    them
+                    <img
+                      alt='quote-end'
+                      className='last'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                  </p>
+                  <div className='bottom'>
+                    <p>Cameron Sangster</p>
+                    <span>CEO, Maniére De Voir, UK | Forbes 30 Under 30 </span>
+                  </div>
+                </div>
+              </div>
+              <div className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani grayscaleani'>
+                <div className='testimonial-child'>
+                  <div className='author-img'>
+                    <img
+                      alt='Client - Honey Patel'
+                      height='100'
+                      src={three.src}
+                      width='100'
+                    />
+                  </div>
+                  <p className='content'>
+                    <img
+                      alt='quote-start'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                    Bitpastel has been a delight to work with! They take the
+                    time to truly understand the requirements and provide expert
+                    opinion on design, development, and implementation. The team
+                    is also very detail oriented and communicate extremely well.
+                    Everything is timely, effective, and well done. I keep going
+                    back to them to build new things because there is no one
+                    else I would rather work with.
+                    <img
+                      alt='quote-end'
+                      className='last'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                  </p>
+                  <div className='bottom'>
+                    <p>Honey Patel</p>
+                    <span>Business Strategy & Operations Leader, USA </span>
+                  </div>
+                </div>
+              </div>
+              <div className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani grayscaleani'>
+                <div className='testimonial-child'>
+                  <div className='author-img'>
+                    <img
+                      alt='Client - Paul R. Turner'
+                      height='100'
+                      src={four.src}
+                      width='100'
+                    />
+                  </div>
+                  <p className='content'>
+                    <img
+                      alt='quote-start'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                    Ayan and his team were excellent to work with. He was a
+                    great communicator, took the time to understand my needs and
+                    always delivered as promised. I will hire him again in the
+                    future
+                    <img
+                      alt='quote-end'
+                      className='last'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                  </p>
+                  <div className='bottom'>
+                    <p>Paul R. Turner</p>
+                    <span>
+                      International Director & Co-founder, Food for Life Global,
+                      USA{' '}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani grayscaleani'>
+                <div className='testimonial-child'>
+                  <div className='author-img'>
+                    <img
+                      alt='Client - David Jones'
+                      height='100'
+                      src={five.src}
+                      width='100'
+                    />
+                  </div>
+                  <p className='content'>
+                    <img
+                      alt='quote-start'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                    Ayan and the Bitpastel team are a reliable and dedicated
+                    group. Whenever I reach out to the team about back-end or
+                    front-end tasks that need to be completed, they're not only
+                    quick to respond but I can rely on their turnaround time.
+                    Since partnering with them, my mind has been at ease knowing
+                    that they will get the job done so that I can focus on other
+                    tasks. It has been a pleasure working with them!
+                    <img
+                      alt='quote-end'
+                      className='last'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                  </p>
+                  <div className='bottom'>
+                    <p>David Jones</p>
+                    <span>Marketing Manager, Jax Brands, Canada </span>
+                  </div>
+                </div>
+              </div>
+              <div className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani grayscaleani'>
+                <div className='testimonial-child'>
+                  <div className='author-img'>
+                    <img
+                      alt='Client - Josiah M. Young, Esq'
+                      height='100'
+                      src={six.src}
+                      width='100'
+                    />
+                  </div>
+                  <p className='content'>
+                    <img
+                      alt='quote-start'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                    Ayan and his team were very helpful, responsive and
+                    knowledgeable. This contract has been completed but I will
+                    continue to work with Ayan. I would recommend his services
+                    to anyone looking to build a website or improve their online
+                    presence. The design was very clean. Ayan was also a
+                    pleasure to work with and made the process of completing
+                    this task much easier.
+                    <img
+                      alt='quote-end'
+                      className='last'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                  </p>
+                  <div className='bottom'>
+                    <p>Josiah M. Young, Esq</p>
+                    <span>
+                      Managing Shareholder, The Law Office of Josiah Young, USA{' '}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani grayscaleani'>
+                <div className='testimonial-child'>
+                  <div className='author-img'>
+                    <img
+                      alt='Client - Doug Anderson'
+                      height='100'
+                      src={seven.src}
+                      width='100'
+                    />
+                  </div>
+                  <p className='content'>
+                    <img
+                      alt='quote-start'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                    The entire team did a great job and will definitely hire
+                    again for future projects. They delivered exactly what they
+                    promised on time and on budget. The attention to detail was
+                    perfect as was the constant communication. We are happy we
+                    finally found a great team to work with
+                    <img
+                      alt='quote-end'
+                      className='last'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                  </p>
+                  <div className='bottom'>
+                    <p>Doug Anderson</p>
+                    <span>President, Blue Fence Real Estate, USA </span>
+                  </div>
+                </div>
+              </div>
+              <div className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani grayscaleani'>
+                <div className='testimonial-child'>
+                  <div className='author-img'>
+                    <img
+                      alt='Client - Anthony Deketelaere'
+                      height='100'
+                      src={eight.src}
+                      width='100'
+                    />
+                  </div>
+                  <p className='content'>
+                    <img
+                      alt='quote-start'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                    The people at Bitpastel are professionals, the SRS (Software
+                    Requirement Specification) that the team is working on is
+                    the exact translation of my insights and idea's about the
+                    app. Bitpastel gives me the guarantee that the app will be
+                    all I wanted it to be, and more... I highly recommend them
+                    for your next project
+                    <img
+                      alt='quote-end'
+                      className='last'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                  </p>
+                  <div className='bottom'>
+                    <p>Anthony Deketelaere</p>
+                    <span>Founder, YesMLS, Belgium </span>
+                  </div>
+                </div>
+              </div>
+              <div className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani grayscaleani'>
+                <div className='testimonial-child'>
+                  <div className='author-img'>
+                    <img
+                      alt='Client - Brandon Philbrick'
+                      height='100'
+                      src={nine.src}
+                      width='100'
+                    />
+                  </div>
+                  <p className='content'>
+                    <img
+                      alt='quote-start'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                    Bitpastel has been doing custom HubSpot COS development for
+                    us and our expectations have been consistently exceeded.
+                    There is always a great turnaround on project requests and
+                    they are available for talking through upcoming work and
+                    ready to take on new challenges
+                    <img
+                      alt='quote-end'
+                      className='last'
+                      height='12'
+                      src={Comma.src}
+                      width='12'
+                    />
+                  </p>
+                  <div className='bottom'>
+                    <p>Brandon Philbrick</p>
+                    <span>Brand Manager & Designer, USA </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* )
+              })} */}
+
+              {readMore && (
+                <div className='row'>
+                  {' '}
+                  {/* {[...Array(6)].map(() => {
+                    return ( */}
+                  <div className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani hide-show'>
+                    <div className='testimonial-child'>
+                      <div className='author-img'>
                         <img
-                          _ngcontent-c5=''
-                          alt='Client - Reece Wabara'
-                          height='100'
-                          src={Anthony.src}
-                          width='100'
-                        />
+                              alt='Client Dan Miller'
+                              height='100'
+                              src={ten.src}
+                              width='100'
+                            />
                       </div>
-                      <p _ngcontent-c5='' className='content'>
+                      <p className='content'>
                         <img
-                          _ngcontent-c5=''
                           alt='quote-start'
                           height='12'
                           src={Comma.src}
                           width='12'
                         />
-                        Ayan and his team are superstars, they interpret
-                        suggestions well and propose even better and more
-                        efficient alternatives, the team's work is to a very
-                        high standard and turn around time is much faster than a
-                        UK equivalent
+                     We have worked with Bitpastel now for over 2 years and we've been really happy with the level of service and development work we have had done. They now manage all of our technology needs on an ongoing basis and nothing ever seems to be an issue with our requirements. Work is completed on time and to the highest quality that meets our expectations.
                         <img
-                          _ngcontent-c5=''
                           alt='quote-end'
                           className='last'
                           height='12'
@@ -499,71 +853,78 @@ const Home1 = () => {
                           width='12'
                         />
                       </p>
-                      <div _ngcontent-c5='' className='bottom'>
-                        <p _ngcontent-c5=''>Reece Wabara</p>
-                        <span _ngcontent-c5=''>
-                          CEO, Maniére De Voir, UK | Forbes 30 Under 30{' '}
-                        </span>
+                      <div className='bottom'>
+                        <p>Dan Miller</p>
+                        <span>CEO, Young Professionals, UK</span>
                       </div>
                     </div>
                   </div>
-                )
-              })}
-
-              {readMore && (
-                <div className='row'>
-                  {' '}
-                  {[...Array(6)].map(() => {
-                    return (
-                      <div
-                        _ngcontent-c5=''
-                        className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani hide-show'
-                      >
-                        <div _ngcontent-c5='' className='testimonial-child'>
-                          <div _ngcontent-c5='' className='author-img'>
-                            <img
-                              _ngcontent-c5=''
-                              alt='Client Dan Miller'
+                  <div className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani hide-show'>
+                    <div className='testimonial-child'>
+                      <div className='author-img'>
+                        <img
+                              alt='Client Charles Fried'
                               height='100'
-                              src={Anthony.src}
+                              src={eleven.src}
                               width='100'
                             />
-                          </div>
-                          <p _ngcontent-c5='' className='content'>
-                            <img
-                              _ngcontent-c5=''
-                              alt='quote-start'
-                              height='12'
-                              src={Comma.src}
-                              width='12'
-                            />
-                            We have worked with Bitpastel now for over 2 years
-                            and we've been really happy with the level of
-                            service and development work we have had done. They
-                            now manage all of our technology needs on an ongoing
-                            basis and nothing ever seems to be an issue with our
-                            requirements. Work is completed on time and to the
-                            highest quality that meets our expectations.
-                            <img
-                              _ngcontent-c5=''
-                              alt='quote-end'
-                              className='last'
-                              height='12'
-                              src={Comma.src}
-                              width='12'
-                            />
-                          </p>
-                          <div _ngcontent-c5='' className='bottom'>
-                            <p _ngcontent-c5=''>Dan Miller</p>
-                            <span _ngcontent-c5=''>
-                              CEO, Young Professionals, UK
-                            </span>
-                          </div>
-                        </div>
                       </div>
-                    )
-                  })}
+                      <p className='content'>
+                        <img
+                          alt='quote-start'
+                          height='12'
+                          src={Comma.src}
+                          width='12'
+                        />
+                     Ayan is a sharp individual and showed a very good ability to quickly understand our brief and get his team to deliver according to our specification. I recommend
+                        <img
+                          alt='quote-end'
+                          className='last'
+                          height='12'
+                          src={Comma.src}
+                          width='12'
+                        />
+                      </p>
+                      <div className='bottom'>
+                        <p>Charles Fried</p>
+                        <span>CTO & Co-Founder, BlockSmith Capital Ltd, UK</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='col-12 col-sm-6 col-md-6 col-lg-4 mb-3 testi-ani hide-show'>
+                    <div className='testimonial-child'>
+                      <div className='author-img'>
+                        <img
+                              alt='Client Alf Bergin'
+                              height='100'
+                              src={twelve.src}
+                              width='100'
+                            />
+                      </div>
+                      <p className='content'>
+                        <img
+                          alt='quote-start'
+                          height='12'
+                          src={Comma.src}
+                          width='12'
+                        />
+                     Bitpastel is an ambitious design & development team. They take good care of the client and have a professional attitude. What I really appreciate is that work is done quickly and without delays which is very important for a long-term business relationship. I really like their way to communicate
+                        <img
+                          alt='quote-end'
+                          className='last'
+                          height='12'
+                          src={Comma.src}
+                          width='12'
+                        />
+                      </p>
+                      <div className='bottom'>
+                        <p>Alf Bergin</p>
+                        <span>CEO, Svart på Kvitt SA, Norway</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                
               )}
               {!readMore && (
                 <div
@@ -584,269 +945,232 @@ const Home1 = () => {
             </div>
           </div>
         </section>
-
-
-<div className="home_footer_upper_section pb-0" id='clientele'>
-
-<h3 className="text-center heading-2">
-Satisfied Clientele Worldwide
-
-</h3> 
-<div className="container">
-  <div className="padding-area matrices-grid">
-  <div>
-    <figure>
-    <img  alt="clients wordwide map" className="img-fluid" height="424" src={clientel.src} width="854"/>
-    </figure>
-  </div>
-  <div className="container d-flex justify-content-end map_right_holder">
-<div className="satisfied_clientele">
-  <div className="child text-center">
-  <p>800</p>
-  <span className='text-uppercase'>Clients</span>
-
-  </div>
-  <div className="child text-center">
-  <p>1000</p>
-  <span className='text-uppercase'>Projects</span>
-
-  </div>
-  <div className="child text-center">
-  <p>30M</p>
-  <span className='text-uppercase'>LINES OF CODE</span>
-
-  </div>
-  <div className="child text-center">
-  <p>30</p>
-  <span className='text-uppercase'>Countries</span>
-
-  </div>
-</div>
-
-</div>
-  </div>
-</div>
-
-</div>
-<div className="pt-5" id='about'>
-
-<h3  className="text-center heading-2">Why work with us?</h3>
-
-
-
-</div>
-<div className="padding-area" id='last_area'>
-  <div className="wwu-grid">
- <div className="left_right_angle_one  position-relative">
- <div className="container">
-  <div className="wwu-div mb-3">
- <div className='lt-side d-flex justify-content-center align-items-center'>
-
- <img _ngcontent-c5="" alt="Reliable Engineering image" class="img-fluid fadeIn" height="380" src={why1.src} width="500"/>
- </div>
- <div className="rt-side">
- <p className="re mb-4 tt">
- Reliable Engineering
- </p>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
- <BiCheckCircle className='re checkOnly'/>
- <p _ngcontent-c5="" className="ml-3 pt">Multifunctional engineering teams with deep expertise</p>
-
- </div>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
-<BiCheckCircle className='re checkOnly'/>
- <p _ngcontent-c5="" className="ml-3 pt">Multifunctional engineering teams with deep expertise</p>
-
- </div>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
- <BiCheckCircle className='re checkOnly'/>
- <p _ngcontent-c5="" className="ml-3 pt">Multifunctional engineering teams with deep expertise</p>
-
- </div>
-
- </div>
-
- 
-
-
-  </div>
- </div>
-
- </div>
- <div className="left_right_angle_two  position-relative">
- <div className="container">
-  <div className="wwu-div mb-3">
-  <div className="rt-side">
- <p className="qa mb-4 tt">
- Reliable Engineering
- </p>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
- <BiCheckCircle className='qa checkOnly'/>
- <p className="ml-3 pt">Multifunctional engineering teams with deep expertise</p>
-
- </div>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
- <BiCheckCircle className='qa checkOnly'/>
- <p className="ml-3 pt">Multifunctional engineering teams with deep expertise</p>
-
- </div>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
- <BiCheckCircle className='qa checkOnly'/>
- <p  className="ml-3 pt">Multifunctional engineering teams with deep expertise</p>
-
- </div>
-
- </div>
- <div className='lt-side d-flex justify-content-center align-items-center'>
-
-<img alt="Reliable Engineering image" class="img-fluid fadeIn" height="380" src={why2.src} width="500"/>
-</div>
-
-  </div>
-  </div>
-
- </div>
- <div className="left_right_angle_three  position-relative">
- <div className="container">
-  <div className="wwu-div mb-3">
- <div className='lt-side d-flex justify-content-center align-items-center'>
-
- <img  alt="Reliable Engineering image" class="img-fluid fadeIn" height="380" src={why3.src} width="500"/>
- </div>
- <div className="rt-side">
- <p className="ced mb-4 tt">
- Cool & Elegant Designs
- </p>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
- <BiCheckCircle className='ced checkOnly'/>
- <p className="ml-3 pt">Dedicated design studio with a talented team
-
-
-
-</p>
-
- </div>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
-<BiCheckCircle className='ced checkOnly'/>
- <p className="ml-3 pt">Specialists in high-quality UI/UX</p>
-
- </div>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
- <BiCheckCircle className='ced checkOnly'/>
- <p  className="ml-3 pt">Experts in Social & Digital Marketing creatives</p>
-
- </div>
-
- </div>
-
- 
-
-
-  </div>
- </div>
-
- </div>
- <div className="left_right_angle_four  position-relative">
- <div className="container">
-  <div className="wwu-div mb-3">
-  <div className="rt-side">
- <p className="idp mb-4 tt">
- Idea & Data Protection
- </p>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
- <BiCheckCircle className='idp checkOnly'/>
- <p className="ml-3 pt">Non Disclosure Agreements</p>
-
- </div>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
- <BiCheckCircle className='idp checkOnly'/>
- <p className="ml-3 pt">Stringent Data Privacy</p>
-
- </div>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
- <BiCheckCircle className='idp checkOnly'/>
- <p  className="ml-3 pt">Best-in-class Secure Coding Practices
-
-</p>
-
- </div>
-
- </div>
- <div className='lt-side d-flex justify-content-center align-items-center'>
-
-<img alt="Reliable Engineering image" class="img-fluid fadeIn" height="380" src={why4.src} width="500"/>
-</div>
-
-  </div>
-  </div>
-
- </div>
- <div className="left_right_angle_five  position-relative">
- <div className="container">
-  <div className="wwu-div mb-3">
- <div className='lt-side d-flex justify-content-center align-items-center'>
-
- <img  alt="Reliable Engineering image" class="img-fluid fadeIn" height="380" src={why5.src} width="500"/>
- </div>
- <div className="rt-side">
- <p className="ad mb-4 tt">
- 
-Agile Delivery
- </p>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
- <BiCheckCircle className='ad checkOnly'/>
- <p className="ml-3 pt">Delivery on demanding timelines
-
-
-
-
-
-</p>
-
- </div>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
-<BiCheckCircle className='ad checkOnly'/>
- <p className="ml-3 pt">
-Extensive use of new-age communication tools</p>
-
- </div>
- <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
- <BiCheckCircle className='ad checkOnly'/>
- <p  className="ml-3 pt">
-Fast-paced response across all timezones</p>
-
- </div>
-
- </div>
-
- 
-
-
-  </div>
- </div>
-
- </div>
-
-
-
-
-
-
-
-
-
- 
- 
-  </div>
-</div>
-
-
+        <div className='home_footer_upper_section pb-0' id='clientele'>
+          <h3 className='text-center heading-2'>
+            Satisfied Clientele Worldwide
+          </h3>
+          <div className='container'>
+            <div className='padding-area matrices-grid'>
+              <div>
+                <figure>
+                  <img
+                    alt='clients wordwide map'
+                    className='img-fluid'
+                    height='424'
+                    src={clientel.src}
+                    width='854'
+                  />
+                </figure>
+              </div>
+              <div className='container d-flex justify-content-end map_right_holder'>
+                <div className='satisfied_clientele'>
+                  <div className='child text-center'>
+                    <p>800</p>
+                    <span className='text-uppercase'>Clients</span>
+                  </div>
+                  <div className='child text-center'>
+                    <p>1000</p>
+                    <span className='text-uppercase'>Projects</span>
+                  </div>
+                  <div className='child text-center'>
+                    <p>30M</p>
+                    <span className='text-uppercase'>LINES OF CODE</span>
+                  </div>
+                  <div className='child text-center'>
+                    <p>30</p>
+                    <span className='text-uppercase'>Countries</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className='pt-5' id='about'>
+          <h3 className='text-center heading-2'>Why work with us?</h3>
+        </div>
+        <div className='padding-area' id='last_area'>
+          <div className='wwu-grid'>
+            <div className='left_right_angle_one  position-relative'>
+              <div className='container'>
+                <div className='wwu-div mb-3'>
+                  <div className='lt-side d-flex justify-content-center align-items-center'>
+                    <img
+                      _ngcontent-c5=''
+                      alt='Reliable Engineering image'
+                      class='img-fluid fadeIn'
+                      height='380'
+                      src={why1.src}
+                      width='500'
+                    />
+                  </div>
+                  <div className='rt-side'>
+                    <p className='re mb-4 tt'>Reliable Engineering</p>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='re checkOnly' />
+                      <p _ngcontent-c5='' className='ml-3 pt'>
+                        Multifunctional engineering teams with deep expertise
+                      </p>
+                    </div>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='re checkOnly' />
+                      <p _ngcontent-c5='' className='ml-3 pt'>
+                        Multifunctional engineering teams with deep expertise
+                      </p>
+                    </div>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='re checkOnly' />
+                      <p _ngcontent-c5='' className='ml-3 pt'>
+                        Multifunctional engineering teams with deep expertise
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='left_right_angle_two  position-relative'>
+              <div className='container'>
+                <div className='wwu-div mb-3'>
+                  <div className='rt-side'>
+                    <p className='qa mb-4 tt'>Reliable Engineering</p>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='qa checkOnly' />
+                      <p className='ml-3 pt'>
+                        Multifunctional engineering teams with deep expertise
+                      </p>
+                    </div>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='qa checkOnly' />
+                      <p className='ml-3 pt'>
+                        Multifunctional engineering teams with deep expertise
+                      </p>
+                    </div>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='qa checkOnly' />
+                      <p className='ml-3 pt'>
+                        Multifunctional engineering teams with deep expertise
+                      </p>
+                    </div>
+                  </div>
+                  <div className='lt-side d-flex justify-content-center align-items-center'>
+                    <img
+                      alt='Reliable Engineering image'
+                      class='img-fluid fadeIn'
+                      height='380'
+                      src={why2.src}
+                      width='500'
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='left_right_angle_three  position-relative'>
+              <div className='container'>
+                <div className='wwu-div mb-3'>
+                  <div className='lt-side d-flex justify-content-center align-items-center'>
+                    <img
+                      alt='Reliable Engineering image'
+                      class='img-fluid fadeIn'
+                      height='380'
+                      src={why3.src}
+                      width='500'
+                    />
+                  </div>
+                  <div className='rt-side'>
+                    <p className='ced mb-4 tt'>Cool & Elegant Designs</p>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='ced checkOnly' />
+                      <p className='ml-3 pt'>
+                        Dedicated design studio with a talented team
+                      </p>
+                    </div>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='ced checkOnly' />
+                      <p className='ml-3 pt'>
+                        Specialists in high-quality UI/UX
+                      </p>
+                    </div>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='ced checkOnly' />
+                      <p className='ml-3 pt'>
+                        Experts in Social & Digital Marketing creatives
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='left_right_angle_four  position-relative'>
+              <div className='container'>
+                <div className='wwu-div mb-3'>
+                  <div className='rt-side'>
+                    <p className='idp mb-4 tt'>Idea & Data Protection</p>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='idp checkOnly' />
+                      <p className='ml-3 pt'>Non Disclosure Agreements</p>
+                    </div>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='idp checkOnly' />
+                      <p className='ml-3 pt'>Stringent Data Privacy</p>
+                    </div>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='idp checkOnly' />
+                      <p className='ml-3 pt'>
+                        Best-in-class Secure Coding Practices
+                      </p>
+                    </div>
+                  </div>
+                  <div className='lt-side d-flex justify-content-center align-items-center'>
+                    <img
+                      alt='Reliable Engineering image'
+                      class='img-fluid fadeIn'
+                      height='380'
+                      src={why4.src}
+                      width='500'
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='left_right_angle_five  position-relative'>
+              <div className='container'>
+                <div className='wwu-div mb-3'>
+                  <div className='lt-side d-flex justify-content-center align-items-center'>
+                    <img
+                      alt='Reliable Engineering image'
+                      class='img-fluid fadeIn'
+                      height='380'
+                      src={why5.src}
+                      width='500'
+                    />
+                  </div>
+                  <div className='rt-side'>
+                    <p className='ad mb-4 tt'>Agile Delivery</p>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='ad checkOnly' />
+                      <p className='ml-3 pt'>Delivery on demanding timelines</p>
+                    </div>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='ad checkOnly' />
+                      <p className='ml-3 pt'>
+                        Extensive use of new-age communication tools
+                      </p>
+                    </div>
+                    <div className='points d-flex justify-content-start align-items-start mb-4 twenty_gap'>
+                      <BiCheckCircle className='ad checkOnly' />
+                      <p className='ml-3 pt'>
+                        Fast-paced response across all timezones
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <section
-      
           className='text-center  d-flex justify-content-center align-items-center common_banner_bottom'
           id='contact'
         >
-        
           <button
             _ngcontent-c5=''
             className='wt-btn small-padding'
@@ -871,8 +1195,7 @@ Fast-paced response across all timezones</p>
             Leave a Message{' '}
           </button>
         </section>
-<Footer/>
-
+        <Footer />
       </div>
 
       {showModal && (

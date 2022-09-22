@@ -17,7 +17,7 @@ import Mobile_App from '../public/assets/Mobile_App.svg'
 import Ui_ux from '../public/assets/ui_ux.svg'
 import Web_Development from '../public/assets/Web_Development.svg'
 import Cart from '../public/assets/Cart.svg'
-import Anthony from '../public/assets/Anthony-5.jpg'
+
 import Comma from '../public/assets/comma.png'
 import Link from 'next/link'
 

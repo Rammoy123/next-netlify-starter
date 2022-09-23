@@ -9,8 +9,38 @@ border-bottom: 1px solid transparent;
 }
 .imageContainer a img{
     height:70px;
-    object-fit: cover;
+    /* object-fit: cover; */
+         margin: 0 auto;
 }
+@media only screen and (max-width: 1200px){
+   .navmain .navFlex {
+        display: none!important;
+        text-align: left;
+    }
+    }
+    @media only screen and (max-width: 1200px)
+    {
+    
+     .main {
+        border-bottom: 1px solid #f5f5f5;
+        z-index: 199;
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        -webkit-backface-visibility: hidden;
+        box-shadow: 0 0 10pxrgba(0,0,0,.1);
+        text-align: center;
+    }
+    }
+    @media only screen and (max-width: 1200px)
+    {
+
+        .imageContainer a img {
+    height: 60px;
+}
+    }
 .navFlex{
     display:flex;
     justify-content: flex-end;

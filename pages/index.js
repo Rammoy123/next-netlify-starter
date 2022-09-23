@@ -26,6 +26,7 @@ import { requirePropFactory } from '@mui/material'
 import Modal from './Modal'
 
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 import $ from 'jquery'
 import Home1 from './[home]'
@@ -35,6 +36,11 @@ export default function Home () {
 
   return (
     <>
+      <Head>
+        <title>My page title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        {/* <meta name="viewport" content="initial-scale=1.0, width=device-width" /> */}
+      </Head>
 <Home1 />
     </>
   )

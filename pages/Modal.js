@@ -29,16 +29,27 @@ const Modal = ({ hideMe }) => {
       }
     }
   })
+  useEffect(()=>{
+    $(document).ready(function() {
+      $('.MuiAutocomplete-popupIndicator').click(function() {
+        console.log("loll.............")
+       
+        $('.css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper').addClass('activeDataa')
+      //  $('#controllable-states-demo-listbox').addClass('activeDataa')  
+      });
+  });
+
+  },[])
 
   const classes1 = style()
 
   const focus = useRef()
   useEffect(() => {
     function handleClickOutside (event) {
-      console.log(event.target.role, 'roleee')
+      console.log(event, 'roleee')
       // console.log(focus.current)
       if (focus.current && !focus.current.contains(event.target)) {
-        if (event.target.role != 'option') {
+        if ((event.target.role != 'option') &&(event.target.role != 'listbox') ){
           hideMe()
         }
         // if()
@@ -569,25 +580,30 @@ const Modal = ({ hideMe }) => {
     { code: 'ZM', label: 'Zambia', phone: '260' },
     { code: 'ZW', label: 'Zimbabwe', phone: '263' }
   ]
+  const includeClass=()=>{
+    console.log("rammmoy")
+    // $('#make_home').addClass('active1')
+   $('.css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper').addClass('activeDataa')
+  }
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    Axios.get(
-      'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
-    )
-      .then(response => {
-        console.log(response)
+  //   Axios.get(
+  //     'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
+  //   )
+  //     .then(response => {
+  //       console.log(response)
 
-        const array = countries.filter(
-          arr =>
-            arr.code.toUpperCase() ==
-            response.data.country.iso_code.toUpperCase()
-        )
-        array.map(obj => setInputValue({ ...inputValue, ph_code: obj }))
-        console.log(array, 'array123444')
-      })
-      .catch(error => console.log('error', error))
-  }, [])
+  //       const array = countries.filter(
+  //         arr =>
+  //           arr.code.toUpperCase() ==
+  //           response.data.country.iso_code.toUpperCase()
+  //       )
+  //       array.map(obj => setInputValue({ ...inputValue, ph_code: obj }))
+  //       console.log(array, 'array123444')
+  //     })
+  //     .catch(error => console.log('error', error))
+  // }, [])
   useEffect(() => {
     if (Object.keys(formerror).length === 0 && isSubmit) {
       console.log(inputValue, 'passed object')
@@ -702,7 +718,7 @@ const Modal = ({ hideMe }) => {
                                 <p className='p-item'>I want </p>
                               </div>
                             </div>
-                            <div className='modal-auto col-md-8'>
+                            <div className='modal-auto col-md-8' >
                               <Autocomplete
                                 value={inputValue.option1}
                                 fullWidth
@@ -758,7 +774,7 @@ const Modal = ({ hideMe }) => {
                               </div>
                             </div>
 
-                            <div className='modal-auto col-md-12 relativeError'>
+                            <div className='modal-auto col-md-12 relativeError' >
                               <input
                                 className='form-controller modal-form'
                                 id='email'
@@ -778,7 +794,7 @@ const Modal = ({ hideMe }) => {
                           </div>
                           <div className='phone-sec'>
                             <div className=' row'>
-                              <div className='phone-left col-md-4 text-center d'>
+                              <div className='phone-left col-md-4 text-center d modal-demo' onClick={includeClass}>
                                 <Autocomplete
                                   id='controllable-states-demo'
                                   sx={{
@@ -837,7 +853,7 @@ const Modal = ({ hideMe }) => {
                                         srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
                                         alt=''
                                       />
-                                      +{option.phone}
+                                        +{option.phone}
                                     </Box>
                                   )}
                                   renderInput={params => (

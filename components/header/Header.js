@@ -162,9 +162,9 @@ const Header = ({ navData }) => {
   useEffect(() => {
     $(window).scroll(function () {
       if ($(this).scrollTop() > 50) {
-        $('.main').addClass('fixed')
+        $('#maini').addClass('fixed')
       } else {
-        $('.main').removeClass('fixed')
+        $('#maini').removeClass('fixed')
       }
     })
   }, [])
@@ -181,10 +181,10 @@ const Header = ({ navData }) => {
 
   return (
     <>
-      <header className='main' id='maini'>
+      <header className={style.main} id='maini'>
         <div className='container'>
           <div className='row'>
-            <div className='col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 image-container'>
+            <div className={`col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 ${style.imageContainer}`}>
               <Link href={{ pathname: '/' }}>
                 <a>
                   <img src={logo.src} alt='logo' />
@@ -230,7 +230,7 @@ const Header = ({ navData }) => {
                       href={{
                         pathname: '/Team'
                       }}
-                      scroll={false}
+                      // scroll={false}
                     >
                       <a id='make_team'>Team</a>
                     </Link>

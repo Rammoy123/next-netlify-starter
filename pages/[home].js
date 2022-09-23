@@ -138,13 +138,13 @@ const Home1 = () => {
               </button>
             </div>
             <div className='right-side'>
-              <Image
+              <img
                 alt='Crafting Digital Solutions for your business image'
                 height='650'
-                src={home_banner}
-                placeholder='blur'
+                src={home_banner.src}
                 width='650'
-                priority
+                // placeholder='blur'
+                // priority
               />
             </div>
           </div>
@@ -1177,7 +1177,7 @@ const Home1 = () => {
             //  $("#whole_content").css("overflow-y")
             onClick={() => {
               // $("#whole_content").css("overflow-y","hidden")
-              router.push(`/free-quotes`)
+              router.push(`/free-quotes` )
             }}
             // $('#whole_content').addClass(activeHome)
             // let position="stories"
@@ -1197,7 +1197,7 @@ const Home1 = () => {
         </section>
         <Footer />
       </div>
-
+      {/* router.push(`/?page=2`, undefined, { scroll: false }); */}
       {showModal && (
         <Modal
           hideMe={() => {

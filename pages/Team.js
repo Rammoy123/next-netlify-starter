@@ -30,53 +30,134 @@ import { BiCheckCircle } from 'react-icons/bi'
 import $ from 'jquery'
 const Team = () => {
   const router=useRouter()
-  useEffect(()=>{
-    $(window).on('scroll', function () {
-          if (Object.keys($('#hero1')).length > 0) {
-            
-            if (
-              $(this).scrollTop() >=
-              $('#hero1').offset().top +
-                $('#hero1').outerHeight() -
-                window.innerHeight
-            ) {
-            $("#first_1").css('transform','translate(0px,0px)')
-              // $('#make_home').addClass('active1')
-    
-              // $('#make_services').removeClass('active1')
-            }
-            if (
-              $(this).scrollTop() >=
-              $('#first_').offset().top +
-                $('#first_').outerHeight() -
-                window.innerHeight
-            ) {
-            $("#second_1").css('transform','translate(0px,0px)')
-              // $('#make_home').addClass('active1')
-    
-              // $('#make_services').removeClass('active1')
-            }
-            if (
-              $(this).scrollTop() >=
-              $('#second_').offset().top +
-                $('#second_').outerHeight() -
-                window.innerHeight
-            ) {
-            $("#third_1").css('transform','translate(0px,0px)')
-              // $('#make_home').addClass('active1')
-    
-              // $('#make_services').removeClass('active1')
-            }
+  // const containerRef = useRef(null);
+  const onTop = () => {
+    // window.scrollTo(0, 0);
+    window.scroll({
+   
+      behavior: 'smooth'
+    });
+  }
+  useEffect(() => {
+    // onTop()
+  }, [router.query]);
+// .............  
+useEffect(() => {
+  const handleRouteChange = (url) => {
+    if(url==router.asPath){
+      $(window).on('scroll', function () {
+        if (Object.keys($('#hero1')).length > 0) {
+          
+          if (
+            $(this).scrollTop() >=
+            $('#hero1').offset().top +
+              $('#hero1').outerHeight() -
+              window.innerHeight
+          ) {
+          $("#first_1").css('transform','translate(0px,0px)')
+            // $('#make_home').addClass('active1')
+  
+            // $('#make_services').removeClass('active1')
           }
+          if (
+            $(this).scrollTop() >=
+            $('#first_').offset().top +
+              $('#first_').outerHeight() -
+              window.innerHeight
+          ) {
+          $("#second_1").css('transform','translate(0px,0px)')
+            // $('#make_home').addClass('active1')
+  
+            // $('#make_services').removeClass('active1')
+          }
+          if (
+            $(this).scrollTop() >=
+            $('#second_').offset().top +
+              $('#second_').outerHeight() -
+              window.innerHeight
+          ) {
+          $("#third_1").css('transform','translate(0px,0px)')
+            // $('#make_home').addClass('active1')
+  
+            // $('#make_services').removeClass('active1')
+          }
+        }
+      
+      })
+
+
+
+    console.log(
+      `App is changing to ${url}  shallow routing`
+    )
+  }
+}
+
+  router.events.on('routeChangeComplete', handleRouteChange)
+
+  // If the component is unmounted, unsubscribe
+  // from the event with the `off` method:
+  return () => {
+    router.events.off('routeChangeComplete', handleRouteChange)
+  }
+}, [])
+
+
+
+// ................
+
+
+
+  // useEffect(()=>{
+
+  //   $(window).on('scroll', function () {
+  //         if (Object.keys($('#hero1')).length > 0) {
+            
+  //           if (
+  //             $(this).scrollTop() >=
+  //             $('#hero1').offset().top +
+  //               $('#hero1').outerHeight() -
+  //               window.innerHeight
+  //           ) {
+  //           $("#first_1").css('transform','translate(0px,0px)')
+           
+  //           }
+  //           if (
+  //             $(this).scrollTop() >=
+  //             $('#first_').offset().top +
+  //               $('#first_').outerHeight() -
+  //               window.innerHeight
+  //           ) {
+  //           $("#second_1").css('transform','translate(0px,0px)')
+          
+  //           }
+  //           if (
+  //             $(this).scrollTop() >=
+  //             $('#second_').offset().top +
+  //               $('#second_').outerHeight() -
+  //               window.innerHeight
+  //           ) {
+  //           $("#third_1").css('transform','translate(0px,0px)')
+          
+  //           }
+  //         }
         
-        })
+  //       })
 
 
 
-  },[])
+  // },[router.query])
+
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     containerRef.current.scrollIntoView({ behavior: 'smooth' });
+  //   }, 2000);
+  // }, []);
     return (
     <>
       <Header navData='Team' />
+      {/* <div ref={containerRef}> */}
 
       <div className='container height_unset' id='banner'>
         <div className='hero-content' id='hero1'>
@@ -354,6 +435,7 @@ const Team = () => {
       </section>
 
       <Footer />
+      {/* </div> */}
     </>
   )
 }

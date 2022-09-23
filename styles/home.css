@@ -13,6 +13,35 @@
 
 
 }
+/* ......heder global...... */
+.active1{
+    color: #099  !important
+
+}
+.first-button{
+    height: 40px;
+    min-width: 120px;
+    max-width: 120px;
+    margin-top: 0;
+    font-size: 14px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #23b428;
+    border:0;
+    border-radius: 5px;
+    color: #fff!important;
+    outline: 0!important;
+    font-family: "Source Sans Pro",sans-serif;
+}
+.fixed{
+    position:fixed;
+    background-color:white;
+    z-index: 10000;
+}
+
+/* ................ */
 
 .hero-content{
     padding-top: 40px;
@@ -22,6 +51,17 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
+}
+@media screen and (max-width: 500px){
+.hero-content {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 70vh;
+}
 }
 .wt-btn{
 
@@ -83,11 +123,23 @@ h1, h2, h3 {
     font-family: "Source Sans Pro",sans-serif!important;
     padding-left: 0 !important;
 }
-
+@media (min-width: 1280px){
 .hero-content .left-side ul li{
-font-size: 22px;
+font-size: 22px !important;
     /* padding-left: 31px; */
     padding-bottom: 15px;
+}
+}
+@media (min-width: 1024px){
+.hero-content .left-side ul li {
+    padding-left: 40px;
+    font-size: 18px;
+}
+}
+@media (max-width: 1024px){
+    .first-check{
+    font-size: 18px !important;
+ }
 }
 
 .first-check{
@@ -171,23 +223,38 @@ width: 100%;
     height: auto;
 }
 @media (min-width: 1280px){
+#hero .right-side img {
+    max-width: 100% !important
+}
+
+
+}
+@media screen and (max-width: 500px){
 .hero-content .right-side img {
-    max-width: 100%;
+    max-width: 260px;
+    width: 100%;
+    height: auto;
 }
 }
 @media (min-width: 1024px){
 .hero-content .left-side h1 {
-    text-align: left;
-    font-size: 38px;
+    text-align: left !important;
+    font-size: 38px ;
     /* font-family: "Source Sans Pro",sans-serif!important; */
 }
 }
 @media (min-width: 1024px){
 .hero-content .left-side {
     width: 50%;
-    text-align: left;
-    max-width: 100%;
+    text-align: left !important;
+    max-width: 100% !important;
 }
+}
+.hero-content .left-side {
+    z-index: 1;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
 }
 .hero-content .left-side h1 {
     margin-bottom: 30px;
@@ -1527,4 +1594,19 @@ p.fun-bp {
     height: 1em !important;
     overflow: visible;
     /* vertical-align: -0.125em; */
+}
+ /* .css-b7k0tb-MuiAutocomplete-listbox{
+    width:100px !important
+} */
+ .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper{
+    /* width:250px !important; */
+    /* position: absolute !important;
+    right:50px !important */
+
+}
+.activeDataa{
+    width:250px !important;
+}
+.activeData1{
+    width:250px !important;
 }

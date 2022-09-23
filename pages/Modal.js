@@ -586,24 +586,24 @@ const Modal = ({ hideMe }) => {
    $('.css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper').addClass('activeDataa')
   }
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   Axios.get(
-  //     'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
-  //   )
-  //     .then(response => {
-  //       console.log(response)
+    Axios.get(
+      'https://api.geoapify.com/v1/ipinfo?apiKey=93ee004727e446fa8c081ba0c7fe2428'
+    )
+      .then(response => {
+        console.log(response)
 
-  //       const array = countries.filter(
-  //         arr =>
-  //           arr.code.toUpperCase() ==
-  //           response.data.country.iso_code.toUpperCase()
-  //       )
-  //       array.map(obj => setInputValue({ ...inputValue, ph_code: obj }))
-  //       console.log(array, 'array123444')
-  //     })
-  //     .catch(error => console.log('error', error))
-  // }, [])
+        const array = countries.filter(
+          arr =>
+            arr.code.toUpperCase() ==
+            response.data.country.iso_code.toUpperCase()
+        )
+        array.map(obj => setInputValue({ ...inputValue, ph_code: obj }))
+        console.log(array, 'array123444')
+      })
+      .catch(error => console.log('error', error))
+  }, [])
   useEffect(() => {
     if (Object.keys(formerror).length === 0 && isSubmit) {
       console.log(inputValue, 'passed object')

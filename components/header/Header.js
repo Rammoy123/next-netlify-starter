@@ -199,7 +199,9 @@ const Header = ({ navData }) => {
                     <Link
                       href={{
                         pathname: '/'
+                        
                       }}
+                      
                     >
                       <a id='make_home'>Home</a>
                     </Link>
@@ -211,7 +213,7 @@ const Header = ({ navData }) => {
                   </li>
 
                   <li className={style.liItem}>
-                    <Link href={{ pathname: '/make_stories' }}>
+                    <Link href={{ pathname: '/make_stories' }} scroll={false}>
                       <a id='make_stories'>Stories</a>
                     </Link>
                   </li>
@@ -230,7 +232,7 @@ const Header = ({ navData }) => {
                       href={{
                         pathname: '/Team'
                       }}
-                      // scroll={false}
+                      scroll={false}
                     >
                       <a id='make_team'>Team</a>
                     </Link>
@@ -241,6 +243,7 @@ const Header = ({ navData }) => {
                       href={{
                         pathname: '/careers'
                       }}
+                      scroll={false}
                     >
                       <a id='make_carrier'>Careers</a>
                     </Link>
@@ -249,7 +252,7 @@ const Header = ({ navData }) => {
                     {/* <Link href={{pathanme:'/free-quotes'}}> */}
                     <button
                       onClick={() => {
-                        router.push(`/free-quotes`)
+                        router.push(`/free-quotes`,undefined,{scroll:false})
                       }}
                       className={style.firstButton}
                     >

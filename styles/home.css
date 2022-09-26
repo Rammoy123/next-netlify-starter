@@ -1,6 +1,7 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap');
 
 
 *{
@@ -126,7 +127,7 @@ h1, h2, h3 {
 @media (min-width: 1280px){
 .hero-content .left-side ul li{
 font-size: 22px !important;
-    /* padding-left: 31px; */
+    padding-left: 0px !important;
     padding-bottom: 15px;
 }
 }
@@ -1301,11 +1302,21 @@ padding-right: 50px;
     max-width:1000px !important;
 }
 }
-.css-1a1fmpi-MuiInputBase-root-MuiInput-root:before {
+/* .css-1a1fmpi-MuiInputBase-root-MuiInput-root:before {
 
 border-bottom:1px solid #ddd !important;
 right:-25px;
 bottom:-1px
+
+} */
+.MuiInputBase-root::before{
+    border-bottom:1px solid #ddd !important;
+right:-25px !important;
+/* bottom:-1px !important */
+
+}
+.MuiInputBase-root::after{
+    border-bottom:1px solid #ddd !important;
 
 }
 
@@ -1607,6 +1618,10 @@ p.fun-bp {
 .activeDataa{
     width:250px !important;
 }
-.activeData1{
+/* .activeData1{
     width:250px !important;
 }
+#controllable-states-demo :focus .MuiAutocomplete-popper{
+    width: 250px !important;
+
+} */

@@ -31,76 +31,35 @@ import $ from 'jquery'
 const Team = () => {
   const router=useRouter()
   // const containerRef = useRef(null);
-  const onTop = () => {
-    // window.scrollTo(0, 0);
-    window.scroll({
-   
-      behavior: 'smooth'
-    });
-  }
-  useEffect(() => {
-    // onTop()
-  }, [router.query]);
+  // const onTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: 'instant',
+  //   })
+  // }
+  // useEffect(() => {
+  //   onTop()
+  // }, [router.query]);
 // .............  
-useEffect(() => {
-  const handleRouteChange = (url) => {
-    if(url==router.asPath){
-      $(window).on('scroll', function () {
-        if (Object.keys($('#hero1')).length > 0) {
-          
-          if (
-            $(this).scrollTop() >=
-            $('#hero1').offset().top +
-              $('#hero1').outerHeight() -
-              window.innerHeight
-          ) {
-          $("#first_1").css('transform','translate(0px,0px)')
-            // $('#make_home').addClass('active1')
-  
-            // $('#make_services').removeClass('active1')
-          }
-          if (
-            $(this).scrollTop() >=
-            $('#first_').offset().top +
-              $('#first_').outerHeight() -
-              window.innerHeight
-          ) {
-          $("#second_1").css('transform','translate(0px,0px)')
-            // $('#make_home').addClass('active1')
-  
-            // $('#make_services').removeClass('active1')
-          }
-          if (
-            $(this).scrollTop() >=
-            $('#second_').offset().top +
-              $('#second_').outerHeight() -
-              window.innerHeight
-          ) {
-          $("#third_1").css('transform','translate(0px,0px)')
-            // $('#make_home').addClass('active1')
-  
-            // $('#make_services').removeClass('active1')
-          }
-        }
-      
-      })
+// useEffect(() => {
+//   const handleRouteChange = (url) => {
+//     if(url==router.asPath){
 
 
 
-    console.log(
-      `App is changing to ${url}  shallow routing`
-    )
-  }
-}
 
-  router.events.on('routeChangeComplete', handleRouteChange)
+//     console.log(
+//       `App is changing to ${url}  shallow routing`
+//     )
+//   }
+// }
 
-  // If the component is unmounted, unsubscribe
-  // from the event with the `off` method:
-  return () => {
-    router.events.off('routeChangeComplete', handleRouteChange)
-  }
-}, [])
+//   router.events.on('routeChangeComplete', handleRouteChange)
+
+//   return () => {
+//     router.events.off('routeChangeComplete', handleRouteChange)
+//   }
+// }, [])
 
 
 
@@ -108,45 +67,45 @@ useEffect(() => {
 
 
 
-  // useEffect(()=>{
+  useEffect(()=>{
 
-  //   $(window).on('scroll', function () {
-  //         if (Object.keys($('#hero1')).length > 0) {
+    $(window).on('scroll', function () {
+          if (Object.keys($('#hero1')).length > 0) {
             
-  //           if (
-  //             $(this).scrollTop() >=
-  //             $('#hero1').offset().top +
-  //               $('#hero1').outerHeight() -
-  //               window.innerHeight
-  //           ) {
-  //           $("#first_1").css('transform','translate(0px,0px)')
+            if (
+              $(this).scrollTop() >=
+              $('#hero1').offset().top +
+                $('#hero1').outerHeight() -
+                window.innerHeight
+            ) {
+            $("#first_1").css('transform','translate(0px,0px)')
            
-  //           }
-  //           if (
-  //             $(this).scrollTop() >=
-  //             $('#first_').offset().top +
-  //               $('#first_').outerHeight() -
-  //               window.innerHeight
-  //           ) {
-  //           $("#second_1").css('transform','translate(0px,0px)')
+            }
+            if (
+              $(this).scrollTop() >=
+              $('#first_').offset().top +
+                $('#first_').outerHeight() -
+                window.innerHeight
+            ) {
+            $("#second_1").css('transform','translate(0px,0px)')
           
-  //           }
-  //           if (
-  //             $(this).scrollTop() >=
-  //             $('#second_').offset().top +
-  //               $('#second_').outerHeight() -
-  //               window.innerHeight
-  //           ) {
-  //           $("#third_1").css('transform','translate(0px,0px)')
+            }
+            if (
+              $(this).scrollTop() >=
+              $('#second_').offset().top +
+                $('#second_').outerHeight() -
+                window.innerHeight
+            ) {
+            $("#third_1").css('transform','translate(0px,0px)')
           
-  //           }
-  //         }
+            }
+          }
         
-  //       })
+        })
 
 
 
-  // },[router.query])
+  },[router.query])
 
 
   // useEffect(() => {

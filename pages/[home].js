@@ -181,7 +181,7 @@ const Home1 = () => {
                       tabindex='0'
                       onClick={() => {
                         // $('#whole_content').addClass(activeHome)
-                        router.push(`/free-quotes`)
+                        router.push(`/free-quotes`,undefined,{scroll:false})
 
                         // setShowModal(!showModal)
                       }}
@@ -1177,7 +1177,7 @@ const Home1 = () => {
             //  $("#whole_content").css("overflow-y")
             onClick={() => {
               // $("#whole_content").css("overflow-y","hidden")
-              router.push(`/free-quotes` )
+              router.push(`/free-quotes`,undefined,{scroll:false} )
             }}
             // $('#whole_content').addClass(activeHome)
             // let position="stories"
@@ -1201,7 +1201,7 @@ const Home1 = () => {
       {showModal && (
         <Modal
           hideMe={() => {
-            router.push('/')
+            router.push('/',undefined,{scroll:false})
           }}
         />
       )}

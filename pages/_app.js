@@ -18,7 +18,7 @@ function Application ({ Component, pageProps }) {
     const handleRouteChange = url => {
       console.log(url,router.asPath,"see those dat----")
       // if (url== router.asPath ) 
-      if( (router.asPath!='/make_services') &&(router.asPath!='/make_stories'))
+      if( (router.asPath!='/make_services') &&(router.asPath!='/make_stories') &&(router.asPath!='/clientele') && (router.asPath!='/about'))
       {
         console.log("go to Top....")
         onTop()
